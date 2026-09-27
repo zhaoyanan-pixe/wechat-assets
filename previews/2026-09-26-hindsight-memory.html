@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第04期 · 给 AI 装一副「会成长的记忆」（预览页）</title>
+<style>
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #btnCopy:active { transform: translateY(1px); }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/2026-09-26-hindsight-memory/cover_handdrawn_v1.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用过 AI 助手的人，大多有个共同的感受：它很聪明，但没什么「记性」——同一件事，今天说一遍，明天还得再说一遍；一换对话窗口，就像换了个新助手。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">问题不全在「脑子」够不够聪明，而在「记忆方式」太笨。大多数 AI 的记忆，只是把聊天记录重新翻出来；而今天要认识的 GitHub 项目 Hindsight，想给 AI 换一副<strong style="font-weight:500;">「会成长的记忆」</strong>：不只是「记住」，而是像人一样，从经历里「学会」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一句话认识它：Hindsight，来自美国团队 Vectorize（专做 AI 检索与记忆基础设施）；项目用 MIT 协议开源，名字取自英语单词「后见之明」——正应了它的主张：吃一堑，长一智。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开源不到一年，星标已<strong style="font-weight:500;">近 3 万</strong>；过去一周又涨 <strong style="font-weight:500;">3300 多颗星</strong>，登上了 GitHub 全站周榜前十。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它和「普通记忆」差在哪？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">打个比方：普通记忆系统像一台「复读机」——你说过什么，它原样记下、原样翻出。Hindsight 更像一位「会总结的老同事」：你的偏好、项目的坑、上次踩过的雷，它会慢慢合并成能复用的经验。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/2026-09-26-hindsight-memory/fig3-memory-tree.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">在它的设计里，记忆是分层「长大」的：</p>
+
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ <strong style="font-weight:500;">事实层</strong>：世界是什么样的——「炉子会烫」；</p>
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ <strong style="font-weight:500;">经历层</strong>：它自己遇到过什么——「我摸过炉子，真疼」；</p>
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ <strong style="font-weight:500;">观察层</strong>：同类经历多了，自动合成「有证据的结论」——新证据只会让结论被增强、削弱或修正，而不是悄悄覆盖旧的；</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ <strong style="font-weight:500;">心智模型</strong>：对一个人、一个项目的整体理解，写成「常驻答案」——需要时直接读，不用当场推理。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/2026-09-26-hindsight-memory/fig1-flow.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对外，它只做三件事：<strong style="font-weight:500;">存</strong>（把新信息记下来）、<strong style="font-weight:500;">取</strong>（四路并行找记忆：按意思、按关键词、顺着关系、按时间，像侦探多角度排查，再合并排序）、<strong style="font-weight:500;">想</strong>（深挖已有记忆，形成新判断）。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">「最准的记忆」，有几分可信？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">在长期记忆的公开「考卷」LongMemEval 上，Hindsight 拿下第一梯队成绩——官方称是目前最好。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更值得一提的是：官方页面注明，它的基准成绩已获弗吉尼亚理工桑哈尼人工智能与数据分析中心及《华盛顿邮报》的独立复现——记忆赛道上各家普遍「自报分数」，这种第三方背书算是稀缺品。（该表述为项目官方口径，细节以官方页面为准。）</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">想用的话，怎么上手？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#6BA0D2;line-height:31px;padding:14px 18px;">先说清楚：这是给开发者与团队用的「底层组件」，不是装上就能用的 App——把它看成「给 AI 装记性的零件」更准确。</p>
+
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ 给现有 AI 加记忆：把在用的模型客户端「包一层」，官方示例<strong style="font-weight:500;">两行代码</strong>，之后每次对话自动存取；</p>
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ 现成集成 <strong style="font-weight:500;">60+</strong> 个：Claude Code、Codex、n8n、Dify……很多不用改代码就能挂上；</p>
+  <p style="margin:0 0 10px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ 支持 <strong style="font-weight:500;">25 家以上</strong>模型供应商，包括本地跑（Ollama 等）；手里的 ChatGPT、Claude 订阅也能直接用，不必另配「钥匙」（API 密钥）；</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">▪ 还有自带界面、开箱即用的官方云版，以及 Docker、pip 等多种部署方式。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/2026-09-26-hindsight-memory/fig2-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么值得你关注？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">过去这一周，GitHub 上「AI 记忆」成了新战场：除了 Hindsight，给编码助手做「跨工具记忆」的 ai-memory 等同类项目也一起冲榜。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么都盯上记忆？因为 AI 正从「工具」走向「同事」——工具可以每次重新说明，同事不行。下一代 AI 助手的分水岭，可能不再是「多聪明」，而是「多懂你」；而「懂」的前提，正是记得住、学得会。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一句提醒</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">①「最准」是官方口径，独立复现针对的也是基准成绩——真实好不好用，得放进你自己的场景里试。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">② 记忆意味着数据：它支持按「库」严格隔离，还能开启「记忆防护」，对 45 类敏感信息（密钥、隐私等）逐条扫描、打码或拦截——但自部署时，数据怎么放、给谁看，仍需自己把关。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：<strong style="font-weight:500;">github.com/vectorize-io/hindsight</strong>（MIT 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目官方 README、官方站与 GitHub API／全站周榜（截至 2026-09-26）；相关论文：arxiv.org/abs/2512.12818</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你最希望你的 AI 助手记住什么？评论区聊聊——说不定就是下一期的选题。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 04 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
