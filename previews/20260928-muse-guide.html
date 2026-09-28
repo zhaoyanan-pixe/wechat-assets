@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta 新 AI 助手 Muse 上线：每人配一台云端电脑，附 10 亿 token 白嫖攻略 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+<p style="margin:8px 0 20px;font-size:24px;line-height:36px;font-weight:bold;color:#111111;">Meta 新 AI 助手 Muse 上线：每人配一台云端电脑，附 10 亿 token 白嫖攻略</p>
+
+<p style="margin:12px 0;font-size:15px;line-height:27px;color:#666666;background-color:#F6F8FB;padding:14px 16px;border-radius:8px;">上周，Meta 的个人 AI 助手 Muse 在美国上线，直接冲上美区 App Store 总榜前列，把 ChatGPT 都挤了下去。我第一时间注册，实测了一周，今天把真实体验和注册方法一次讲清，文末还有 10 亿 token 的领取方式。</p>
+
+<p style="margin:34px 0 14px;padding-left:12px;border-left:4px solid #2563EB;font-size:19px;line-height:34px;font-weight:bold;color:#111111;">一、Muse 到底是什么？一句话讲清</p>
+
+<img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-muse-guide/fig1-cloud-computer.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">它不是又一个问答机器人。<strong style="font-weight:500;">Muse 是 Meta 做的个人 AI Agent</strong>，跟普通 AI 最大的区别是：它有自己的"手"。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">每个用户都配<strong style="font-weight:500;">一台云端专属电脑</strong>，它能自己打开浏览器查资料、填表单，还能连你的 Gmail 和谷歌日历。你交代一句"帮我盯着这事"，它就在后台接着干，办完了、或者遇到要你拍板的事（比如发邮件、付款），再回来找你确认。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">简单说：<strong style="font-weight:500;">以前的 AI 是你问它答；Muse 是你交代，它去办。</strong></p>
+
+<p style="margin:34px 0 14px;padding-left:12px;border-left:4px solid #2563EB;font-size:19px;line-height:34px;font-weight:bold;color:#111111;">二、办公党最关心的：到底能帮我干什么？</p>
+
+<img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-muse-guide/fig2-office-scenes.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">说几个我这一周真实用下来的场景：</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">1. 邮件不再是负担</strong><br>早上让它扫一遍收件箱：广告邮件归档，重要的提炼成三句话摘要，顺手把回复草稿写好。你只需要看一眼、点发送。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">2. 开会、约时间这种杂事丢给它</strong><br>"下周找个大家都有空的半小时开项目会"，它查日历、发邀请，会后还能列出待办事项。以前来回发微信约时间的日子结束了。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">3. 调研报告有人代笔</strong><br>丢一个主题给它，比如"整理五家竞品最近的价格和卖点"，它自己上网搜集，整理成表格交给你。做方案前的信息搜集环节直接省一半时间。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">4. 写周报、写方案、写公众号</strong><br>给它背景和要点，它出初稿。提醒一句：是初稿，观点和事实你得自己把关，但"从零开始写"这个最痛苦的环节没了。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">5. 长期事项有人盯</strong><br>它有个 Goals 功能，适合"跟进某个项目""学英语"这种需要持续跟进的事，定期给你汇报进度，不用你天天想着。</p>
+
+<p style="margin:34px 0 14px;padding-left:12px;border-left:4px solid #2563EB;font-size:19px;line-height:34px;font-weight:bold;color:#111111;">三、国内怎么注册？实测可用的两种方法</p>
+
+<img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-muse-guide/fig3-signup-steps.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">Muse 目前主要在美国、加拿大上线，国内直接打开官网可能提示区域不可用。下面两种方法都是实测可行的：</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">方法一：借 Gemini 的云电脑注册（有 Gemini Pro 最方便）</strong></p>
+<ul style="margin:12px 0;padding-left:22px;font-size:16px;line-height:29px;color:#333333;">
+<li style="margin:8px 0;">打开 Gemini 网页版，点开 Spark，让它"打开 https://muse.ai/join"</li>
+<li style="margin:8px 0;">授权后接管远程浏览器，在里面完成注册：填邮箱、收验证码</li>
+<li style="margin:8px 0;">可能要求年龄验证：绑一张 Visa/Mastercard 全币种卡（小额验证约 1 美元，会退回），或绑定 Facebook 账号也可跳过</li>
+</ul>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;"><strong style="font-weight:500;">方法二：用免费云浏览器（没有 Gemini Pro 用这个）</strong></p>
+<ul style="margin:12px 0;padding-left:22px;font-size:16px;line-height:29px;color:#333333;">
+<li style="margin:8px 0;">去 cloud.browser-use.com 注册，新用户有免费额度，同样开一台远程浏览器，按上面的步骤注册 Muse</li>
+</ul>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">注册成功后，回到自己的手机/电脑登录就行，App 在应用商店直接下载。</p>
+
+<p style="margin:34px 0 14px;padding-left:12px;border-left:4px solid #2563EB;font-size:19px;line-height:34px;font-weight:bold;color:#111111;">四、10 亿 token 白嫖：别错过 48 小时窗口</p>
+
+<img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-muse-guide/fig4-token-reward.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">Muse 现在有邀请活动：<strong style="font-weight:500;">新用户注册 48 小时内</strong>，在 App 设置里找到 Redeem token（网页版在"设置 → 通用 → 用量"里），输入邀请码，<strong style="font-weight:500;">你和邀请人各得 10 亿 token，永久有效</strong>。</p>
+
+<img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-muse-guide/fig5-quota-chart.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0;">
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">免费版每周还有 1 亿 token 额度自动回满，叠加这 10 亿，日常办公基本不用愁额度。</p>
+
+<p style="margin:12px 0;font-size:16px;line-height:29px;color:#333333;">我的邀请码：<br><span style="display:inline-block;background-color:#EFF6FF;color:#1D4ED8;font-weight:bold;font-size:20px;line-height:36px;padding:6px 18px;letter-spacing:2px;border:1.5px dashed #2563EB;border-radius:8px;">NAQ9II</span></p>
+
+<p style="margin:12px 0;font-size:15px;line-height:27px;color:#92400E;background-color:#FFFBEB;border:1px solid #FCD34D;padding:12px 16px;border-radius:8px;">每个邀请码只能被用 30 次，我总共也只能邀请 20 个人，先到先得。注册完第一时间去填，48 小时一过就领不到了。</p>
+
+<p style="margin:30px 0 12px;padding-top:16px;border-top:1px solid #EEEEEE;font-size:15px;line-height:27px;color:#666666;">最后说一句：AI 助手今年会出一大堆，但"能自己动手干活"和"只能陪你聊天"是两代产品。Muse 是前者，值得你花十分钟注册一个。</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
