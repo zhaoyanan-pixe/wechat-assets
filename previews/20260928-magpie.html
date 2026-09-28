@@ -40,7 +40,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一个从菜单栏落下来的面板，跟手机屏幕差不多大。里面排着一列 AI 工具：Claude Code、Codex、Gemini CLI、Cursor、Copilot CLI……这些熟悉的名字，它都认识。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每个名字后面，跟着它此刻用的模型——Claude Code 用 Kimi K3，Codex 用 DeepSeek V4 Pro，Gemini CLI 挂着 GLM-5.3。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点一下模型名，列表弹开，换一个。完事。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig1-panel.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://gcore.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig1-panel.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">magpie 的面板：每个 AI 工具用什么模型，一屏看全（来源：magpie 官网 usemagpie.ai）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个工具叫 magpie（喜鹊），MIT 开源，完全跑在你自己的电脑上。9 月 23 日才上线，截至 9 月 28 日，GitHub 上已经 1200 多颗星。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">做它的人你可能听过：yetone，开源圈的老面孔——很火的 AI 编程插件 avante.nvim（Neovim 编辑器上的，1.8 万颗星），就出自他手。</p>
@@ -54,17 +54,17 @@
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它做对了三件事</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一件，把「看」变简单。打开面板，你装的每个工具用什么模型，一屏看完——从 Claude Code、Codex 到 Cursor、Copilot CLI，一共支持 22 种工具（截至 9 月 28 日），名单还在变长。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二件，把「换」变简单。点开列表，你配过的模型全在里面：DeepSeek、Kimi、GLM、Qwen……而且实时同步——官方说，今早刚发布的模型，下一次刷新，就会出现在列表里。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig2-picker.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://gcore.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig2-picker.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">点开模型列表：DeepSeek、Kimi、GLM……都标着「经由 magpie」（来源：magpie 官网）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">细节里藏着功夫：它改你的配置文件时，只动你要改的那一个键——注释、缩进、排序，原样保留；哪天想换回工具自带的模型，一键还原成原样。这种克制，一看就是被配置文件折磨过的人写的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三件，是整套设计的底座——它在你电脑上，搭了个「中转站」。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig3-gateway-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://gcore.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig3-gateway-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">示意图：所有工具连它，它连所有模型；翻译全部在本机完成，不经云端中转（据项目官方说明绘制）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">原理说穿了挺妙：Claude Code 只会说「Anthropic 格式」的话，Codex 只会说「OpenAI 格式」的话，各家模型又各有各的口音。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">magpie 在中间当翻译——所有工具都连到本机这一个地址（127.0.0.1:3425），它负责把请求翻译成对面听得懂的格式，连「边生成边显示」和调用工具这些细节，都不丢。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它官网首页的标语很直白：<strong style="font-weight:500;">每个工具的模型，都收在同一个地方。</strong></p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带一提，密钥也被它收编了：你只在 magpie 里配一次，工具们从此再碰不到厂商的密钥——它们只认识这个本地中转站。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig4-providers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://gcore.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig4-providers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">厂商页：密钥在 magpie 里集中管理，模型流进所有 AI 工具的选择器（来源：magpie 官网）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">还有些细节，值得单独夸</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一是「拼着用」：手里有几个账号、几把密钥？拼成一组，一个没额度了、一个被限流了，自动换下一个顶上，工具那头完全无感。</p>
@@ -76,7 +76,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对了，它实在太年轻：版本号还挂在 0.1，功能还在快速迭代。拿它当尝鲜，正合适。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条得说清楚：它能认出你登录过的订阅——Claude、ChatGPT、Copilot——把它们的模型也摆进统一列表，借给别的工具用。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这条路线在各家条款里属于灰色地带，就不多展开了；知道有这回事就好，用不用、怎么用，请自己按条款权衡。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig5-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://gcore.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260928-magpie/fig5-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（截至 2026-09-28）｜数据来源：GitHub 与项目官方说明</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说回开头。它最打动我的，不是功能多，而是「克制」：不注册账号、密钥只存本机、不替你做决定——就是把该顺手的地方，做顺。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">模型会越来越多，工具也是。我们能做的，无非是让「选择」这件事，别反过来把我们拖住。</p>
