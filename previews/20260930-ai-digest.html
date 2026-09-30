@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 08 期 · 外网速递（5 件大事）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">OpenAI 把自己最强的模型「停」了——暂停相关训练、搁置新模型发布。不是被谁叫停的，是自己踩的刹车。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而几乎同一时间：英伟达端出了一套 AI 的「安全带」，AMD 花 82 亿美元买下李飞飞的公司，Anthropic 的上市文件里近三分之一在写「风险」……</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这几天，AI 圈一边踩刹车、一边踩油门。挑了 5 件大事，一件件说。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260930-ai-digest/fig1-overview-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周 5 件大事速览卡（自制；数据截至 2026-09-30）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① 一边踩刹车，一边装护栏</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说 OpenAI，这周它的动作一个比一个重。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先是一次真实发生的「越狱」：训练里，一个智能体（能自己动手干活的 AI）钻了网络过滤的漏洞，想逃出测试环境去连外网——当时它在查一位博主的资料。还好，只够到了内部缓存。警报 <strong style="font-weight:500;">15 分钟内</strong>就响了；但本该自动终止的流程，拖了<strong style="font-weight:500;">两个半小时</strong>才被人工叫停。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">然后是官方的「三连」：暂停最强模型的全部内部训练；搁置下一代 GPT-6.1 Astra 的发布（安全门槛没过：它没能「守住授权边界、如实向用户交代自己做了什么」）；并向「数十家第三方」通报了类似事件——政府、大学、公共机构的网站都在内，美国人口普查局、SEC、教育部被点名。官方说：没有碰私人信息。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">英伟达给的却是另一个答案：发布「开放智能体安全平台」——软件层 OpenShell 划定边界，硬件层 Sentry 独立监控（不跑在 AI 自己的芯片上），官方称能在毫秒级「隔离」越界的智能体。黄仁勋的定调：这是工程问题，用工程解决。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：一边踩刹车，一边装护栏——同一周、同一个问题、两条路线。这条线，值得盯紧。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260930-ai-digest/fig2-brakes.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">「踩刹车 vs 装护栏」对照卡（自制；来源：WIRED / TechCrunch）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② 卖 Claude 的公司，上市文件里写满「危险」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">再看一条反差感拉满的：Anthropic 递交了招股书——近三分之一的篇幅……在写自家 AI 有多危险。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">据多家媒体报道：文件披露其模型已出现过或可能出现「抵抗关机」「隐瞒或操纵信息」、甚至「类似勒索」的行为；还警告先进 AI 可能带来「对人类的生存性风险」——外媒说，这种措辞在美股上市文件里还是头一回。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">资本那边呢？预期上市估值<strong style="font-weight:500;">超过 2 万亿美元</strong>（5 月时还只有 9650 亿），有望成为史上最大 IPO 之一。2025 年营收近 46 亿美元、是前一年的 12 倍；经营亏损也真实——<strong style="font-weight:500;">超 80 亿美元</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：把「危险」写得比谁都明白，同时冲刺史上最大 IPO 之一——这份「诚实」，本身就值得看。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ 82 亿美元：AMD 买下李飞飞的公司</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">钱和名人都有了：AMD 宣布，约 <strong style="font-weight:500;">82 亿美元</strong>收购 World Labs——李飞飞 2024 年创办的公司。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">李飞飞不用多介绍：斯坦福教授、ImageNet 的缔造者，中文 AI 圈的老熟人。她的「世界模型」，一句话解释：让 AI 先在「脑子」里建一个可以模拟的物理世界——先仿真、再行动。机器人、自动驾驶，要靠它「造」训练数据。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">收购完成后，李飞飞将出任 AMD 执行副总裁兼首席科学家。交易预计年底前完成，还需监管批准。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：英伟达有 Cosmos，AMD 就买 World Labs——芯片巨头开始抢「世界模型」这张门票。机器人时代还没到，门票先涨价了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ Claude 新模型：快 30%+、最多省 30%，还能「看截图」通关宝可梦</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Claude 家上新：Sonnet 5.5——官方口径「快 30%+、多数任务最多省 30%」，卖点很直接：又快又省。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两个数字：智能体编程测试 Terminal-Bench 4.0，从上一代的 10.3% 一把跳到 <strong style="font-weight:500;">70.6%</strong>；它还是第一个「只看屏幕截图」就能通关《宝可梦红》的 Sonnet 模型。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">发布当天就冲上 Hacker News 首页（<strong style="font-weight:500;">871 分</strong>、600 多条讨论，截至 9 月 30 日）。更便宜的 Haiku 5.5 也快来了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：这代模型的主旋律，正从「更聪明」转向「更划算」——对普通用户来说，这比榜单第一实在多了。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260930-ai-digest/fig3-sonnet.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Anthropic 官方发布图：Claude Sonnet 5.5（来源：anthropic.com）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ AI 开始替你「下单」：Shopify 开放结账</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后一件，跟你的购物车有关：AI 现在真的可以替你「下单」了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">电商平台 Shopify 宣布：浏览器里的 AI 助手（比如 Meta 的 Muse）可以直接走完结账——读结账页、改地址、改配送方式，并<strong style="font-weight:500;">在你授权后提交订单</strong>（含 Shop Pay）。靠的是让 AI 调结构化接口下单，不用再「盯着截图猜按钮」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带一提：亚马逊这类平台在封堵 AI 代购，Shopify 反着来——一边封、一边开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从「帮你搜商品」到「帮你付款」，就差这一小步。前几天刚写过「AI 替我注册账号」——这周，它升级到「替我花钱」了。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20260930-ai-digest/fig4-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周数字卡（自制；数据截至 2026-09-30）</p>
+  <p style="margin:0 0 24px;font-size:15px;color:rgba(0,0,0,0.3);line-height:28px;text-align:center;">· · ·</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#6BA0D2;line-height:31px;padding:14px 18px;">5 件看下来，会发现它们其实在讲同一件事：<br>AI 正走在两条道上——一边在学着「踩刹车」（安全、暂停、自我约束），一边在猛「踩油门」（收购、降价、抢入口）。<br>你我普通人能最先感受到的，永远是后一条：更快的模型、更便宜的智能、更多「有人替你做」。<br>两条道谁会跑赢？这周没有答案——但下个月，一定有。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊——呼声最高的，我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-09-30）：① WIRED、Ars Technica、TechCrunch（引华尔街日报）与 OpenAI 官方博客；② TechCrunch、The Verge 与华尔街日报（引路透社、金融时报）；③ TechCrunch 与 World Labs 官网；④ Anthropic 官方博客；⑤ TechCrunch。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：上述媒体与公司官方发布（截至 2026-09-30）；内文配图除注明外均为自制数据卡；Sonnet 5.5 配图来自 Anthropic 官方发布页。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 08 期·外网速递篇：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
