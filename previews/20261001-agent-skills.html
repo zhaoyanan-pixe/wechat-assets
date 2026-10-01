@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 09 期 · agent-skills（AI 工程守则）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先给你看一句话——不是段子，是项目官方首页的原话：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「AI 编程助手默认走『最短的路』——常常意味着：跳过规格、跳过测试、跳过安全审查。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">翻译成大白话：能省就省，能糊弄就糊弄。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更扎心的是：写这句话的不是段子手——是一个专门来治这个毛病的项目。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 agent-skills，GitHub 上 <strong style="font-weight:500;">10 万+ 星</strong>。作者来头不小：Addy Osmani——谷歌前工程总监，简介里写着「做过 Gemini 和 Google Cloud」，GitHub 上 5 万多人关注。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261001-agent-skills/fig1-header.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目官方头图：一条从 Spec 到 Ship 的流水线（来源：项目官方）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他干的事，说来朴素：既然拦不住 AI 上工，那就把「一个靠谱工程师的干活流程」整个写下来——25 条守则（项目里叫「技能」），塞给 AI，让它照着走。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">AI 的借口，一条条堵死</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">整套守则里，我最喜欢一个小设计：<strong style="font-weight:500;">反借口表</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">干过活的人都懂，偷懒都是有借口的；AI 也一样。项目把最常见的借口一条条写下来，后面直接跟一句回怼：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「等代码跑通了，测试我回头补。」→ 你不会补的。而且事后补的测试，测的是「代码怎么写」，不是「它该怎样」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「这太简单了，不用测。」→ 简单的代码也会变复杂；测试记录的是预期行为。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「这只是个原型。」→ 原型最后都会变成生产代码。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条，是说给人类听的——「标准我记着就行。」→ AI 记不住。何况现在写代码的大头，是它。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">看到这你可能乐了：这不就是「把丑话说在前头」？对——但在 AI 这儿，这招是真管用。因为偷懒的念头，都是干到一半才冒出来的；与其到时候再吵，不如开工前把话写死。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261001-agent-skills/fig2-excuses.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">反借口表（节选）：偷懒的话，提前堵死（译自项目技能文件；自制卡）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">流程焊死，证据说话</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">光堵嘴不够，它还有一套硬流程。整个开发被拆成六个阶段：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;text-align:center;">定义 → 计划 → 构建 → 验证 → 评审 → 上线</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">（每个阶段配一个命令：/spec、/plan、/build、/test、/review、/ship。）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">关键是两条铁律——</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一：「验证不可谈判」。每个步骤，都以「证据」收尾——测试真的跑过、构建有输出、运行有数据。「我觉得没问题」不算，「看起来是对的」也不算。狠到什么程度？连「所有测试都通过了」这句话，都上了可疑清单——因为有过「说通过了、其实根本没跑」的情况。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二：干活的和挑刺的分开。项目配了四个「评审老师傅」：审代码的、审测试的、审安全的、审性能的——各盯一摊，专找茬。毕竟，让干活的人给自己打分，总差点意思。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节我特别喜欢：有条守则叫「采访我」。需求没说清的时候，AI 该做的不是瞎猜——而是一个问题一个问题地问你，问到大约 <strong style="font-weight:500;">95%</strong> 确定你想要什么，才开始动手。想想你被 AI「自作主张」气到的时候……这条，建议人类也学学。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261001-agent-skills/fig3-lifecycle.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">六个阶段，各配一个命令（据项目官方 README；自制卡）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">10 万星，怎么来的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说数字：仓库今年 2 月建的，如今 10 万+ 星——在 GitHub 上，这是「顶流」级的成色。MIT 协议，免费用、可修改。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装法也简单：它是「通用件」，能装进 70 多种 AI 编程工具——Claude Code、Cursor、Codex、Copilot 都在列。一行命令，或者一个插件，就位。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261001-agent-skills/fig4-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（数据截至 2026-10-01；自制卡）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而且这些流程不是拍脑袋写的：README 里直说，吸收了谷歌工程文化的老底子——比如「一次改动的体量，百行上下」这种老师傅的手感，都被直接写成了条款。还有个挺较真的细节：项目自带 25 份「考卷」，专门验证这套守则有没有被正确用上。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261001-agent-skills/fig5-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目主页实拍：10 万+ 星就挂在这儿（截图于 2026-10-01）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">不写代码的人，抄什么？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你可能会说：我又不写代码，关我什么事？两件事——</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，你用的软件、身边的产品，正越来越多地交给 AI 写；写它的团队用没用这套规范，跟你拿到的东西靠不靠谱，直接相关。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，更值钱的是思路：先把标准写下来，再把借口堵死，最后只认证据。这套办法不挑场景——哪怕你只是让 AI 写篇稿、做张表，也一样：先说清「什么算好」，再让它拿证据来换「完成」两个字。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">会偷懒的，从来不只是写代码的 AI。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#2B77BF;">🧰 上手小抄</strong><br>① 怎么装：一行命令 npx skills add addyosmani/agent-skills，支持 70+ 种 AI 编程工具（先加 --list 可以看 25 条技能清单，挑着装）；Claude Code 用户走插件市场两步到位。<br>② 最值得先试：哪怕不上手，也推荐看两条——/spec（先把「要做什么」写清楚）、/constraints（给活先定「验收标准」）。<br>③ 一个提醒：25 条别整套硬装——和你现有的习惯、工具有重叠，挑顺手的用；另外单装某一条时，附带的共享检查清单不会跟着走（官方已知的小坑）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/addyosmani/agent-skills（MIT 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目官方 README 与仓库页面（截至 2026-10-01；引文译自英文原文）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 的「假完成」坑过吗？评论区聊聊——我想看看，是不是不止一个。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 09 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
