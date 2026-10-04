@@ -27,21 +27,21 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">9 月 29 日的 DevDay 上，OpenAI 最重磅的发布叫 dots：一批「全天候在线」的助手——自带云电脑、能连 <strong style="font-weight:500;">4000 多个应用</strong>，会记住你的偏好、主动推进事情。ChatGPT、Slack、Teams 里，都能找到它。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方演示里有两个画面：它看到你晚饭时段在开会，直接发来两个外卖选项；还当场替用户搭好了一个网站。对了，它就是那种彩色小团子，还会做表情。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一同登场的还有更便宜的新模型 GPT-6.1 Sol：官方称它在编程、电脑操作、专业工作上「几乎追平」Astra，价格却只要后者的 1/5。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：先把话说全——dots 目前只有 <strong style="font-weight:500;">100 美元/月</strong> 的 Pro 档以上能用，「发短信找它」还得排队；那些「主动」能力，也都是官方演示口径。但方向已经很清楚了：AI 助手正在从「你叫它才动」，变成「它主动找你」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：先把话说全——dots 目前只对 <strong style="font-weight:500;">100 美元/月起</strong> 的 Pro 及以上用户开放，「发短信找它」还得排队；那些「主动」能力，也都是官方演示口径。但方向已经很清楚了：AI 助手正在从「你叫它才动」，变成「它主动找你」。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261004-ai-digest/fig2-dots.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">OpenAI 官方图：dots——「全天候在线」的助手们（来源：openai.com）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② Google 发了「史上最强」，但先不给你用</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 发布 Gemini 4 Argon，自称迄今最强：编程、知识工作样样行，尤其擅长「防守」——能自主发现、验证并修补关键软件漏洞。Ars Technica 的标题很直白：「你还不能用它」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">内部战绩很唬人：帮自家数据中心省下 <strong style="font-weight:500;">300 TiB</strong> 内存；把 C/C++ 老代码迁移成 Rust（光 Fuchsia 内核就有 <strong style="font-weight:500;">80 万行</strong>）；一项硬核评测拿下 <strong style="font-weight:500;">77.9%</strong>，高过 GPT-6 Astra、Fable 5.1 和 Opus 5.5。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">内部战绩很唬人：帮自家数据中心省下 <strong style="font-weight:500;">300 TiB</strong> 内存；把 C/C++ 老代码迁移成 Rust（光 Google 自研系统 Fuchsia 的内核就有 <strong style="font-weight:500;">80 万行</strong>）；一项硬核评测拿下 <strong style="font-weight:500;">77.9%</strong>，高过 GPT-6 Astra、Fable 5.1 和 Opus 5.5。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但开放范围很克制：目前只给「受信任的测试者」和安全合作方。官方口径是「这种量级的模型要分阶段发布」，而且会盯着它的思考过程，越界就急停。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：前几天刚写过 OpenAI「踩刹车」，这周 Google 的操作是「够强了，也先别急着发」——最强的那档模型，接连被按住。这比成绩单更值得琢磨。（战绩均为 Google 自报，未经独立验证。）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ 「不聊天、只拍板」的 AI，一周内三家大厂齐下场</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先解释个新词：决策小模型——不聊天、不写文章，只做「选择题」。比如「这条客服消息急不急、该转给谁」，它直接给出带概率的答案。又快，又便宜。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">过去一周，这类模型扎堆发布：Cloudflare 开源 Clef 与 Clef-flash（在 Jev 基准榜领跑，带视觉能力）；亚马逊开源 Strands Decider 2B（小到本地就能跑）；OpenAI 也发了 Decisions API。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有个数字很说明问题：用这类小模型逐步盯着 AI 员工干活，成本约 <strong style="font-weight:500;">2.94 美元</strong>；换成前沿大模型，要 <strong style="font-weight:500;">372 美元</strong>。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：聊天机器人卷了一年多，风向标开始转向「不会聊天的 AI」。这波由创业公司 TypeSafe 的 Jev 引擎引爆，外媒已经在调侃「克隆战争」。（数字来自厂商博客与现场演示，未经独立验证。）</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261004-ai-digest/fig3-decision.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">「不聊天、只拍板」对比卡（自制；数字来源：Cloudflare 博客与现场演示）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：聊天机器人卷了一年多，风向标开始转向「不会聊天的 AI」。这波由创业公司 TypeSafe 的 Jev 引擎引爆，连它家 CEO 都在 X 上开玩笑：「克隆战争」开始了。（数字来自厂商博客与黑客松演示，未经独立验证。）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261004-ai-digest/fig3-decision-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">「不聊天、只拍板」对比卡（自制；数字来源：Cloudflare 博客 / TechCrunch 报道）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ ChatGPT 上线「试衣间」：传张自拍试衣服</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">传一张自拍，在购物结果里点「Try On」，就能看到衣服、配饰「穿在你身上」的样子——OpenAI 把虚拟试穿全球上线了（也可以传商品图让它试）。同批上线的还有「收藏」功能。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">据报道，这是它放弃「一键结账」之后换的切口：既然「替你付款」还早，那就先「陪你逛」。</p>
@@ -49,7 +49,7 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261004-ai-digest/fig4-tryon.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">报道截图：ChatGPT「虚拟试穿」上线（来源：techcrunch.com，2026-10-01）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ 950 个 Claude，翻了 21 小时基因库</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Anthropic 做了个实验：让约 <strong style="font-weight:500;">950 个 Claude 智能体</strong> 一起翻一个巨大的 DNA 数据库。约 <strong style="font-weight:500;">21 小时</strong> 后，它们找到了一组以前被忽略的酶系统——特征模式让人想起 CRISPR。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Anthropic 做了个实验：让约 <strong style="font-weight:500;">950 个 Claude 智能体</strong> 一起翻一个巨大的 DNA 数据库。约 <strong style="font-weight:500;">21 小时</strong> 后，它们找到了一组以前被忽略的酶系统——特征模式让人想起 CRISPR（让基因编辑成为可能的那套系统）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它们最初筛出 <strong style="font-weight:500;">20 多万个候选</strong>，一路收敛到一个「不寻常」的家族；同样的事，人工做通常要几个月，它们一天干完。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但官方很克制：「还不知道它到底能干什么。」CRISPR 先驱张锋的评价是「令人兴奋的例子」；WIRED 的深度报道则带来另一半声音——有科学家说「实验还在排队，通稿已经先发了」，也有人提醒：新的是「怎么找到的」，不是「找到了什么」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：别急着写「AI 发现新 CRISPR」。有个比喻很贴切：像在沙滩上找钻石——AI 找到了一个闪闪的东西，是玻璃还是钻石，得回实验室才知道。但「一群 AI 自己翻库、一天干完几个月的活」这件事本身，已经是新开始。</p>
