@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 13 期 · VoiceStudio（AI 声音工作室）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说个数字：<strong style="font-weight:500;">16,775</strong>。过去一周，有 16,775 颗星落在同一个项目上——直接把它送上了 GitHub 周榜第一。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">VoiceStudio</strong>。干的事一句话能说完：把一整套「AI 声音工作室」，搬进你自己的电脑。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">具体点：一段 3 秒的录音样本，能克隆出一个可用的声音；一段视频，能换成另一种语言开口说话；再加上有声书、听写、转写……以前要凑一打云服务才齐的活，它一个桌面应用全包——而且，<strong style="font-weight:500;">声音全程不出门</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有点意思的是它的站位。AI 配音里名气最大的 ElevenLabs，好用归好用，但那是云端：按月订阅，声音得先上传。VoiceStudio 的想法正相反——官网第一行就写着：开源的、完全本地的替代品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它也不算横空出世：仓库今年 4 月就建好了，安静打磨了半年，这周突然被推到了所有人眼前。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三秒克隆，一句话设计</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说「克隆」。门槛被压到了多低？官方口径：一段<strong style="font-weight:500;">干净的 3 秒样本</strong>，就能复刻出一个可用的声音——之后你写什么，它就念什么。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不想用任何人的录音也行。它有个「声音设计」：你用一句话描述想要的声音——「低沉、微哑，像深夜电台主持人」——AI 当场给你造一个。不用找素材、不用借谁的声音。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">克隆也好、设计也好，做出来的声音能干嘛？最直接的：把你写好的稿子念出来——不想露脸的口播、要批量读的稿子，都省了。还有现成的「声音画廊」，挑一个直接用。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig1-clone.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：克隆工作台——选一个声音、输入文本，就能生成（来源：项目官方仓库）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">把配音做成了一条流水线</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">克隆只是开胃菜。真正让我停下来的是「视频配音」：一段视频丢进去，换成另一种语言说——<strong style="font-weight:500;">带时间轴</strong>，每句话卡在原来的位置上，不用你一句句手动对轨。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">给你个画面：做视频，你只管拍。后期的「嘴上活」——旁白、多语言版本——它在你电脑里默默跑完；一条中文视频想发英文版，不用找人重新录。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">往外还有一串：<strong style="font-weight:500;">故事模式</strong>——一份剧本，每个角色配一个声音；<strong style="font-weight:500;">有声书</strong>——一本书进、一章章出；<strong style="font-weight:500;">转写</strong>——音频进、可搜索的文字出；外加一个<strong style="font-weight:500;">浮窗听写</strong>，挂在屏幕边上，你说话它记字。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">看出来了吧？这套组合拳瞄的不是「好玩」，是干活——做视频的、做课程的、写书的都用得上。官方说，这些工作流覆盖 <strong style="font-weight:500;">646 种语言</strong>。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig2-dubbing.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：视频配音工作台（来源：项目官方仓库）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">全在你自己电脑里跑</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开头说「声音不出门」，具体点讲：不用注册账号、不上传任何东西。它只在两件事上联网——检查更新、下载模型。官方原话很实在：「你的声音，你的工作流。」没有积分、没有额度、没有月底账单——它压根不在那套体系里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">门槛也不高：<strong style="font-weight:500;">约 8 GB 内存</strong>就能起步；有 N 卡或苹果芯片能快些，没有独显用 CPU 也能跑，就是慢一点。代价是装环境时占地方——纯 CPU 版大约要 <strong style="font-weight:500;">5 GB</strong> 磁盘。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">价格呢？桌面版<strong style="font-weight:500;">开源、免费</strong>（AGPL-3.0 许可）；想要商业条款的团队，官方另有付费的 Pro 版。一句话：免费是认真的，边界也摆得清楚。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（截至 2026-10-05；自制卡）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">连「装软件」，都能交给 AI</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最「2026」的细节在这儿：官方给了一段安装提示词——复制，丢给你的编程助手（Claude Code、Codex、Cursor 都行），它会自己查硬件、装好、再跑一次试生成。装软件这件事，现在可以外包给 AI 了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还给 AI 留了正门：本地 API + <strong style="font-weight:500;">MCP</strong>——可以理解为「给 AI 助手用的标准插口」。意思是，你自己的 AI 助手能直接调用这台「声音工厂」：你让它给视频配旁白，它就在你电脑上把声音生成好。数据，始终没离开这台机器。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig4-site.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍：免费、开源，Windows / macOS / Linux 全平台（截图于 2026-10-05）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">两件事，得说清楚</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一件是红线：<strong style="font-weight:500;">克隆声音，必须经本人同意</strong>。官方在可用规则里写得很硬——冒充他人、搞诈骗，一律禁止。这条不客套：声音像指纹，是一个人最像「自己」的东西；拿它越界，一点都不好玩。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二件是耐心：它还是个年轻项目——最新版 0.5.6，9 月下旬才发布。0.x 的版本号意味着迭代快、也可能有小磕碰。尝鲜没问题，先别把它当「生产线」用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">往大了说，「AI 在哪儿跑」正在重新变成一件要紧事：云端买的是方便，本地换来的，是踏实。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后说点感受。这个项目最打动我的不是功能列表，而是它站的位置：AI 能力正在从「按月租」，一件件搬回你自己的电脑——前几天是 Office、是 AI 员工，这回，轮到了声音。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也许用不了多久，咱每个人的电脑里都会住着一间小小的「私人工作室」。想想还挺让人期待的。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig5-repo.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目主页实拍：一周涨 1.6 万星、累计 5.3 万+（截图于 2026-10-05）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#2B77BF;">🧰 上手小抄</strong><br>① 怎么装：官网 voicestudio.sh 直接下载（Windows / macOS / Linux 全支持）；也可以把官方「安装提示词」丢给你的 AI 编程助手代装。<br>② 先试什么：先玩「声音设计」——不用素材，一句话造个声音试试水；再录一段自己的声音（3 秒以上、环境安静），试一次克隆。<br>③ 一个提醒：安装环境与模型要占几个 GB 磁盘，第一次下载耐心点；用别人的声音（克隆或生成），发布前务必先拿到本人同意。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/debpalash/VoiceStudio（AGPL-3.0 开源；官网 voicestudio.sh）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 GitHub 仓库、官网与官方 README（截至 2026-10-05；星数为动态数据，仍在上；标注「官方口径」处为项目自报）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">如果给你一间这样的「声音工作室」，你第一件想干的事是什么？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 13 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
