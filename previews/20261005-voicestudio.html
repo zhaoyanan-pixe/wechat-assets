@@ -20,7 +20,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说个数字：<strong style="font-weight:500;">16,775</strong>。过去一周，有 16,775 颗星落在同一个项目上——直接把它送上了 GitHub 周榜第一。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">VoiceStudio</strong>。干的事一句话能说完：把一整套「AI 声音工作室」，搬进你自己的电脑。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">具体点：一段 3 秒的录音样本，能克隆出一个可用的声音；一段视频，能换成另一种语言开口说话；再加上有声书、听写、转写……以前要凑一打云服务才齐的活，它一个桌面应用全包——而且，<strong style="font-weight:500;">声音全程不出门</strong>。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有点意思的是它的站位。AI 配音里名气最大的 ElevenLabs，好用归好用，但那是云端：按月订阅，声音得先上传。VoiceStudio 的想法正相反——官网第一行就写着：开源的、完全本地的替代品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有点意思的是它的站位。AI 配音界有名的 ElevenLabs，好用归好用，但那是云端：按月订阅、声音得先上传。VoiceStudio 路线正相反——官方简介写着：开源的、完全本地的替代品。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它也不算横空出世：仓库今年 4 月就建好了，安静打磨了半年，这周突然被推到了所有人眼前。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三秒克隆，一句话设计</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说「克隆」。门槛被压到了多低？官方口径：一段<strong style="font-weight:500;">干净的 3 秒样本</strong>，就能复刻出一个可用的声音——之后你写什么，它就念什么。</p>
@@ -36,8 +36,8 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig2-dubbing.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：视频配音工作台（来源：项目官方仓库）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">全在你自己电脑里跑</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开头说「声音不出门」，具体点讲：不用注册账号、不上传任何东西。它只在两件事上联网——检查更新、下载模型。官方原话很实在：「你的声音，你的工作流。」没有积分、没有额度、没有月底账单——它压根不在那套体系里。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">门槛也不高：<strong style="font-weight:500;">约 8 GB 内存</strong>就能起步；有 N 卡或苹果芯片能快些，没有独显用 CPU 也能跑，就是慢一点。代价是装环境时占地方——纯 CPU 版大约要 <strong style="font-weight:500;">5 GB</strong> 磁盘。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开头说「声音不出门」，具体点讲：不用注册账号、不把内容传去云端；它默认只为两件事联网——检查更新、下载模型（其余远程服务可选、须经你同意）。官方原话很实在：「你的声音，你的工作流。」没有积分、没有额度、没有月底账单——它压根不在那套体系里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">门槛也不高：官方给的起步线是<strong style="font-weight:500;">约 8 GB 内存</strong>（16 GB 以上更稳）；有 N 卡（英伟达显卡）或苹果芯片能快些，没有独显用 CPU 也能跑，就是慢一点。代价是占地方——官方建议预留 <strong style="font-weight:500;">10 GB 以上</strong>磁盘空间。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">价格呢？桌面版<strong style="font-weight:500;">开源、免费</strong>（AGPL-3.0 许可）；想要商业条款的团队，官方另有付费的 Pro 版。一句话：免费是认真的，边界也摆得清楚。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（截至 2026-10-05；自制卡）</p>
@@ -47,14 +47,14 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig4-site.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍：免费、开源，Windows / macOS / Linux 全平台（截图于 2026-10-05）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">两件事，得说清楚</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一件是红线：<strong style="font-weight:500;">克隆声音，必须经本人同意</strong>。官方在可用规则里写得很硬——冒充他人、搞诈骗，一律禁止。这条不客套：声音像指纹，是一个人最像「自己」的东西；拿它越界，一点都不好玩。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一件是红线：<strong style="font-weight:500;">克隆声音，必须经本人同意</strong>。官方在可用规则里写得很硬——冒充他人、搞诈骗，一律禁止。这条不客套：声音就像指纹，是一个人身上最能代表「自己」的东西之一；拿它越界，一点都不好玩。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二件是耐心：它还是个年轻项目——最新版 0.5.6，9 月下旬才发布。0.x 的版本号意味着迭代快、也可能有小磕碰。尝鲜没问题，先别把它当「生产线」用。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">往大了说，「AI 在哪儿跑」正在重新变成一件要紧事：云端买的是方便，本地换来的，是踏实。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后说点感受。这个项目最打动我的不是功能列表，而是它站的位置：AI 能力正在从「按月租」，一件件搬回你自己的电脑——前几天是 Office、是 AI 员工，这回，轮到了声音。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也许用不了多久，咱每个人的电脑里都会住着一间小小的「私人工作室」。想想还挺让人期待的。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261005-voicestudio/fig5-repo.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目主页实拍：一周涨 1.6 万星、累计 5.3 万+（截图于 2026-10-05）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#2B77BF;">🧰 上手小抄</strong><br>① 怎么装：官网 voicestudio.sh 直接下载（Windows / macOS / Linux 全支持）；也可以把官方「安装提示词」丢给你的 AI 编程助手代装。<br>② 先试什么：先玩「声音设计」——不用素材，一句话造个声音试试水；再录一段自己的声音（3 秒以上、环境安静），试一次克隆。<br>③ 一个提醒：安装环境与模型要占几个 GB 磁盘，第一次下载耐心点；用别人的声音（克隆或生成），发布前务必先拿到本人同意。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#2B77BF;">🧰 上手小抄</strong><br>① 怎么装：官网 voicestudio.sh 直接下载（Windows / macOS / Linux 全支持）；也可以把官方「安装提示词」丢给你的 AI 编程助手代装。<br>② 先试什么：先玩「声音设计」——不用素材，一句话造个声音试试水；再录一段自己的声音（3 秒以上、环境安静），试一次克隆。<br>③ 一个提醒：安装环境与模型要占 10 GB 以上磁盘，第一次下载耐心点；用别人的声音（克隆或生成），发布前务必先拿到本人同意。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/debpalash/VoiceStudio（AGPL-3.0 开源；官网 voicestudio.sh）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 GitHub 仓库、官网与官方 README（截至 2026-10-05；星数为动态数据，仍在上；标注「官方口径」处为项目自报）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">如果给你一间这样的「声音工作室」，你第一件想干的事是什么？评论区聊聊。</p>
