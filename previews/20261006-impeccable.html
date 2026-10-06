@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 14 期 · Impeccable（专盯「AI 味」的 61 条检查）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「让 AI 帮你做个网页」，现在不算什么难事。难的是忍住不皱眉：东西能跑，但那个界面，一眼就能认出是「AI 做的」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">紫蓝渐变、卡片套卡片、灰色小字压在彩色底上……说不上哪里丑，就是透着一股「样板间」味儿。老外给这股味儿起了个名字：<strong style="font-weight:500;">AI slop</strong>（字面意思：AI 泔水）。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">7.7 万星，专治「一眼假」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有人看不下去了。这个开源项目叫 <strong style="font-weight:500;">Impeccable</strong>，意思就是「无可挑剔」；到 10 月 6 日，它的星标数已经 <strong style="font-weight:500;">7.7 万+</strong>，还在涨。它不算新面孔：仓库 2025 年 11 月就建了，更新一直很勤。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它做的事一句话能说明白：<strong style="font-weight:500;">给 AI 编程助手当「设计教练」</strong>。你平时用的那些 AI 工具，它基本都认得（Claude Code、Cursor、Codex、Copilot 都在名单里）；把它的规则装进去，AI 再动手做界面时，就多了一层「审美把关」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261006-impeccable/fig1-hero.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍：左边是它的经典演示，同一个界面「打磨前」与「打磨后」（来源：impeccable.style）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者 Paul Bakaus 是前端圈的老将，做过 jQuery UI，也在 Google 做过项目。他这事干得挺妙：把「一眼就是 AI 做的」那些通病逮出来，一条条写成规则。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么值得把这事写下来？因为审美这东西，从前很玄：老师傅只会说「多看、多练」。但 AI 学不会「多悟」，它要的是明明白白的条款：什么别碰，什么该停。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">「AI 味」到底长啥样</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">答案写在它官网的「毛病图鉴」里。做过几个 AI 页面的人看完会拍大腿：<strong style="font-weight:500;">Inter 字体走天下</strong>、<strong style="font-weight:500;">紫到蓝的渐变</strong>糊满按钮和标题、<strong style="font-weight:500;">卡片里套卡片</strong>再套卡片、<strong style="font-weight:500;">彩色底上放灰字</strong>、标题上方永远来一行小字……</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这些毛病有个共同来源：模型们是在同一批商业模板上训练出来的。同一个起手式，自然同一张脸。最浮夸的一类，他们管它叫「卡片末日」：五层卡片叠在一起，像俄罗斯套娃。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官网还摆了一排「年代对比」：同一个虚构产品，2022 年是紫渐变、玻璃拟态加霓虹光晕，2025 年换成米色编辑风。潜台词很直白：年代在换，模型的习惯没换。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261006-impeccable/fig2-slop.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网实拍：「61 条检查」的演示区，每类「AI 味」都配了现成例子（来源：impeccable.style）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目把这些整理成了 <strong style="font-weight:500;">61 条自动检测规则</strong>，另有 6 条留给人判断的评审项，覆盖排版、颜色、间距、动效、文案等。冷知识：连「破折号滥用」和「营销黑话」都各算一条。写稿的人看到这儿，默默删掉了几个「赋能」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">换句话说，它把「这界面一看就是 AI 做的」这句吐槽，翻译成了一份当场能用的检查清单。官网对它的期待也很实在：在坏习惯变成你的设计之前，把它们拦下来。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一条命令，装进你正在用的 AI</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用法比想象中轻：在项目文件夹里跑一句安装命令，它会自动认出你电脑里的 AI 编程工具；之后在 AI 里输入指令、加一句要求就行，比如「把定价页打磨一下」「这个页面再大胆点」。一共 <strong style="font-weight:500;">24 条命令</strong>，光名字就很有戏：bolder（再大胆点）、quieter（收一收）、distill（做减法），从打磨到精简，各阶段都有人管。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有更轻的玩法：它自带一个独立检测器，<strong style="font-weight:500;">不调用 AI，也不花额外费用</strong>，对着文件或者网址扫一遍就出报告。而且，在 Claude Code、Codex 这些工具里，它还能蹲在 AI 改代码的当口做检查；个别工具里，改得不像话的，会被先拦下来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我干了件无聊但好玩的事：写了个把毛病集齐的测试页，渐变文字、嵌套卡片、8 像素小字全安排上，让检测器扫了一遍。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261006-impeccable/fig3-detect.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">检测器实测输出（节选）：一次逮出 15 条（本机实跑，2026-10-06）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">15 条，挨个点名</strong>。其中一条把我看笑了：「标题上方的小标签」。原来这东西在人家眼里，不叫设计，叫毛病。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">真能做出好东西吗</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官网挂了案例：一个叫 Neo Mirai 的虚构大会网站，起点只有两张 AI 生成的图，一张页面效果图加一套品牌素材；最后它长成了一个真能点的网站。中间的图片裁切、元素重叠、导航状态这些小毛病，都是检测器一轮轮在浏览器里挑出来的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用项目自己的话说：设计稿，变成了一个人们能用的页面。听着挺朴素，但「能用」两个字，恰恰是很多 AI 生成物迈不过去的坎。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261006-impeccable/fig4-case.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示案例 Neo Mirai：从「两张生成图」到一个能用的网站（来源：impeccable.style/cases/neo-mirai）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方有句话说得克制：<strong style="font-weight:500;">「一份干净的检测报告是证据，不是证明。」</strong>翻译一下：扫不出毛病，不等于设计就好。就冲这句不吹牛，我愿意给它多一分信任。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说个感受。这两年大家聊 AI，聊的都是「能做什么」；最近风向有点变，开始有人较真「做得够不够好」。先是代码质量，现在轮到了界面。7.7 万颗星，就是这场较真的记分牌。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261006-impeccable/fig5-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（截至 2026-10-06；数据来源：GitHub API、官方 README 与官网）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">下次再看到「一眼 AI」的界面，你至少能说出它哪儿不对了。至于要不要继续用，那是你和你的审美之间的事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#2B77BF;">🧰 上手小抄</strong><br>① 怎么装：在项目文件夹里跑一句 npx impeccable install，它会自动认出你的 AI 编程工具；装完重开一下工具。<br>② 最值得先试：什么都不装也能玩——npx impeccable detect 加一个网页文件或网址，看看它能挑出几条。<br>③ 一个提醒：它挑的是「设计毛病」，不是「对错」；过了检测算及格，好不好看还得你自己拿主意。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/pbakaus/impeccable（Apache-2.0 开源；官网 impeccable.style）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 GitHub 仓库、官方 README 与官网（截至 2026-10-06；星标数为动态数据）；文中实测为在本机对自制测试页运行检测器的输出（输出存档可复核）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你见过最「AI 味」的界面长什么样？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 14 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
