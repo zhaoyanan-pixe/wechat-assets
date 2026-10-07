@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 15 期 · AIHOT（自己找热点、自己写日报的引擎）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「AIHOT 曾经只是我无数个深夜里，一个很小、很小的念头。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话写在项目仓库的最后一节。我读完，盯着屏幕愣了几秒。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">写它的人网名「数字生命卡兹克」，做 AI 内容。他把自己运营的 AI 热点站的引擎，整套开源了——一个「自己找热点、自己写日报」的系统。上线一周多，<strong style="font-weight:500;">6100 多颗星</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他的自我介绍很实在：「我是设计师出身，半年前还看不太懂代码。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么这事戳中我？我做内容，每天的工作就是从一堆新东西里，淘出值得看的那些。这里头的苦，同行都懂：信息不缺，缺的是「哪几条真正值得看」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同一件事，官网发一遍、媒体转十遍、X 上再吵一天。你想知道的就一句「它发生了」，却得在刷屏里翻半天。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AIHOT 干的就是这件事：把「从一堆信源里挑出真正值得看的」，做成一条能自己跑的流水线。它现在长这样：</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/fig1-aihot-home.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">线上站实拍（2026-10-07 上午）：左侧是栏目，中间是当天的热点榜与动态流（来源：aihot.news）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">打开 aihot.news 就能看到完整效果：每天早上 8 点，它自己更新一批「今天 AI 圈值得看的」。不用注册，不用安装，打开就看。对工具来说，没有比这更好的开场白了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">把「找热点」拆成六步</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方的说明图把整个过程画成了六步：采集、预筛、两次评分、写作、聚簇、热点与成刊。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">看着像流水线，其实每一步都在回答一个编辑每天要问自己的问题：这条要不要看？那条和前面是不是同一件事？今天哪条该放头条？</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/fig2-flow.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方说明图：一条资料从信源到日报的六步（来源：项目仓库）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">细节里全是认真。「采集」支持六种信源：RSS、网页、接口、X、公众号，甚至你自己脚本推给它的内容；同一篇只留一份。「预筛」只问一句话：这是不是这个行业的事？宽进，只拦明显无关的，宁可多进一点，也别错杀。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它凭什么挑得准</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">打分，它要打两遍：同一把尺子，同一份标准，独立评两次（满分 100 分）；<strong style="font-weight:500;">两次之和过了门槛才算数</strong>，页面上显示的是两次的平均分。门槛还分三档：官方一手 60 分、核实过的官方账号 65 分、媒体和个人 76 分。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">翻译一下：同一件事，官方原文更值得先看；二手转述想进精选，得自己挣分。比单纯「让模型打个分」，这靠谱多了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同一件事，它只让它出现一次。不同来源说的同一件事，会被聚成一个「事件」：官网一篇、媒体十篇、X 上吵翻天，到你眼前就是一条。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">热度也按事件算，不按文章算：48 小时内，每个独立来源只算一次，24 小时减半。<strong style="font-weight:500;">一家媒体发十篇，也只算一票</strong>。所以排在前面的，是真有很多人在说的事。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/fig3-cluster.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方说明图：五个来源聚成一个事件；热度按独立来源数来算（来源：项目仓库）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还专门管住模型这张嘴。写标题时，模型要是把原文没提到的公司名字写进去，直接废掉；到了周报月报，模型写出的名字、数字只要不在原始条目里，那一段整段不用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更妙的是「校准」：拿一两百条你标好「该选 / 不该选」的资料跑评测，一条条看它错在哪、为什么错，然后回头改标准。项目文档里有句话我很服：先改标准，再动门槛。因为门槛只能整体松紧，救不了「某一类判错了」。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">「把火种交到大家自己手上」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么要开源？他写的理由特别实在。这半年，总有人来问：做法律的、做 HR 的、做金融的，能不能也给我们的行业做一个。他说：「我做不了。我不懂你们的行业，不知道哪些信源有用，也不知道什么样的消息，对你们来说才叫热点。但你们懂。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">于是他把整套引擎交了出来：网站、后台、精选流程、聚簇和热度算法，连每一步提示词的原文和入选门槛，全在仓库里。「既然我没办法满足所有人，那就把火种交到大家自己手上。」</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/fig4-banner.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方图：把信源和精选标准换成你的，它就是你的行业热点站（来源：项目仓库）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在的它，上线一周多 6100 多颗星，MIT 协议开源。仓库里备好了 18 个公开信源当示范，够你先跑起来看效果；想改成自己的行业，连给 AI 的指令都写好了——把仓库丢给 Claude Code、Codex 这类工具，说一句「把这个站改成 XX 行业的热点站」，剩下的它帮你干。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261007-aihot/fig5-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">GitHub 仓库实拍（2026-10-07 上午；来源：github.com/KKKKhazix/AIHOT）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两个提醒也说清楚：一，项目的名字和 Logo 不能照搬，换上你自己的名字，它就是你的站；二，自己搭有点动手门槛，要 Docker、Node 24，加一个模型接口的 Key（DeepSeek、千问、智谱都行）。只想先用起来的，打开线上站就行。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后，再读一遍那句开场白：「AIHOT 曾经只是我无数个深夜里，一个很小、很小的念头。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在，这个念头长成了 6100 多颗星的开源项目，长成了任何人都能接过去用的「火种」。他把仓库的最后一句话留给了所有人：「剩下的路，就交给你们了。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么看：不用装任何东西，打开 aihot.news 就是完整效果，每天早上 8 点更新。<br>② 最值得先读：仓库里的「精选与校准」文档（docs/selection.md）。「两次评分＋门槛」怎么落地、怎么用自己的资料校准，全部公开。<br>③ 一个提醒：想自己搭站，要备好 Docker、Node 24 和模型 API Key；项目的名字和 Logo 不能照搬，记得换成你自己的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/KKKKhazix/AIHOT（MIT 开源；线上站 aihot.news）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 GitHub 仓库（README、docs/selection.md）与 aihot.news 线上站，均为 2026-10-07 查证；星标数为动态数据，本稿查证时（10-07 上午）实测 6,179，页面显示约 6.2k。配图：fig1、fig5 为 2026-10-07 实拍；fig2、fig3、fig4 来自项目仓库官方说明图。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">如果让你做一个自己的「行业热点站」，你最想让它帮你盯哪一行？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 15 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
