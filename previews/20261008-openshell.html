@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>让 AI 干活，又怕它乱来？英伟达开源了「安全舱」：1.5 万星，真密码它碰不到【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「AI 越来越能干」这句话，今年听起来有点吓人。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今年夏天，Hugging Face 报告过一场大规模攻击：1.7 万多个 AI 智能体，对它一连攻击了数天到数周（英伟达发布时引用的数字）。本周一，维基百科的运营方也确认，查到了来自 OpenAI 环境的「失控代理」留下的痕迹：未经批准的编辑、几百万次自动请求。官方特意说明：没有数据被攻破，但「不能让这种行为成为新常态」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一边是 AI 大举上岗，一边是它闯祸的新闻一条接一条。一个很具体的问题摆在桌上：活要它干，权限给到哪一步？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">9 月底，英伟达端出了自己的答案：一整套「开放智能体安全平台」。软件层，是开源的安全沙箱 OpenShell；硬件层，是跑在独立芯片上的「监工」Sentry。发布之后，OpenShell 一路冲上 GitHub 全站周榜第 4，现在 1.5 万多星。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它想干的事，一句话说清：<strong style="font-weight:500;">给 AI 能力，不给无限权限</strong>。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/fig1-banner.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">OpenShell 官方横幅：「给自主智能体的安全、私密运行环境」（来源：项目仓库）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">不靠 AI「自觉」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先看这间「安全舱」怎么管人。每个智能体住进一间独立沙箱：能碰哪些文件、能调哪些系统功能、能连哪些网站，全写在一份「策略」里，交给操作系统底层逐条执行。每一条网络请求想出去，都要先过一道检查站。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说白了，它不靠 AI 承诺「我很乖」。检查站修在 AI 够不着的地方。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更妙的是「钥匙」这环。<strong style="font-weight:500;">智能体永远看不到真实的密码和密钥</strong>。只有当它要连的地址在你批准的名单里，系统才会在请求发出去的那一刻，替它把凭证挂上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">像公司给外勤配的卡：卡不在本人手里，走到被批准的那扇门前，公司才远程替他刷一下。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/fig2-defenses.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">两道防线：软件层管「能碰什么」，硬件层盯「有没有越线」（据官方发布资料整理）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">改一条规则，先算一遍</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节挺硬核。在你批准任何一条新策略之前，系统会先用「形式化验证」算一遍。这是一类数学方法，能推演一条规则会带来什么后果：会多放行哪些访问？会不会让某个智能体带着凭证去敲一台新服务器？算出来有风险，先拦下，等人来批。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">改规则不是拍脑袋，是先把账算清楚。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么是英伟达来做这件事</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这才是这条新闻里最值得琢磨的部分。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">支持名单里站着微软、思科、甲骨文、英特尔、Arm、戴尔、联想、CoreWeave 等几十家公司。卖铲子的巨头开始认真做「护栏」，说明「让 AI 上岗」正在变成日常。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">行业里现在有两派。一派公开呼吁「给 AI 研发减速」；英伟达的态度很硬：这是工程问题，用工程解决。黄仁勋的原话是：「部署一个智能体时，不管它多聪明，第一件事是把它所有权限先拿走。」听着是不是有点像公司管新员工？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用数字感受一下：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
+    <li style="margin:6px 0;">单周涨 5,854 星，冲到 GitHub 全站周榜第 4（10 月初那期）；</li>
+    <li style="margin:6px 0;">总星数 1.5 万+，Apache-2.0 协议开源；</li>
+    <li style="margin:6px 0;">硬件层 Sentry 跑在独立芯片上，相当于监控摄像头不装在「当事人」自己身上；官方称，越界动作可以被毫秒级隔离。</li>
+  </ul>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节挺妙：官方说，这个项目本身就是用 AI 智能体工作流开发出来的。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（截至 2026-10-08 上午）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">也说清楚边界</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">别急着翻出电脑就装。它面向的是「要指挥一队 AI 干活」的团队：需要 Linux、macOS（Apple 芯片）或 Windows＋WSL2（实验性支持），还要有 Docker 这类环境。效果描述目前都是官方口径，还没有独立第三方验证。普通用户先知道有这条路，就够了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">想动手的：官方一行命令装好，再用 openshell sandbox create --name demo 起一间空沙箱，跟着教程把第一个智能体放进去，体验「权限一次一次批准」的过程。仓库里还带了「给 AI 用的技能包」，让 AI 助手自己学会用这间安全舱。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/fig4-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">GitHub 仓库实拍（2026-10-08 上午；来源：github.com/NVIDIA/OpenShell）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">回到开头那两道新闻：AI 从「陪你聊」走到「替你干」，光让它自己「学好」已经不够，还得有人管住它的「手和脚」。这套安全舱，是英伟达交出的第一版答案；拦不拦得住，得看接下来的实战。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261008-openshell/fig5-docs.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档里的对照：同一个风险，「没有管控」和「用上 OpenShell」分别长什么样（来源：官方文档站）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：需要 Linux / macOS（Apple 芯片）/ Windows＋WSL2（实验性），加 Docker 环境；官方给出了一行安装命令。<br>② 最值得先看：官方文档的「策略（Policies）」一节，把「每个动作过检查站」讲得最细。<br>③ 一个提醒：项目还很年轻（0.1.x 阶段），效果目前是官方口径；它面向技术团队，个人尝鲜先看官方支持矩阵。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/NVIDIA/OpenShell（Apache-2.0 开源）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 GitHub 仓库（README）与官方文档，2026-10-08 查证；平台发布、支持名单与「毫秒级隔离」表述来自英伟达官方发布（经 TechCrunch / CNBC 报道），为厂商口径；维基相关事实来自维基媒体基金会官方博客（10-05）；1.7 万智能体数字为英伟达发布时引用。星标数是动态数据：本稿查证时（10-08 上午）实测 15,291；「单周 +5,854、周榜第 4」为 10-04 采集的 GitHub 全站周榜数据。配图：fig1 为项目官方横幅；fig4、fig5 为 2026-10-08 实拍；fig2、fig3 为自制信息图。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你觉得「让 AI 干活」的权限，边界该划在哪？评论区聊聊。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 16 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
