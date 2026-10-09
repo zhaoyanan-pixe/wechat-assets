@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 17 期 · floorplan-3d（装修设计单文件工具）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一整套「装修设计」工具，能小到什么程度？我先说个答案：小到能装进<strong style="font-weight:500;">一个网页文件</strong>里，不到 200 KB，比手机相册里随便一张照片还小。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">没有安装包、不用注册、没有会员。双击，浏览器打开，它就是一个能干活的户型设计台，整个应用就这一份文件，不挑设备：Windows、Mac、手机浏览器，能开网页就能用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我今早打开试了十几分钟，手感意外地顺：<strong style="font-weight:500;">60 款</strong>家具家电从左边往图纸里拖，贴墙自动吸附；尺子量哪儿吸哪儿；想拆墙，非承重墙随便改，承重墙它单独标出来，不让你乱碰。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">摆得差不多了，按一下键盘上的 <strong style="font-weight:500;">T</strong> 键。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">整个家「唰」地立了起来。刚才还平铺着的房间，一下子有了高度。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个项目叫 <strong style="font-weight:500;">floorplan-3d</strong>。MIT 协议开源，上线十天，GitHub 上 <strong style="font-weight:500;">1,800 多颗星</strong>。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先把想法「摆」出来</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">回头细看 2D 这一层，它是认真当工具在做的。家具分了 <strong style="font-weight:500;">6 大类、60 款</strong>（卧室、客厅、餐厨、卫浴、家电、书房休闲），拖进来就能摆；贴墙自动吸附，按住 Shift 能自由调角度。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">尺寸给到毫米级，户型按原图 1:60 放样。测量工具贴着墙吸——装修前想确认「这里放不放得下 60 公分宽的柜子」，随手一量就有答案。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个我特别想夸的小设计：<strong style="font-weight:500;">承重墙单独标色</strong>，拆改工具只对非承重墙生效。多少人的装修第一步就是「这面墙我想砸」——它不给你侥幸。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/fig1-2d.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">实拍：2D 平面界面。左边是家具库，中间拖摆，右边实时统计（来源：本机打开工具实测，2026-10-09）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">按一下 T，家就立起来了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">从 2D 切到 3D 的那一下，值得单独说：按下 T 的瞬间，3D 画面先和你的平面图严丝合缝地重合，然后一点点长高，像房子从图纸里升起来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">立起来之后，能鸟瞰全屋，也能点右侧的房间列表「飞」到客厅；切到漫游模式，WASD 像打游戏一样在房子里走，走到门口按 <strong style="font-weight:500;">E</strong>，还能开关门。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/fig2-3d.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">实拍：按一下 T，同一套房子变成 3D 鸟瞰（来源：本机实测，2026-10-09）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还藏了两个时间彩蛋：一个「日照时间」滑块，同一个家，早上九点和下午四点的影子不一样；一个「夜景灯光」，按下去整屋亮起暖光。给你们看看夜里点亮的样子：</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/fig3-night.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">实拍：夜景灯光模式（来源：本机实测，2026-10-09）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">细看家具也不糊弄：柜门有分缝和拉手、床头是软包的、金属和陶瓷有环境反射。当然，精度是轻量模型那种，不是效果图级别，但它是<strong style="font-weight:500;">实时同步</strong>的：你在 3D 里挪一件家具，2D 那边立刻跟着变。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">顺手把账算清楚</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">右侧那块面板，是它另一个「懂事」的地方。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每个房间的面积自动统计，示例这套房，套内使用面积 <strong style="font-weight:500;">87.18 平方米</strong>；地面材料有 <strong style="font-weight:500;">8 种</strong>可选，木地板、地砖、大理石换着点，它按面积加 <strong style="font-weight:500;">5% 损耗</strong>，直接把钱算给你看——示例全屋地面，估出来 <strong style="font-weight:500;">25,077 元</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装修过的人都知道，预算最怕的就是「看不见」。先把能算的算出来，心里好歹有个盘。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">方案会自动存在浏览器里，随时接着改；也能导出成图片或文件，发给家人、发给设计师讨论。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也别把它想复杂：装修前和家人对齐想法、搬家前先试摆一遍家具，甚至单纯当个 3D 积木玩，都行。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/fig4-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（自制卡；数据来源：项目 README 与本机实测，2026-10-09）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">说清楚：它是什么，不是什么</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先把期待管住：它<strong style="font-weight:500;">不是专业 CAD</strong>。给排水、电路这些管线它不做，施工图更不沾边；它擅长的是「装修前期，先把想法摆出来」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目也确实年轻：9 月 29 日上线，到今天刚好十天。功能列表看着全，坑肯定还没踩完。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个给「不想写代码的人」留的口子：整个工具就一个文件，户型数据明明白白写在里面，作者说明了改法；嫌麻烦的，还有一条野路子——把户型图发给你的 AI 助手，让它照着格式改。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">小提醒：第一次打开 3D 需要联网（要加载一个 3D 引擎）；2D 部分不联网也能玩。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最近我越来越爱挖这种「小而完整」的项目：不融资、不画大饼，一个人把一件具体的事做利落，然后免费放出来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装修最贵的一步，往往是「来回改」。先花十分钟，把自己家摆进浏览器里走一圈——哪怕只是想明白「餐桌放哪儿」，这十分钟也不亏。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">喜欢的话，去给作者点个 Star 吧。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261009-floorplan3d/fig5-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目主页实拍：上线十天，1,800 多星（来源：github.com/wy51ai/floorplan-3d，2026-10-09）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么打开：去仓库把 index.html 下载下来（或 git clone），双击用浏览器打开；3D 第一次要联网（加载 3D 引擎）。<br>② 最值得先试：在 2D 里拖几件家具摆一摆，按 T 切 3D 看效果；再点右侧房间列表「飞」进客厅，切漫游模式走一圈。<br>③ 一个提醒：它适合「前期摆想法」，做不了施工图和管线；换自家户型要改文件里的数据（README 有说明）；估价只算了地面材料，别当最终预算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/wy51ai/floorplan-3d（MIT 开源）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README 与本机实测（2026-10-09）。示例户型统计（套内 87.18 m²、46 件家具、地面估价 ¥25,077 等）为工具内自动计算；星标数 1,846（10-09 上午实测），项目 2026-09-29 上线。配图：fig1、fig2、fig3 为工具实拍，fig5 为仓库实拍，fig4 为自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你家装修、或者想改造某个房间的时候，最头疼哪一步？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 17 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
