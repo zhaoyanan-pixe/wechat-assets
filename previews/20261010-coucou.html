@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 18 期 · coucou（桌面小精灵）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你可能也遇到过这种场面：让 AI 干着活，你去倒杯水，回来一看，它卡在一个「可以吗？」的弹窗上，等了整整十分钟。不是它偷懒，是它不敢动。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最近有个开源项目，把这个瞬间变得可爱多了：<strong style="font-weight:500;">屏幕顶上</strong>趴着一只白色小团子，AI 一需要你，它就探出头来；你点一下，AI 接着干。平时它藏得好好的，鼠标划过屏幕顶，它才探头跟你打个招呼。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目叫 <strong style="font-weight:500;">coucou</strong>，法语里熟人之间那句甜甜的「嗨」；小团子叫 <strong style="font-weight:500;">Mochi</strong>，就是「麻薯」那个词。上线还不到两周，GitHub 上已经 <strong style="font-weight:500;">4,500 多颗星</strong>，发了 18 个版本。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/fig1-demo.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示动图：小团子从屏幕顶端探出，AI 的每一步都在这里看得见（来源：项目官方 demo.gif，压缩版）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">把 AI 的每一步，摆到你眼前</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它盯的，是那些「会自己干活」的 AI：Claude Code、Codex、Cursor……你在用的话就知道，它们干活的过程全在命令行里飞快刷过去，眼睛根本跟不上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Mochi 把这些搬到屏幕顶上：读了哪个文件、加了几行、删了几行，点开还能看逐行对比；它干完一步，小团子跟着动一下；全部干完，它会开心地跳一下。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">别小看「看清」这两个字。任务交出去之后，最容易心慌的就是「它现在到底在改什么」；它把这些全摊开，摆在屏幕顶上。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/fig3-session.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：展开的会话面板，左边是 AI 的每一步（读取、编辑、跑命令），右边是它正在改的代码（来源：项目官方素材）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">重头戏：动手之前，先「打报告」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 每次想动文件、想跑命令，都会先来问一句。以前这句问话埋在终端里，你一错过，它就一直干等；现在它直接弹到屏幕顶，<strong style="font-weight:500;">三个键</strong>：允许、拒绝、以后都允许。对刚把工作交给 AI 的人来说，「能随时喊停」可能比「干得快」更重要。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有时候它会一口气问好几个问题，Mochi 也会把选项一条条摆出来，你选完点确认就行。Claude Code、Codex、Cursor、Gemini CLI、Copilot CLI……官方列了十几种 AI 工具都能接，不在名单里的也能用一行参数接进来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">附赠一个我没想到的用法：想让它帮忙看文件时，把文件拖到屏幕顶上，它会变成一只小盒子，「啊呜」一口吞掉，然后你直接问就行。顶栏里还藏着个聊天入口，接上 Claude 或本机模型，随手问两句也行。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">你离开电脑，它跟到手机上</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这一条我看完直接笑了：你锁上电脑出门，Mochi 会「跟」到你的 iPhone 上，钻进锁屏和灵动岛。AI 有事找你，锁屏直接弹「等你确认」：左边拒绝、右边允许，点允许还要过一个 <strong style="font-weight:500;">Face ID</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方特意写了一句：你点的那一下，只对应你回的那条请求，别处不好使。手机上还能看进度、回消息、给 AI 下一条指令；桌面组件、Siri、快捷指令也都接上了。两边连配对都省了，同一个 Apple 账号就行。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/fig2-iphone.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：AI 的每一次「可以吗」，都能在你手机锁屏上点头放行（来源：项目官方素材）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">除了可爱，藏了一堆小心思</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说实话，就算不看功能，光这只小团子本身也够好玩：它会眨眼，眼睛跟着你的鼠标跑；戳它会被嫌弃；连戳三下，它会晕乎乎三秒钟再「复工」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/fig5-dizzy.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：戳太多次的后果，它真的会停下来「晕三秒」（来源：项目官方素材）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它有套衣柜，会自己按季节换装；<strong style="font-weight:500;">28 种手工音效</strong>，每个小动作都有回应；音乐一响，它还会跟着扭两下。每周一早上，它递给你一张上周小结图：干了多少活、改了多少文件，一屏说清，还能直接分享。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据这块挺干净：不用注册、没有遥测，API 密钥存在系统自己的钥匙串里；界面支持<strong style="font-weight:500;">十种语言</strong>，其中就有中文。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">藏在里面的还有一堆接口：GitHub 的 PR 和 CI、Vercel 部署、Stripe 收款、Notion 提醒……每样都能变成顶栏里的一只小 Mochi，状态好不好，一眼就知道。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对了，作者就是用 Claude Code 把这个项目写出来的。一个「AI 帮人写的、专门盯着 AI」的工具，这个套娃我挺喜欢。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261010-coucou/fig4-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（自制卡；数据来源：项目 README / GitHub / 官方演示，截至 2026-10-10）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">说清楚：适合谁，不适合谁</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先把期待管住：它不替 AI 变聪明，也不是人人都需要装。它的完整价值绑在「你真的在用这类会干活的 AI 工具」上；如果你平时只跟网页版 AI 聊聊天，它现在更像个可爱的桌面玩具。好在装的成本约等于零：<strong style="font-weight:500;">演示模式</strong>不用任何配置，打开就能让它给你演一遍。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外两个小提示：Mac 版最成熟，Windows 和 Linux 版是最近才追上的；Windows 安装时系统会弹「未知发布者」警告（安装包还没买签名证书），点「更多信息 → 仍要运行」就行。iPhone 端目前是免费的测试版。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我一向对这种「小而完整」的项目没有抵抗力。AI 越来越能干是事实；但每动一步都在你眼皮底下、动真格之前还得先问过你，这种感觉，比什么参数都让人安心。AI 越像「员工」，「汇报」和「审批」就越不能少；coucou 做的，就是把这两样搬到一个你看得见、够得着的角落。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">喜欢的话，去给它点个 Star 吧；要是你装了它，替我戳戳那只小团子。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：去 GitHub 仓库 Louis-CFM/coucou 的 Releases 页下载（Mac 是 Coucou.zip，Windows 是 Coucou-Windows.msi；系统提示「未知发布者」时点「更多信息 → 仍要运行」）；装完先开「设置 → 通用 → 演示模式」，不配置任何东西就能看它演一遍。<br>② 最值得先试：在设置里给 Claude Code（或你在用的 agent）点一下「Install hooks」装上挂钩，然后跑一个会话：盯屏幕顶部的小团子，有「允许 / 拒绝」直接点。<br>③ 一句提醒：它的完整价值要配合「会自己干活的 AI 工具」才发挥；Mac 版功能最全，Windows / Linux 刚追平核心功能；iPhone 端是免费测试版（TestFlight）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/Louis-CFM/coucou（代码 MIT 开源；名字、角色与音效版权归作者）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README / 官方发布页与 GitHub API（2026-10-10 实测）；星标 4,518、上线 13 天、18 个版本。配图：fig1 为官方演示动图（压缩版），fig2 / fig3 / fig5 为官方素材，fig4 为自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你用 AI 干活时，被那句「可以吗？」卡住过吗？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 18 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
