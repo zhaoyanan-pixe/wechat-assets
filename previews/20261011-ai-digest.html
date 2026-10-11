@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 19 期 · 外网速递（5 件大事）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「AI 一晚上写了 722 篇数学论文，第二天，自己撤回了 3 篇。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这不是段子，是这几天数学界真实经历的大地震。也不止这一件：ChatGPT 学会当场给你「画」小工具；Google 开了家「AI 验真店」；Anthropic 给全世界的开源项目免费「体检」……</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周的外网 AI 圈，5 件大事，一件件说。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/fig1-overview.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周 5 件大事速览（自制卡；来源见文末，数据截至 2026-10-11）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① AI 一晚「交卷」722 篇论文：数学界的地震周</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 6 日，OpenAI 在 GitHub 一次性放出 <strong style="font-weight:500;">722 篇</strong> 论文，覆盖 <strong style="font-weight:500;">372 个</strong> 此前没有被解决的数学问题：几何、计算机科学、代数都有，里面不乏「唯一游戏猜想」这种悬了几十年的名字。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">论文全由 AI 产出，<strong style="font-weight:500;">没有一篇被人类提前读过</strong>。官方说，约 <strong style="font-weight:500;">42%</strong> 的顶级结果附上了「机器可验证的证明」；但「机器能验」和「人类能懂」，眼下还是两码事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二天，反转就来了：<strong style="font-weight:500;">3 篇被撤回</strong>，其中一篇里有个「符号错误」，两篇跟着一起作废；另外 <strong style="font-weight:500;">14 篇</strong> 打了补丁。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数学圈的反应也两极：有人称之为「数学史上最重要的日子之一」；研究相关难题半辈子的数学家 Dana Moshkovitz 读完只说：像「嗑药的人写的」，「没有 AI 帮忙，根本读不下去」。目前，<strong style="font-weight:500;">还没有人类真正读懂任何一篇</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：先别喊「AI 攻克世纪难题」，也别急着说「AI 被打假」——撤回 3 篇，不等于 700 多篇全错。眼下真正激烈的战场不在「生成」，在「核验」。这场竞赛，才刚开始。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/fig2-math.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">OpenAI 官方图：数学页面「Sharing AI progress in mathematics」（来源：openai.com）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② ChatGPT 不只会「说」了：当场给你画个小工具</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前问 ChatGPT「自行车怎么变速」，它甩你一大段字；现在，它可能直接给你一张<strong style="font-weight:500;">能点、能拖的图解</strong>，点到哪个零件，就讲哪个。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是 OpenAI 这周上线的新界面（官方叫「智能界面」）：回答不再只有文字，而是现场生成按钮、滑块、计算器、可编辑的图。官方演示里有飞机机翼的升力原理、旅行地图、储蓄计算器；WIRED 记者实测让它做了「旧金山房租计算器」和「飞机选座工具」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同场还有个更大的消息：新一代 GPT-6 向所有用户开放，官方称覆盖 <strong style="font-weight:500;">12 亿+</strong> 周活跃用户。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：AI 回答的形态，正从「文字」变成「会动的小工具」。WIRED 的评价挺冷静：「秀多于讲」；嫌花哨的，设置里可以调低。但对不擅长读长文字的人来说，能看、能点，门槛一下就低了。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/fig3-gpt6ui.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">OpenAI 官方图：对话里直接生成可视化内容（来源：openai.com）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ Google 开了家「AI 验真店」：传张图，查它是不是 AI 做的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 把隐形水印检测工具「SynthID」开放给所有人了：上传图片、视频或音频，就能查它是不是带着 Google 的「AI 出厂记号」。此前，这个权限只给记者和研究者。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">背后是一张越来越大的网：Google 自家生成工具出的图都带水印，OpenAI、英伟达也加入了同一套标准，据说苹果也快了；现在全球每天约有 <strong style="font-weight:500;">100 万次</strong> 验证请求。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但有两个「丑话」要说在前面：官方自己承认，它经常认不出自家模型生成的内容；「查不到水印」，也不等于「不是 AI 做的」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：前脚 OpenAI 给文字打隐形水印，后脚 Google 的「验真柜台」就开门营业。下次收到「有图有真相」的大新闻，先丢进去查一查，再决定转不转。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/fig4-synthid.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">SynthID 页面实拍：人人可用的「AI 验真」入口（来源：deepmind.google，2026-10-11 截图）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 一边被「假报告」淹没，一边免费帮你「体检」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周还有个挺妙的对照。Google 刚因为「AI 生成的垃圾报告太多」，暂停了自家的开源漏洞赏金计划；Anthropic 反手就给了个相反的答案：不但不关门，还免费帮你扫。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">具体说，Anthropic 启动了个叫「网络使命」的长期计划：任何开源项目都能自愿报名，让它的最强模型定期免费扫漏洞、给修补建议。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">难得的是坦诚：官方页面上直接写着，报告全由 AI 生成、没有人工审核，「可能不正确或无效」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么还做？官方说：AI 让「找漏洞」变得前所未有地容易，但「验证、排序、修复」还是难。瓶颈，已经从「找」变成了「审」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：同一道题，两种解法：一个先关门，一个免费开门。效果还待观察，但别忘了，你手机里每个 App 背后，都站着一堆开源代码；有人替它免费体检，是好事。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ 一个「录音永不出电脑」的会议笔记 App</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开会有两怕：怕记不过来，更怕「录音到底传去了哪儿」。Google 新发布的实验性笔记 App，把这两件事一起接了：一边实时转写会议，一边把你的几个关键词自动「补」成完整笔记。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还能用大白话搜你电脑里的文件、图片和笔记。但真正少见的，是卖点：<strong style="font-weight:500;">完全离线</strong>。所有处理都在你电脑本地的模型上跑，官方说法是：音频、笔记、文件「永不离开你的电脑」，飞机上没网也能用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">免费，但目前只有 Mac 版；外媒把它称为主流大厂里第一个主打「完全离线」的同类应用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：这两年大家都在把东西往云上搬，它偏往「收」里做。还有个细节值得记：官方下载页有中国大陆能直连的镜像。端侧 AI 这个词，以后会越来越常见——AI 不一定住在云端，也可以住进你的电脑里。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261011-ai-digest/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周数字（自制卡；来源见文末）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#6BA0D2;line-height:31px;padding:14px 18px;">5 件看下来，其实都在讲同一件事：<strong style="font-weight:500;">验收</strong>。<br>AI 交卷的本事，一周比一周强：交论文、交界面、交报告。人类的活儿，正从「催它交」，变成「看它行不行」。<br>这大概不是最性感的能力，但很可能是接下来最值钱的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-10-11）：① OpenAI 官方与 GitHub 论文仓库、Retraction Watch、New Scientist；② OpenAI 官方与 TechCrunch、WIRED；③ Google / DeepMind 官方与 TechCrunch；④ Anthropic 官方与 The Verge；⑤ Google 官方与 The Verge、TechCrunch、9to5Google。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：上述媒体与公司官方发布。配图：fig2 / fig3 为 OpenAI 官方图（openai.com），fig4 为 SynthID 页面实拍截图（deepmind.google），fig1 / fig5 为自制卡。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 19 期·外网速递篇：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
