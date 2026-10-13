@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 21 期 · mattpocock/skills（真工程师技能包）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你有没有过这种时刻：让 AI 改个小功能，它两分钟就回「完成了」；你上手一跑，坏的。不是它没干活，是它从头到尾没搞懂你要什么。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">刚过去的一周，GitHub 上有个项目冲到全站周榜第二：一周涨了 9,000 多星，总数 28.7 万。仓库今年 2 月建起，更新很勤，最近一次提交就在昨天。它想解决的，就是这种「错位」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目叫 <strong style="font-weight:500;">mattpocock/skills</strong>，一句话介绍写着 <strong style="font-weight:500;">Skills for Real Engineers</strong>，给「认真做工程」的人。作者 Matt Pocock 是英语圈很有名的 TypeScript 讲师，他的开发者通讯有约 6 万人订阅。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">介绍栏里他补了半句很扎心的话：这些技能我每天在用，用来做「真正的工程」，<strong style="font-weight:500;">不是 vibe coding</strong>（把需求丢给 AI、凭感觉写代码那种玩法）。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/fig1-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库主页实拍：Star 已在 28.7 万量级，About 里那句「Skills for Real Engineers」就是它的自我介绍（来源：github.com，2026-10-13 截图）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把它的说明书翻了一遍，发现最值钱的地方不是功能，而是一个总结：<strong style="font-weight:500;">AI 写代码翻车，来来回回就 4 种</strong>。每种翻车，他都配了一个能直接装上用的技能。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/fig2-map.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">4 种翻车 × 4 个药方（自制卡；据项目 README 整理，2026-10-13）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">翻车一：干的不是我想要的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这大概是所有人踩过的第一个坑：你说了、它做了、一看不对。作者的办法有点反直觉：<strong style="font-weight:500;">动手之前，先让 AI 反过来拷问你</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他做了两个技能：/grill-me 和 /grill-with-docs。你抛出一个想法，它一个接一个问你细节：数据从哪来、谁有权限、出错怎么办……问到每个分支都定下来为止，才允许开工。作者说，这是他全部技能里最受欢迎的两个。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/fig4-grill.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">「先拷问、再动手」场景示意：AI 反问你，把含糊的地方一个个问清楚（自制卡，据官方描述绘制）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">细想挺有道理：多数时候不是 AI 不懂你，是你自己也没想清楚。先被问上一轮，含糊的地方就藏不住了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">翻车二：20 个词能说的事，说了 20 句</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二种翻车是「话太多」：同一件事绕来绕去，你越听越糊涂。作者开的药方是一份<strong style="font-weight:500;">共享词汇表（GLOSSARY.md）</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他举了自己项目的真实例子。改之前，一句话这么写：「课程里的一节课被『实体化』（也就是在文件系统里拿到自己的位置）时，有问题。」改之后只剩一句：「『实体化级联』出问题了。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">把行话固定下来、写成文件，AI 和人共用：说起来变短，但更准；代码里的命名跟着统一，AI 也少烧 token。作者说，这可能是整个仓库里最酷的一招。其实这不算新发明：它在 README 里标了出处，这种「通用语言」出自 Eric Evans 的《领域驱动设计》，他只是把它翻译成了 AI 能照做的版本。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">翻车三：功能写完了，一跑就报错</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三种最气人：看着都写完了，一跑，报错。作者的说法是：没有反馈，AI 也不知道自己对不对，只能「盲飞」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">药方是给 AI 搭反馈回路：类型检查、能看浏览器、自动测试，其中最关键的是一套「<strong style="font-weight:500;">红绿循环</strong>」：先让它写一个一定会失败的测试（看着它变红），再写代码让测试变绿。配套还有 /diagnosing-bugs：遇到难缠的 bug，先搭一个能稳定复现的环境，再一步步缩小范围，不许靠猜。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">翻车四：代码越写越乱</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后一个，也最容易被忽略：AI 写得快，代码也乱得快。以前一个烂摊子要攒三年，现在可能三个月。作者把它叫「代码泥球」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他的解法是把「关心设计」变成日常动作：有个技能叫 /improve-codebase-architecture，隔几天在项目里跑一圈，把「哪里该拆开、哪里该并起来」列成单子给你挑；扫完先给一份能点的 HTML 报告，你挑中哪条，它再陪你往下深挖。丑话说在前面：它是巡检，不是抢救，烂成泥山的代码它也不会替你拆。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">装它，只要 30 秒</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方管安装叫「30 second setup」：Claude Code 一行命令、Codex 两行，Copilot、Gemini 也都有；不挑工具的话，用 npx skills 一键接进任意 AI 编程工具。全部是纯文本的 Markdown 文件，MIT 开源，免费。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/fig3-aihero.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档页实拍：「AI Skills for Real Engineers」，安装命令就在页面上（来源：aihero.dev/skills，2026-10-13 截图）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节挺贴心：技能分两类。一类要你主动喊（像 /grill-me）；一类平时不吭声，AI 碰到合适场景自己就会用（像 /tdd）。挑花眼了也不怕：里面有个小帮手 /ask-matt，不知道该用哪个，直接问它。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者写在说明书里的态度我很喜欢：别当圣经供着，欢迎拿去折腾、改成你自己的。（原话：Hack around with them. Make them your own.）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对了，翻贡献者名单时我乐了一下：上面除了作者，还躺着一位「Claude」。一个「AI 给 AI 立规矩、再请人来改」的仓库，这个套娃挺妙。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">写这篇时我最大的感受是：27 个技能里，没有一条是「咒语」。全是老规矩：先想清楚、说人话、小步走、常回头看看。区别只是，以前这些是老师傅张嘴念叨的；现在写下来，AI 就真的能照做。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">工具人人能装，技能人人能抄。但「先把要什么想明白」这件事，AI 替不了你。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261013-mattpocock-skills/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字（自制卡；数据来源：项目 README / GitHub 仓库 / 官方文档页，截至 2026-10-13）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：Claude Code 里一行 `claude plugin install mattpocock-skills@claude-plugins-official`；Codex / Copilot / Gemini 各有一两行命令；其它工具用 `npx skills@latest add mattpocock/skills`，按提示选你的工具。<br>② 最值得先试：/grill-me——动手前让 AI 反过来问你一顿，把需求问清楚再开工；官方说这是最受欢迎的一个。<br>③ 一句提醒：两个安装渠道别同时用（会重复装一份）；技能全是纯文本 Markdown，能改能删，欢迎改成自己的规矩。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/mattpocock/skills（MIT 协议；27 个技能＝写代码 20 个＋通用 7 个）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README、仓库页面与官方文档页 aihero.dev/skills（2026-10-13 实测：28.7 万+ 星、2.4 万+ fork；「周榜第二、一周涨 9,000 多星」为上周 GitHub 周榜口径）。配图：fig1、fig3 为实拍截图（github.com / aihero.dev），fig2、fig4、fig5 为自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 写代码坑得最惨的一次是什么？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 21 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
