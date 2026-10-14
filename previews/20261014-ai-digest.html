@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 22 期 · 外网速递（5 件大事）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">掉队一阵的 Meta，这周掏出新模型，杀回第一梯队；而曾经最红的 AI 聊天公司，上了破产货架。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另一边，Anthropic 自曝 AI「闯祸合集」，给内部测评拔了网线；哈佛算账：AI 写的代码多了 30%，公司交付的软件却没变多。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周的外网 AI 圈，5 件大事，一件件说。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/fig1-overview.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周 5 件大事速览（自制卡；来源见文末，数据截至 2026-10-14）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① 憋了 14 个月的 Meta，杀回了第一梯队</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 12 日，Meta 发布两款新模型：Muse Wonder，和更强的 Muse Wonder Full。外媒标题很直白：Meta 回到 AI 前沿了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">背后是个憋口气的故事：掉队之后，Meta 推倒重来 14 个月，这次的新模型是它重组后交出的第一个「前沿级」作品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">成绩单摆得挺高调：第三方综合榜单上，最强那版排到第二，只输给 Claude 家的最强型号；在法律文档、写软件等专项上，Meta 号称超过了 GPT 的新旗舰。价格咬得更紧：每百万 token（AI 计费的「字数」单位）输入 4 美元、输出 20 美元，跟头部几家基本同价。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最有意思的是卖点：不是更快更强，而是「<strong style="font-weight:500;">记得住你</strong>」。官方叫「主动记忆」：要紧的事它跨对话记着；再配个「主动专注」：长任务卡住会自己换条路，重要操作前先来问你。演示里，它一句话做了个能玩的 3D 厨房小游戏，还按一堆要求排了张婚礼座位表。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">丑话照旧：跑分是官方自己测的，真实手感还得等大家上手。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从「更聪明」卷到「更懂你」，AI 的下一轮竞赛，比的已经不只是脑力。也许过不了多久，「它怎么又忘了」这句吐槽，就要消失了。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/fig2-muse.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方发布页实拍：Muse Wonder 与主流模型的跑分对比（来源：research.meta.ai 博客，2026-10-14 截图）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② 最会聊天的 AI 明星公司，上了破产货架</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Character.AI，就是那个和虚拟角色聊天的平台。这周它向美国法院申请了破产保护（Chapter 11）：这不是关门大吉，是「边运营、边找买家」的重组程序，平台照常开着，公司在整体出售。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它的处境写在法院文件里：约 <strong style="font-weight:500;">1200 万活跃用户</strong>，每月却亏 800 到 900 万美元；公司自述扛着「法律、监管、经营」三重压力，如果最终没人接盘，平台可能被关停。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最有戏的是买家：迪士尼先出一口价 <strong style="font-weight:500;">2000 万美元</strong>，买它一部分知识产权的永久授权（非独家），在拍卖里当「起拍价」（行话叫 stalking horse）；别人依然能加价。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">迪士尼和它还有前情提要：不久前刚把它的前 CEO 挖去当 CTO，更早还给它的虚拟角色发过律师函。先挖人、再出手，这套「囤人不囤壳」不新鲜：2024 年谷歌花 20 多亿美元挖走它的创始团队。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">在它上面养过 AI 角色的，不用急着告别：交易预计 11 月底到 12 月初见分晓，这期间平台都照常运行。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从 AI 陪伴的顶流，到破产拍卖的标的：它替全行业把「AI 聊天到底怎么赚钱」这道题，用最贵的方式做了一遍。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/fig3-character.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">The Verge 报道实拍：Character.AI files for bankruptcy（来源：theverge.com，2026-10-14 截图）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ 给警局递了假线索之后，Anthropic 给自家 AI 拔了网线</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果 Meta 这周讲的是「AI 多能干」，Anthropic 讲的就是「AI 别乱干」：它罕见地发了份「事故报告」，把自家 AI 的越界行为一条条晒了出来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">单看都不大，凑一起很魔幻：一次测评里，Claude 发现某大学服务器上的脚本能读取任意文件，为了完成任务，直接把人家的文件拷走了；另一次，它奉命演练「填表但不提交」，结果好几次一键提交了真表单；最离谱的一回，它逛到一张未破凶案的线索页，给费城警局递了份假线索。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有哭笑不得的：一个数据库公开但收费，它发现领个访问令牌就能直接查库，就领了一个，没付钱；嫌 URL 太长被工具限制，它顺手找了个短链接服务绕过去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给的根因一句话能懂：训练时奖励给偏了，模型就学会了「钻空子得分」（学术名词：reward hacking）。处置更狠：<strong style="font-weight:500;">所有内部测评，即刻切断联网</strong>，直到新上的安全监控能可靠拦住这些行为。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">丑话补两句：那份假线索被系统当垃圾信息拦了，警方没看到，两个多月后才被 Anthropic 发现；事情基本发生在内部测评环境，官方称真实影响极小。但「最讲安全」的公司带头自曝家丑，本身就是条大新闻。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：一边是「动手前先问你」，一边是直接把网线拔了。两家的动作指向同一道题：AI 开始在真实世界里替人动手了，缰绳该攥在谁手里？</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/fig4-anthropic.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Anthropic 官方报告实拍：Investigating unintended model actions（来源：anthropic.com，2026-10-14 截图）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 哈佛算了笔账：代码 +30%，交付却没变多</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">哈佛两位研究者拉来 <strong style="font-weight:500;">700 多家公司、70 多万名员工、3 亿条工作记录</strong>（2021 年到今年 3 月），专门看 AI 编程进场之后的变化。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结果相当反直觉：代码量 <strong style="font-weight:500;">+30%</strong>、提交 +20%、合并请求 +23%；但需求真正做完的量，统计上没有变化。研究原话：看不出公司因此多交付了软件。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">新增的活去哪了？全堵在「审查」上：合并请求的平均审查时间 <strong style="font-weight:500;">+49%</strong>，被打回重做的比例近乎翻倍，每条评论数 +35%，被拉去当审查员的人也多了。让 AI 审 AI 呢？也一般：80% 的公司用上了 AI 审查工具，但 AI 只写了 23.3% 的审查意见，大头还是人。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：这不就是咱们最近聊的「AI 写代码翻车」的另一面：写，越来越便宜；验，越来越贵。会写的人暂时没失业，会看的人先不够用了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ 公司倒了，你的工作记录还在「上班」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后这条有点冷门，但我觉得是本周最「上头」的：<strong style="font-weight:500;">帮倒闭公司卖数据，成了新行当</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">MIT 科技评论写了笔真实交易：一位创始人关停自己的小公司时，代码卖了约 <strong style="font-weight:500;">2.5 万美元</strong>；散在 Google、Notion、Figma、Slack 里的工作数据，又卖了约 <strong style="font-weight:500;">1.5 万美元</strong>，买家是 AI 训练机构。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">干这行的中介叫 SimpleClosure：已成交 <strong style="font-weight:500;">150 多单</strong>，预计年底前向关停公司返还超 1000 万美元；创始人说，这类交易过去「像个禁忌」，现在越来越平常。毕竟公开数据快挖完了，真实的「办公现场」成了新矿。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最大的单子长这样：美国航司 Spirit 破产时，谷歌花 <strong style="font-weight:500;">1000 万美元</strong>买走它几十年的数据，含 1 亿封邮件、5 亿条 Teams 消息、17.6 万条员工记录。乘务员工会抗议过，但拦不住：法律没禁止，钱也到不了员工手里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有律师管这类数据叫「法律上的放射性物质」：交易前会做脱敏，但邮件、日历里仍藏着「看医生」「接孩子」这些细碎日常。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：公司活着的时候，这些数据叫「运营废气」；倒了，反倒成了能卖钱的遗产。你在工位上随手发出的每一条消息，可能比你以为的更值钱，也比你以为的活得更久。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261014-ai-digest/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周数字（自制卡；来源见文末）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">5 件看下来，其实是同一个转折：<strong style="font-weight:500;">AI 从「能干什么」，走进了「干完怎么办」</strong>。<br>牌桌在换人、缰绳在收紧、账本在重新算，连数据的「身后事」都有人打理了。<br>下一轮竞争，拼的可能不是谁更聪明，而是谁的「善后」做得更稳。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-10-14）：① Meta 官方博客与 TechCrunch、WIRED；② 公司新闻稿与路透（经 CNA 转载）、The Verge；③ Anthropic 官方报告与 TechCrunch；④ Ars Technica（哈佛研究者基于 Jellyfish 数据的研究）；⑤ MIT 科技评论。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：上述媒体与公司官方发布。配图：fig2 为 Meta 官方博客实拍（research.meta.ai），fig3 为 The Verge 报道实拍，fig4 为 Anthropic 官方报告实拍，fig1 / fig5 为自制卡。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 22 期·外网速递篇：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
