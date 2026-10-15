@@ -40,9 +40,9 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这不是哪部新片，是一个开源仓库里，用代码一帧一帧画出来的画面。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目叫 <strong style="font-weight:500;">huashu-art-motion</strong>，中文名「艺术动画」，作者是花叔。它的用法有点特别：不是你自己动手画，而是给「会写代码的 AI」备的一叠配方卡——你说想要什么样的动画，它照着卡把画面写出来。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上线 9 天，近 4 千星，430 个 fork，MIT 协议，免费。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者花叔，在 B 站、小红书、YouTube 和公众号都叫这个名字。这个仓库是他「女娲」「达尔文」之后的又一套技能：前两个一个负责造技能、一个负责让技能进化，这一个，负责让画动起来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者花叔，B 站叫「花叔v」，小红书和公众号都叫「花叔」。这个仓库是他「女娲」「达尔文」之后的又一套技能：前两个一个负责造技能、一个负责让技能进化，这一个，负责让画动起来。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261015-huashu-art-motion/fig1-styles.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">35 段样片各取一帧：同一位少女、同一只橘白猫、同一张桌子，从公元前 40000 年的岩洞一路穿到 2026 年（官方总览图，来源：项目仓库，2026-10-15）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">35 段样片各取一帧：同一位少女、同一只橘白猫、同一张桌子，从公元前 40000 年的岩洞一路穿到 2026 年（官方总览图；第 36 种画风是独立的 SVG 示例，不在这 35 格里。来源：项目仓库，2026-10-15）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">故事的起点，是一段 15 秒的动画</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月初，花叔在 X 上刷到 Tak 的一支 15 秒动画《Art History Speedrun》：一位少女和一只猫穿过 4 万年艺术史，每个时代只有一秒左右，但画里的东西都在动。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他让 AI 复刻。第一版做成了「一张画接一张画地转场」，被他否了：原片每个时代虽然只有一秒，画里的元素却是流动的。</p>
@@ -60,15 +60,15 @@
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它跟「AI 生成视频」不是一回事</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在说 AI 做视频，大家想到的多半是「说一句话，模型吐一段」。这个项目走的是另一条路：把每种画风写成一张<strong style="font-weight:500;">配方卡</strong>，记下参数、母题动作、签名转场，还有当前的短板；然后让 AI 写代码，把画面一层层画出来。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">差别在改的时候最明显。生成模型的画面是「抽」出来的，想改一帧得重抽一次；代码画的是参数，改一个数字就行，同一套骨架能换风格、能复现、能批量。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">举个具体例子：复刻梵高那一段，角色被重画成厚涂笔触，笔触的方向不是随手涂的，是量了原作《麦田与柏树》的结构张量得来的。这种「有依据的还原」，生成模型给不了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">举个具体例子：《Clawd 博物馆奇妙夜》里跳进梵高《麦田与柏树》那一段，Clawd 被重画成厚涂笔触，笔触的方向不是随手涂的，是量了原作的结构张量得来的。这种「有依据的还原」，生成模型给不了。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261015-huashu-art-motion/fig3-whatsinside.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库里有什么（自制卡；据项目 README 整理，2026-10-15）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">出片之前，先过一道「反 PPT」门禁</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这一点我特别喜欢。交付前有一套数字验收：先量画面的稳定度、动感、流畅度，再派一个<strong style="font-weight:500;">没参与制作的 AI</strong>，只看成片挑问题。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后一道叫「反 PPT 门禁」：如果整片几乎没有镜头内的快动作，直接红灯，不许出片。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这一点我特别喜欢。交付前有一套数字验收：先量画面的稳定、动感、流畅，还有每帧的成本、文字有没有出框，再派一个<strong style="font-weight:500;">没参与制作的 AI</strong>，只看成片挑问题。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后一道叫「反 PPT 门禁」：如果整片几乎没有镜头内的快动作，直接红灯，不许出片；顺带还会查中段有没有大片空画面。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说白了，它防的就是那种「几张图切一切、加个转场」的假动画。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">顺带说个它自己标出来的坑：那 35 格总览用的是同一个构图，那是「艺术史速通片」的机制（风格在变、场景不变），不是这些画风本来的构图。做新题材得重新构图，别把那间屋搬过去。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外，仓库里还有 9 种「解说语法」：Kurzgesagt、Vox、白板、3Blue1Brown、动态文字、发布会、财经图表这些常见解说片的套路，每种都配了能跑的示范片，和能改参数的片段。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外，仓库里还有 9 种「解说语法」：Kurzgesagt、Vox、白板、3Blue1Brown、动态文字、发布会、财经图表这些常见解说片的套路，其中 8 种配了能跑的示范片和能改参数的片段；第 9 种「讲解员式财经科普」给的是语法卡和整片代码快照，角色素材要自备。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261015-huashu-art-motion/fig5-grammar.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">解说语法示范帧（Kurzgesagt 风格）（官方演示图，来源：项目仓库，2026-10-15）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节挺开源：仓库上线没几天，Windows 上的并发加载故障是社区提了两个 PR、外加一份复现报告修好的，作者在 README 里一一点名致谢。</p>
@@ -77,7 +77,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后说个我自己的感受：这仓库最打动我的不是那 36 种画风，而是它认真在教 AI「什么时候不该出片」。让 AI 学会画梵高不稀奇，稀奇的是一群人开始给「好不好看」立规矩。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：电脑上先备好 uv、ffmpeg、Playwright 浏览器内核；再在 Claude Code / Codex 这类会写代码的 AI 里，让它执行 npx skills add alchaincyf/huashu-art-motion。<br>② 最值得先试：让 AI 用仓库自带的命令渲一帧「梵高」（编号 09_postimp），几秒就能看到效果，再决定要不要整段出片。<br>③ 一个提醒：它是「代码动画」，不是「AI 生成视频」——画面能改、能复现，但你得先学会跟 AI 描述镜头；第一次装浏览器内核会慢一会儿。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/alchaincyf/huashu-art-motion（MIT 协议；代码与文档开源，作者花叔）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README 与仓库页面（2026-10-15 实测：3,981 星、430 个 fork，仓库创建于 2026-10-06）；成片、样片均来自项目官方演示。配图：fig1 / fig4 / fig5 为官方演示图，fig2 为官方演示动图，fig3 为自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README 与 GitHub API（2026-10-15 实测：3,981 星、430 个 fork，仓库创建于 2026-10-06）；成片、样片均来自项目官方演示。配图：fig1 / fig4 / fig5 为官方演示图，fig2 为官方演示动图，fig3 为自制卡。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 36 种画风里，你最想先让 AI 试哪一种？评论区聊聊。</p>
   <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 23 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
   <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
