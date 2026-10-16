@@ -49,15 +49,15 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官网首页头顶就一句大话：All your context. Everywhere. All at once.（你所有的上下文，随时随地，全部在场。）</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig2-site.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首页实拍：页首大标语 All your context. Everywhere. All at once.（来源：claude-mem.ai）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">敢这么写，是因为它接住的都是「干活最重」的那批 AI：Claude Code、Codex、Gemini、Copilot、OpenCode……它们平时在命令行里干活，最缺的就是记性。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带说一句：它还是 Vercel 开源计划的一员，也进过开发者圈著名的「Awesome」精选清单。在这个圈子，这相当于同行盖章。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">敢这么写，是因为它接住的都是「干活最重」的那批 AI：Claude Code、Codex、Gemini、Copilot、OpenCode……它们平时在命令行里干活（黑底白字的小窗口，敲命令那种），最缺的就是记性。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带说一句：它进了 Vercel 的开源计划，能被平台挑中，本身也是一种背书。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它怎么记的</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先想象一个画面：AI 边干活，旁边坐着一位笔头不停的「记录员」；claude-mem 就是这位记录员。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它全程不用你动手：在 AI 干活的六个关键节点各挂了一个「钩子」——会话开始、你每说一句、它动手的前和后、会话结束；一到点，后台自动记一笔，你甚至感觉不到它在记。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它全程不用你动手：在 AI 干活的六个关键节点各挂了一个「钩子」——会话开始、你每说一句、它动手的前和后、每次答完、会话结束；一到点，后台自动记一笔，你甚至感觉不到它在记。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">记的也不是流水账。这些记录会被 AI 压成一条条「观察卡」：做了什么决定、修了哪个 bug、发现了什么；比如一条记录不会只写「改了登录页」，还会带上「为什么」。卡片还分门别类，找的时候能按类型、按日期、按项目筛；它们会存进你电脑上的本地数据库，还配了「按意思找」的向量检索。它内置了中文模式，记录可以直接出中文，不用翻译着看。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig5-flow.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：工作流示意（机制说明：项目 README，截至 2026-10-16）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">等你下次开工，它不会把整个档案柜倒给你，而是分三层来：先递一张目录（每条几十个 token），再看时间线，最后只取用得上的详情。这套做法官方叫「渐进式披露」，听着玄，说白了就是「先看目录、再翻书」；这么过滤着看，官方称能省大约 10 倍的 token。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">等你下次开工，它不会把整个档案柜倒给你，而是分三层来：先递一张目录（每条几十到上百个 token；token 是 AI 的计量单位，可以粗略理解成「字数」），再看时间线，最后只取用得上的详情。这套做法官方叫「渐进式披露」，听着玄，说白了就是「先看目录、再翻书」；这么过滤着看，官方称能省大约 10 倍的 token。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">省 token 这件事，用 AI 的都懂：那是省钱，也是省「脑容量」。AI 的上下文窗口就那么大，塞满了，活就干不动了。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">看得见，也管得住</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它自带一个本地网页：你在一边让 AI 干活，另一边一条条记忆实时往上冒；顺手能给每条编上号，以后可以「翻旧账」。别小看这个网页：它让「AI 到底记住了什么」变得可见、可翻、可核对；记忆这种事，能看见，才谈得上信任。（顺带一提：它在 Claude 桌面版里也能用，聊天时照样能翻记忆。）</p>
@@ -69,9 +69,9 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外两句实话：① 官方有托管服务，30 天免费试用；之后可以订阅，也可以用你自己现有的 AI 订阅或密钥接着跑。② 免费开源（Apache-2.0 协议），但「记忆」天然是数据：装之前想清楚，哪些值得记、哪些用标签保护起来。说到底，它替你记的东西越多，你越要偶尔翻翻这本「账」。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig3-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页实拍（截图时约 10.1 万星；来源：GitHub）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">从去年 8 月底上线到现在，一年多时间，版本号已经迭代到 13.x。这一年里，GitHub 上的「AI 记忆」项目扎堆冒头，claude-mem 是这波里最显眼的一个：它把「记住你」从一句口号，做成了装完就能跑的日常。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">从去年 8 月底上线到现在，一年多时间，版本号已经迭代到 13.x。这一年里，GitHub 上的「AI 记忆」项目扎堆冒头，claude-mem 是这波里最显眼的之一：它把「记住你」从一句口号，做成了装完就能跑的日常。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前用 AI，是我们在迁就它的健忘；也许用不了多久，它就该主动开口了：「这事你上次跟我说过。」</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 前提和安装：电脑上得有 Claude Code 这类编码助手；在它的插件市场里搜 claude-mem，或者照官网给一行安装命令。<br>② 最值得先试：干完一次活，关掉、重开一个新会话，问它「上次我们改了什么」。<br>③ 一句提醒：不想用官方托管服务，安装时可以跳过登录，直接接上自己的 AI 订阅或密钥。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：电脑上先有 Claude Code 这类编码助手；在它里面先「添加插件市场」、再装上 claude-mem，或者直接用官方的一行安装命令。<br>② 最值得先试：干完一次活，关掉、重开一个新会话，问它「上次我们改了什么」。<br>③ 一句提醒：不想用官方托管服务，安装时可以跳过登录，直接接上自己的 AI 订阅或密钥。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/thedotmack/claude-mem（Apache-2.0 开源；另有官方托管服务）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README / 官网 / GitHub API（截至 2026-10-16：星标 101,045、上线 13 个月）；配图：官方演示动图 1 张、官网与仓库页截图 2 张、本号自制卡 2 张。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 的「健忘」坑过吗？最气它忘了啥？评论区聊聊。</p>
