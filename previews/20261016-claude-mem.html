@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 24 期 · claude-mem（跨会话记忆）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用 AI 干活的人，大概都遇过这种时刻：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周和它一起改了半天的东西，今天新开一个会话，它开口第一句：请先介绍一下项目背景。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你只好把「前情提要」从头讲一遍。对它来说，每次新会话，都像「第一天上班」：一切从零开始。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说小点，是每次多打几百字；说大点，你跟 AI 攒下来的默契，一开新会话就清零了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今天这个项目，就是冲着这件事来的。它叫 <strong style="font-weight:500;">claude-mem</strong>，星标刚刚突破 10 万；就在上周，它单周涨了 4,000 多颗星，排到 GitHub 全站周榜第 6。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一句话说清它干嘛：你在电脑上让 AI 干活，它在旁边悄悄帮 AI 记笔记；下次开工，用得上的笔记自动翻好、递过去。说白了，像给 AI 配了一本自动在写的「工作日志」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你可能也试过一招：每次收工前，让 AI 自己总结一份「备忘录」，下次开工先贴给它。有用，但全靠你记得做。claude-mem 干的是同一件事，只是把它变成了「不用你惦记」：钩子替你守着，一到点就记。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig4-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：关键数字（数据：GitHub API / 项目 README，截至 2026-10-16）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">口气不小，写在官网上</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官网首页头顶就一句大话：All your context. Everywhere. All at once.（你所有的上下文，随时随地，全部在场。）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig2-site.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首页实拍：页首大标语 All your context. Everywhere. All at once.（来源：claude-mem.ai）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">敢这么写，是因为它接住的都是「干活最重」的那批 AI：Claude Code、Codex、Gemini、Copilot、OpenCode……它们平时在命令行里干活，最缺的就是记性。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带说一句：它还是 Vercel 开源计划的一员，也进过开发者圈著名的「Awesome」精选清单。在这个圈子，这相当于同行盖章。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它怎么记的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先想象一个画面：AI 边干活，旁边坐着一位笔头不停的「记录员」；claude-mem 就是这位记录员。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它全程不用你动手：在 AI 干活的六个关键节点各挂了一个「钩子」——会话开始、你每说一句、它动手的前和后、会话结束；一到点，后台自动记一笔，你甚至感觉不到它在记。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">记的也不是流水账。这些记录会被 AI 压成一条条「观察卡」：做了什么决定、修了哪个 bug、发现了什么；比如一条记录不会只写「改了登录页」，还会带上「为什么」。卡片还分门别类，找的时候能按类型、按日期、按项目筛；它们会存进你电脑上的本地数据库，还配了「按意思找」的向量检索。它内置了中文模式，记录可以直接出中文，不用翻译着看。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig5-flow.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：工作流示意（机制说明：项目 README，截至 2026-10-16）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">等你下次开工，它不会把整个档案柜倒给你，而是分三层来：先递一张目录（每条几十个 token），再看时间线，最后只取用得上的详情。这套做法官方叫「渐进式披露」，听着玄，说白了就是「先看目录、再翻书」；这么过滤着看，官方称能省大约 10 倍的 token。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">省 token 这件事，用 AI 的都懂：那是省钱，也是省「脑容量」。AI 的上下文窗口就那么大，塞满了，活就干不动了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">看得见，也管得住</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它自带一个本地网页：你在一边让 AI 干活，另一边一条条记忆实时往上冒；顺手能给每条编上号，以后可以「翻旧账」。别小看这个网页：它让「AI 到底记住了什么」变得可见、可翻、可核对；记忆这种事，能看见，才谈得上信任。（顺带一提：它在 Claude 桌面版里也能用，聊天时照样能翻记忆。）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig1-demo.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示动图：左边 AI 在终端里干活，右边「工作日志」一条条往外冒（来源：项目 README）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">隐私上也留了开关：把内容用 <private> 标签包起来，它就不记；数据默认存在你自己电脑上，想同步到云端也只是可选项。反正原则就一条：主动权在你手里。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">门槛，先坦白</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它服务的主要是「在命令行里用 AI 干活」的人：你要是平时只和网页版 AI 聊天，暂时还用不上。不过它代表的思路，也许很快就轮到所有人用上。毕竟，让 AI「记得住」，是眼下整个行业都在卷的事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外两句实话：① 官方有托管服务，30 天免费试用；之后可以订阅，也可以用你自己现有的 AI 订阅或密钥接着跑。② 免费开源（Apache-2.0 协议），但「记忆」天然是数据：装之前想清楚，哪些值得记、哪些用标签保护起来。说到底，它替你记的东西越多，你越要偶尔翻翻这本「账」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261016-claude-mem/fig3-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页实拍（截图时约 10.1 万星；来源：GitHub）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">从去年 8 月底上线到现在，一年多时间，版本号已经迭代到 13.x。这一年里，GitHub 上的「AI 记忆」项目扎堆冒头，claude-mem 是这波里最显眼的一个：它把「记住你」从一句口号，做成了装完就能跑的日常。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前用 AI，是我们在迁就它的健忘；也许用不了多久，它就该主动开口了：「这事你上次跟我说过。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 前提和安装：电脑上得有 Claude Code 这类编码助手；在它的插件市场里搜 claude-mem，或者照官网给一行安装命令。<br>② 最值得先试：干完一次活，关掉、重开一个新会话，问它「上次我们改了什么」。<br>③ 一句提醒：不想用官方托管服务，安装时可以跳过登录，直接接上自己的 AI 订阅或密钥。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/thedotmack/claude-mem（Apache-2.0 开源；另有官方托管服务）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README / 官网 / GitHub API（截至 2026-10-16：星标 101,045、上线 13 个月）；配图：官方演示动图 1 张、官网与仓库页截图 2 张、本号自制卡 2 张。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 的「健忘」坑过吗？最气它忘了啥？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 24 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
