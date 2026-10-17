@@ -48,8 +48,8 @@
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不是「画图 AI」</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你可能想说：AI 画图不早就有了？这俩不是一回事。市面上那些 AI 画图，本质是像素拼出来的「照片」：好看，但不够用，尺寸是猜的、边缘是糊的。工厂和 3D 打印机认的是另一种东西：按毫米精确算出来的几何。一个是看着像，一个是做得出来。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它出的就是后一种：你说一句话、或者甩一张参考图给它，拿到的是一批「真文件」，还能在自带的查看器里转着看。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261017-text-to-cad/fig2-formats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：两种「图」差在哪；右边一列是它常出的文件类型（依据：项目官方 README）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261017-text-to-cad/fig2-formats-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：两种「图」差在哪；下方另列它常出的文件类型（依据：项目官方 README）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">具体能干什么，举几个实际场景：</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">想要零件：它出 3D 模型文件，其中 STEP 是工程界的「通用格式」，工厂、打印店都认。想要图纸：它出正式工程图 PDF，多视图、尺寸、孔位标注、标题栏一应俱全，拿去沟通、存档都行。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">担心「想得美、做不出」：它带一套可制造性检查，钣金、CNC 加工、注塑挨个过，哪里太薄、哪里卡刀，每条结论都拿实测数据说话、附上依据的规则。要打印：切片成打印机能读的文件，还能直接发到拓竹（Bambu）打印机。</p>
@@ -66,14 +66,14 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">整个过程里最触动我的，其实是这个顺序的变化：以前是人学软件、软件再伺候人；现在是人说需求、AI 去摆弄软件。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">丑话说在前头</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">① 它服务的是「在电脑上用 AI 助手干活」的人。你要是平时只和网页版 AI 聊天，暂时还够不着它；但「说句话→出文件」这套玩法，大概率很快轮到所有人。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">② Windows 11 用户会撞上一个坑：系统里有个默认开着的安全开关（叫「智能应用控制」），会拦住它需要的一个未签名组件，装完可能直接报错。两个解法：关掉这个开关（警告：关掉后想再打开，得重装系统，务必想清楚），或者用 Windows 自带的 Linux 子系统（WSL）来跑。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">② Windows 11 用户会撞上一个坑：系统里有个叫「智能应用控制」的安全开关（新装的系统默认开着），会拦住它需要的一个未签名组件，装完可能直接报错。两个解法：关掉这个开关（警告：关掉后想再打开，得重装系统，务必想清楚），或者用 Windows 自带的 Linux 子系统（WSL）来跑。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">③ 免费开源，但它干活烧的是你自己 AI 助手的额度；另外它默认会收集使用统计，一条命令就能关，在意隐私的话装完顺手关掉。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后交代个背景：它是今年 4 月下旬上线的，更新很勤快，最近一次提交就在今天早上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后交代个背景：它是今年 4 月下旬上线的，更新很勤快，最近一次提交就在发稿当天（10 月 17 日）早上。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261017-text-to-cad/fig5-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页实拍（截图时约 2.1 万星；来源：GitHub）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">仓库页那张截图里能看到 2.1 万颗星。数字背后是个挺明确的方向：AI 正在一个个钻进「专业软件」的院子——从写代码，到做表格，再到出工程图。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前，「有个想法」和「做出实物」之间隔着一条学习曲线；现在，这条曲线正在被压成一句话的距离。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：先准备一个支持插件的编码 AI 助手（Claude Code / Codex / Cursor 等）；把一句「Install text-to-cad from github.com/earthtojake/text-to-cad」发给它，它会自己完成安装。<br>② 最值得先试：让它出个最朴素的小零件（比如一个 L 型角码），再顺手让它出一张工程图，两步走完，你就明白它和「AI 画图」的区别。<br>③ 一句提醒：首次使用要联网下载运行组件；Windows 11 用户先看正文里的「智能应用控制」提醒，免得卡在报错上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么装：先准备一个支持插件的编码 AI 助手（Claude Code / Codex / Cursor 等）；把一句「Install text-to-cad from https://github.com/earthtojake/text-to-cad」发给它，它会自己完成安装。<br>② 最值得先试：让它出个最朴素的小零件（比如一个 L 型角码），再顺手让它出一张工程图，两步走完，你就明白它和「AI 画图」的区别。<br>③ 一句提醒：首次使用要联网下载运行组件；Windows 11 用户先看正文里的「智能应用控制」提醒，免得卡在报错上。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/earthtojake/text-to-cad（MIT 开源；官网 texttocad.dev）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README / 官网 / GitHub API（截至 2026-10-17：星标 20,986、2026 年 4 月下旬上线）；配图：官网与仓库页实拍 2 张、本机实测渲染 1 张、本号自制卡 2 张。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你脑子里有没有一个「想做但一直没做成」的小东西？评论区聊聊。</p>
