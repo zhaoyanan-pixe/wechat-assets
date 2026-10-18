@@ -36,55 +36,56 @@
   ============================================================ -->
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两周前，我写过一句：Google 把自家最强的模型「藏起来」了，只给少数网络安全机构试用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两周前，我写过一句：Google 把自家最新的模型「藏起来」了，只给少数网络安全机构试用。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周，它放出来了。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而且不止 Google。Meta 把旗舰模型开源，塞进了两台 Mac；ChatGPT 学会了看你开着的网页；亚马逊把「一直听你说话」的小硬件，打到了 75 美元；连 Epic 的游戏启动器，都是 AI 写的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而且不止 Google。Meta 把自家最强的开放权重模型放出来，塞进了两台 Mac；ChatGPT 学会了看你开着的网页；亚马逊把「一直听你说话」的小硬件，打到了 75 美元；连 Epic 的游戏启动器，都是 AI 写的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事串起来，就一句话：AI 正从对话框里爬出来，往你的电脑、浏览器和耳朵里钻。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig1-overview.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周 5 件大事速览（自制卡；数据截至 2026-10-16，来源见文末）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① Google 把「藏起来」的模型放出来了</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 13 日，Gemini 4 Argon 全球开放。开发者走 API，普通人能在 Gemini App 和搜索的 AI Mode 里用到，得是 Ultra 或 Pro 订阅。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 13 日，Gemini 4 Argon 全球开放。开发者走 API（程序接口），普通人能在 Gemini App 和搜索的 AI Mode 里用到，得是 Ultra 或 Pro 订阅。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最唬人的是「内存」：一次能处理 100 万 token（AI 的长度单位），官方说这是行业领先的「输入输出合并」上限。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方还给了几个数：登顶 Vals Index（按金融、编程、法律、税务这些「真饭碗」打分的榜）；尝鲜价每百万输入 2 美元、输出 10 美元，缓存输入再打 95% 折；机器人版在物理推理基准 ERQA 拿到 87%，官方称超过所有其他前沿模型。演示里，它看着一段投沙包视频，就学会了指挥机器狗。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方还给了几个数：登顶 Vals Index（按金融、编程、法律、税务这些「真饭碗」打分的榜）；尝鲜价每百万输入 2 美元、输出 10 美元，缓存输入再省 95%（只按 5% 计价）；机器人版在物理推理基准 ERQA 拿到 87%，官方称超过所有其他前沿模型。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">演示里，它看着一段人类玩玉米洞（投沙包）的视频，就学会给 Apptronik 的 Apollo 人形机器人写控制代码，实机连投七中。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最逗的是 Google 自曝式炫耀：Chrome 里有个约 600 万行的历史遗留目录，藏在 4000 万行的 Chromium 代码库里，被 Argon 拆开重构了。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：两周前「你还用不上」，两周后「全球开放」。模型发不发、什么时候发，本身就是一场戏。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig2-google.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google 官方博客实拍：Gemini 4 Argon 发布页（来源：blog.google，2026-10-13）</p>
-  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② Meta 把旗舰开源了，两台 Mac 就能在家跑</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，Meta 放出 Muse Spark Open 的权重，官方口径是「美国迄今最强开源模型」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">总参数 8160 亿，每次实际激活 420 亿。怎么理解？像一栋大楼，不是每个房间都开灯，用哪间开哪间。上下文 100 万 token，原生多模态。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② Meta 把最强开放权重模型放出来了，两台 Mac 就能在家跑</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，Meta 放出 Muse Spark Open 的模型文件（业内叫「权重」，可以下载到自己电脑上跑），官方口径是「美国迄今最强开放权重模型」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">总参数 8160 亿，每次实际激活 420 亿。怎么理解？像一栋大楼，不是每个房间都开灯，用哪间开哪间。上下文 100 万 token，原生多模态（能直接看图文、视频）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最有画面感的是「能在桌面跑」：两台苹果 Mac Studio（M5 Ultra），靠 MLX 框架就能跑起整个模型。代价是内存门槛约 1TB，两台顶配的价格，自己算。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还罕见地拉来苹果站台：扎克伯格发帖，苹果 CEO John Ternus 回帖捧场。两家老对手，突然像亲戚一样走动。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">提醒两句：权重免费下载，但许可是自定义的，部分商用受限；「最强」是官方自测口径。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">提醒两句：模型文件免费下载，但许可是自定义的，部分商用受限；「最强」是官方自测口径，训练代码和数据也没公开。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：上周我们刚聊 Meta 靠闭源旗舰杀回第一梯队，这周它把开放版直接摊开给人下载。开源向来是 Meta 的老打法：正面打不过生态，就把桌子掀了请大家一起吃。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig3-meta.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Meta 官方博客实拍：Muse Spark Open 发布页（来源：research.meta.ai，2026-10-15）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ ChatGPT 开始看你开着的网页</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，The Verge 报道：ChatGPT 的 Chrome 扩展升级，在对话里 @Chrome，它就能读你当前打开的标签页。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方示例都很日常：把几个比价页面整理成对照表（含价格、要点、来源链接）；照着报名须知填表，「提交前停下」；对照合同页起草邮件；把看牙预约加进日历。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更狠的是 ChatGPT Work：能直接替你操作标签页，填表、发消息、下载文件。跟 Google Gemini 的 auto browse 正面对上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方示例都很日常：把几个比价页面整理成对照表（含价格、要点、来源链接）；照着报名须知填表，「提交前停下」；对比几份装修报价，给合适的那家起草邮件；把看牙预约加进日历。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有更进一步的：ChatGPT Work 能直接替你操作标签页，填表、发消息、下载文件。跟 Google Gemini 的 auto browse 正面对上。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">隐私这关得自己把：等于让 AI 看你开的每一个页面。敏感页面，还是关掉再说。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：OpenAI 自家的浏览器 Atlas 已经停了，能力搬回 ChatGPT。不做浏览器，钻进你的浏览器，这步棋挺鸡贼。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig4-verge.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">The Verge 报道实拍：ChatGPT 可读取 Chrome 标签页（来源：theverge.com，2026-10-15）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 亚马逊卖起了 75 美元的「小耳朵」</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Bee（亚马逊 2025 年收购）发了两款新品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，亚马逊旗下的 Bee 发了两款新品。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Bee Frontier，74.99 美元，腕带、夹扣两用，7 天续航，IP67 防水。Bee Eclipse，99.99 美元，卡片大小，磁吸在手机背面，21 天续航，即将开售。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">核心都是双麦克风「一直听」：把对话变成摘要、待办和「记忆」，能回翻几天前聊过什么。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">隐私牌打得很响：官方说音频实时处理、不存储、处理完即删；每次录音要征得在场者同意。免费档保留 14 天记忆，Pro 档 11.99 美元一个月。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但「无人能访问」是厂商承诺，没见第三方认证。饭桌上掏出这个，先想想对面的人介不介意。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从 159 美元的 Plaud、129 美元的 Pocket，到 75 美元的 Bee，「AI 记忆外挂」开始卷价格。等它卷到两百块人民币，才是真正进中国家庭的时候。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从 Plaud、Pocket 这类「AI 记忆外挂」，到 75 美元的 Bee，价格开始往下卷。等它卷到两百块人民币，才是真正进中国家庭的时候。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周关键数字（自制卡；来源：Google / Meta / Amazon / Ars Technica，截至 2026-10-16）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ Epic：编程太难，所以我们让 AI 写了</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Epic 上线新版游戏启动器「Preview」，官宣文案直接摆烂：「编程太难了。所以，我们干脆不编了，用 vibe coding 让 AI 写了个更快、更顺滑的新版。」</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Ars 实测：冷启动到商店页，确实比 Steam 快几秒；从托盘恢复只快 0.06 秒，快到无感，测试者自己都这么说。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 14 日，Epic 上线新版游戏启动器「Preview」，官宣文案直接摆烂：「编程太难了。所以，我们干脆不编了，用 vibe coding 让 AI 写了个更快、更顺滑的新版。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Ars 实测：冷启动到商店页，确实比 Steam 快几秒；Epic 还称从托盘恢复快 0.06 秒，Ars 实测后说，这个差距小到无感。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">做法挺实在：小团队借 AI 从零重写，一次覆盖 Windows 和 Mac，Linux 版在路上。官方也坦白：会有 bug，功能还不全，社交功能暂时缺席。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是「AI 写代码靠不靠谱」最真实的一次公开实验：不是 demo，是无数玩家每天都要点开的启动器。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：前几周我们聊 AI 写代码翻车，这周大公司把成品直接摆上货架。行不行，用户用脚投票。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">五件事看下来，线头很清楚：<strong style="font-weight:500;">模型在解禁，能力在往本地搬，入口从聊天框，挪到你眼前的网页、耳朵上的夹子、每天点的软件</strong>。<br>AI 不再等你「打开它」。它在旁边，等着「用上你」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">五件事看下来，线索很清楚：<strong style="font-weight:500;">模型在解禁，能力在往本地搬，入口从聊天框，挪到你眼前的网页、耳朵上的夹子、每天点的软件</strong>。<br>AI 不再等你「打开它」。它在旁边，等着「用上你」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-10-16）：① Google 官方博客、DeepMind 博客；② Meta AI Research 博客、TechCrunch、The Verge；③ The Verge；④ Amazon 官方新闻室、CNBC、TechCrunch；⑤ Ars Technica、PC Gamer。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-10-16）：① Google 官方博客《Gemini 4 Argon: Built to solve your hardest problems》、DeepMind 博客；② Meta AI Research《Introducing Muse Spark Open, The Most Capable US Open-Weight Model to Date》、TechCrunch、The Verge；③ The Verge《ChatGPT can peek at your Chrome tabs now》；④ Amazon 官方新闻室《Bee Frontier and Bee Eclipse》、CNBC、TechCrunch；⑤ Ars Technica《Epic says its new vibe-coded Epic Games Launcher is faster than Steam》、PC Gamer。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">配图：fig2 为 Google 官方博客实拍，fig3 为 Meta 官方博客实拍，fig4 为 The Verge 报道实拍，fig1 / fig5 为自制卡。</p>
   <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 26 期·外网速递篇：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
   <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
