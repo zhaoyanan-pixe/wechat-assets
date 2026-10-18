@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 26 期 · 外网速递（5 件大事）· 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两周前，我写过一句：Google 把自家最强的模型「藏起来」了，只给少数网络安全机构试用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周，它放出来了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而且不止 Google。Meta 把旗舰模型开源，塞进了两台 Mac；ChatGPT 学会了看你开着的网页；亚马逊把「一直听你说话」的小硬件，打到了 75 美元；连 Epic 的游戏启动器，都是 AI 写的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事串起来，就一句话：AI 正从对话框里爬出来，往你的电脑、浏览器和耳朵里钻。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig1-overview.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周 5 件大事速览（自制卡；数据截至 2026-10-16，来源见文末）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① Google 把「藏起来」的模型放出来了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 13 日，Gemini 4 Argon 全球开放。开发者走 API，普通人能在 Gemini App 和搜索的 AI Mode 里用到，得是 Ultra 或 Pro 订阅。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最唬人的是「内存」：一次能处理 100 万 token（AI 的长度单位），上一代是 6.4 万。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方还给了几个数：登顶 Vals Index（按金融、编程、法律、税务这些「真饭碗」打分的榜）；尝鲜价每百万输入 2 美元、输出 10 美元，缓存输入再打 95% 折；机器人版在物理推理基准 ERQA 拿到 87%，官方称超过所有其他前沿模型。演示里，它看着一段投沙包视频，就学会了指挥机器狗。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最逗的是 Google 自曝式炫耀：Chrome 里有个约 600 万行的历史遗留目录，藏在 4000 万行的 Chromium 代码库里，被 Argon 拆开重构了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：两周前「你还用不上」，两周后「全球开放」。模型发不发、什么时候发，本身就是一场戏。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig2-google.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google 官方博客实拍：Gemini 4 Argon 发布页（来源：blog.google，2026-10-13）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② Meta 把旗舰开源了，两台 Mac 就能在家跑</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，Meta 放出 Muse Spark Open 的权重，官方口径是「美国迄今最强开源模型」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">总参数 8160 亿，每次实际激活 420 亿。怎么理解？像一栋大楼，不是每个房间都开灯，用哪间开哪间。上下文 100 万 token，原生多模态。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最有画面感的是「能在桌面跑」：两台苹果 Mac Studio（M5 Ultra），靠 MLX 框架就能跑起整个模型。代价是内存门槛约 1TB，两台顶配的价格，自己算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还罕见地拉来苹果站台：扎克伯格发帖，苹果 CEO John Ternus 回帖捧场。两家老对手，突然像亲戚一样走动。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">提醒两句：权重免费下载，但许可是自定义的，部分商用受限；「最强」是官方自测口径。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：上周我们刚聊 Meta 靠闭源旗舰杀回第一梯队，这周它把开放版直接摊开给人下载。开源向来是 Meta 的老打法：正面打不过生态，就把桌子掀了请大家一起吃。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig3-meta.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Meta 官方博客实拍：Muse Spark Open 发布页（来源：research.meta.ai，2026-10-15）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ ChatGPT 开始看你开着的网页</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 15 日，The Verge 报道：ChatGPT 的 Chrome 扩展升级，在对话里 @Chrome，它就能读你当前打开的标签页。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方示例都很日常：把几个比价页面整理成对照表（含价格、要点、来源链接）；照着报名须知填表，「提交前停下」；对照合同页起草邮件；把看牙预约加进日历。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更狠的是 ChatGPT Work：能直接替你操作标签页，填表、发消息、下载文件。跟 Google Gemini 的 auto browse 正面对上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">隐私这关得自己把：等于让 AI 看你开的每一个页面。敏感页面，还是关掉再说。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：OpenAI 自家的浏览器 Atlas 今年 8 月停了，能力搬回 ChatGPT。不做浏览器，钻进你的浏览器，这步棋挺鸡贼。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig4-verge.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">The Verge 报道实拍：ChatGPT 可读取 Chrome 标签页（来源：theverge.com，2026-10-15）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 亚马逊卖起了 75 美元的「小耳朵」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Bee（亚马逊 2025 年收购）发了两款新品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Bee Frontier，74.99 美元，腕带、夹扣两用，7 天续航，IP67 防水。Bee Eclipse，99.99 美元，卡片大小，磁吸在手机背面，21 天续航，即将开售。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">核心都是双麦克风「一直听」：把对话变成摘要、待办和「记忆」，能回翻几天前聊过什么。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">隐私牌打得很响：官方说音频实时处理、不存储、处理完即删；每次录音要征得在场者同意。免费档保留 14 天记忆，Pro 档 11.99 美元一个月。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但「无人能访问」是厂商承诺，没见第三方认证。饭桌上掏出这个，先想想对面的人介不介意。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：从 159 美元的 Plaud、129 美元的 Pocket，到 75 美元的 Bee，「AI 记忆外挂」开始卷价格。等它卷到两百块人民币，才是真正进中国家庭的时候。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261018-ai-digest/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本周关键数字（自制卡；来源：Google / Meta / Amazon / Ars Technica，截至 2026-10-16）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ Epic：编程太难，所以我们让 AI 写了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Epic 上线新版游戏启动器「Preview」，官宣文案直接摆烂：「编程太难了。所以，我们干脆不编了，用 vibe coding 让 AI 写了个更快、更顺滑的新版。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Ars 实测：冷启动到商店页，确实比 Steam 快几秒；从托盘恢复只快 0.06 秒，快到无感，测试者自己都这么说。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">做法挺实在：小团队借 AI 从零重写，一次覆盖 Windows 和 Mac，Linux 版在路上。官方也坦白：会有 bug，功能还不全，社交功能暂时缺席。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是「AI 写代码靠不靠谱」最真实的一次公开实验：不是 demo，是无数玩家每天都要点开的启动器。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：前几周我们聊 AI 写代码翻车，这周大公司把成品直接摆上货架。行不行，用户用脚投票。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">五件事看下来，线头很清楚：<strong style="font-weight:500;">模型在解禁，能力在往本地搬，入口从聊天框，挪到你眼前的网页、耳朵上的夹子、每天点的软件</strong>。<br>AI 不再等你「打开它」。它在旁边，等着「用上你」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-10-16）：① Google 官方博客、DeepMind 博客；② Meta AI Research 博客、TechCrunch、The Verge；③ The Verge；④ Amazon 官方新闻室、CNBC、TechCrunch；⑤ Ars Technica、PC Gamer。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">配图：fig2 为 Google 官方博客实拍，fig3 为 Meta 官方博客实拍，fig4 为 The Verge 报道实拍，fig1 / fig5 为自制卡。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 26 期·外网速递篇：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
