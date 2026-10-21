@@ -43,9 +43,9 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他给 Claude Code 输了电视型号，让 AI 顺着家里的 Wi-Fi 连上去，关掉 25 个小米预装包，又写了套新桌面装进去。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">弄完，那台电视的开机画面像 Apple TV：纯黑底，底部四个常用应用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">弄完，那台电视的首页像 Apple TV：纯黑底，底部四个常用应用。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他把这段发在 X 上，仓库改名 CleanYourTV。四天，<strong style="font-weight:500;">11,636 星</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他把这段发在 X 上，仓库改名 CleanYourTV。四天，<strong style="font-weight:500;">1.16 万星</strong>。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261021-cleanyourtv/fig1-before-after.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
@@ -69,7 +69,7 @@
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么这周突然火</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目 10 月 17 号才建，四天涨到 1.16 万星，fork 1,325。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目 10 月 17 号才建，现在 11,675 星（截至 10 月 21 日早上 8 点），fork 1,326。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但火的不是它一个。这几天 GitHub 冒出一串同类：free-my-tv、dumbtv、tv-detox，做的都是同一件事，给安卓电视换掉那个塞满广告的首页，而且都是一周内建的新仓库。</p>
 
@@ -83,15 +83,15 @@
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261021-cleanyourtv/fig5-trend.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四个同类项目，一周内先后开源（数据：GitHub 仓库数据，2026-10-21 08:00；本号制图）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本项目与三个同类，一周内先后开源（数据：GitHub 仓库数据，2026-10-21 08:00；本号制图）</p>
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">说点不好听的</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，它只认 Android TV 和 Google TV。三星的 Tizen、LG 的 webOS 不行；Fire TV 只能清广告，换不了首页。桌面本身还要求 Android 8.0 以上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，它只认 Android TV 和 Google TV。三星的 Tizen、LG 的 webOS 跑不了它的桌面（LG 那边有社区移植，登记在项目的社区作品页）；Fire TV 只能用清单手动清理，仓库的 AI 提示词不支持它，首页也换不了。桌面本身还要求 Android 8.0 以上。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二，国行电视要格外小心。README 写得很直白：有些中国大陆版电视会拒绝安装第三方桌面，已记录的 TCL 机型只是例子。不能按品牌猜，得按型号、地区、固件去对清单。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，停用系统组件是真会出事。Google TV 的设置向导有抢首页的毛病，原桌面一停用，可能让电视陷入崩溃循环；有的清单连系统更新服务都停了，想升级固件得先恢复。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，停用系统组件是真会出事。Google TV 的设置向导有抢首页的毛病，原桌面一停用，可能让电视陷入崩溃循环；更阴的是，向导一停用，可能把当初它存下的 Wi-Fi 一起删掉（脚本会跳过这一步，手动做的人容易中招）。有的清单连系统更新服务都停了，想升级固件得先恢复。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第四，ADB 的 5555 端口是明文连接。弄完一定关掉调试、撤销授权，别把这个端口暴露到公网。</p>
 
@@ -109,15 +109,15 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话，比任何「一键搞定」都更让我信它。</p>
 
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261021-cleanyourtv/fig3-card.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261021-cleanyourtv/fig3-card-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四个数字看这个项目（数据：GitHub API、项目 README、examples/ 目录；本号制图）</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么开始：电视「设置 → 关于 → 版本号」连按七次，开开发者选项里的 USB 调试；电脑装 Claude Code / Codex / Gemini CLI，把仓库的 PROMPT.md 交给它，填上型号。<br>② 最值得先试：先只做清理、别急着换首页。确认常用 App、HDMI 输入、语音和投屏都正常，再决定要不要装新桌面。<br>③ 一个提醒：每一步确认前，先让它把恢复记录存好；想反悔就用 tools/restore.sh 加同一份清单，记录在电脑的 ~/.cleanyourtv/。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么开始：电视「设置 → 关于 → 版本号」连按七次，开开发者选项里的 USB 调试；如果菜单里还有「网络调试 / ADB 调试」，一并打开。电脑装 Claude Code / Codex / Gemini CLI，把仓库的 PROMPT.md 交给它，填上型号。<br>② 最值得先试：先只做清理、别急着换首页。确认常用 App、HDMI 输入、语音和投屏都正常，再决定要不要装新桌面。<br>③ 一个提醒：每一步确认前，先让它把恢复记录存好；想反悔就用 tools/restore.sh 加同一份清单，记录在电脑的 ~/.cleanyourtv/。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/Gathin23/cleanyourtv（MIT 协议；官网 cleanyour.tv）</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-10-21 08:00：11,636 星、1,325 fork；仓库创建于 2026-10-17）、项目 README 与中文说明、examples/ 机型目录；配图：官方截图 3 张、本号自制卡 2 张。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-10-21 08:14：11,675 星、1,326 fork；仓库创建于 2026-10-17）、项目 README 与中文说明、examples/ 机型目录；配图：官方截图 3 张、本号自制卡 2 张。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你家电视的开机广告能关吗？评论区说说机型和办法。</p>
 
