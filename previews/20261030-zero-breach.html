@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机发烫、聊完就推广告，是巧合吗？5 天 3,500 多星的免费工具：离线查一遍间谍软件痕迹【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周有个朋友问我：我的手机，是不是被人盯上了？</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我说这问题我答不了。普通人手里没有工具，也请不起那一单取证。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在有个免费的：开源，跑在自己电脑上，扫描时一次都不联网。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 Zero Breach Toolkit。10 月 25 号建仓，今天早上八点，<strong style="font-weight:500;">3,597 星</strong>。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig1-repo.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页：Apache-2.0 协议，55 次提交，14 个版本，4 天里涨到 3,597 星（来源：GitHub 仓库页，2026-10-30 08:07 截图）</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不查「你有没有被黑」</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它只做一件事：把公开的、有出处的间谍软件指标，跟你设备里的记录对一遍。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「指标」是行话，说白了就是一组地址：域名、IP、文件指纹。国际特赦组织安全实验室、Citizen Lab、MVT 项目这些机构公布过这类地址，谁连过、谁装过，能对上号。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对上，不等于你被入侵；对不上，也不等于你安全。这句话是项目自己写在首页的，我原样转给你。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它翻的地方比我想的细</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我在自己的 Windows 电脑上跑了一轮，看它一项项报进度：</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二十多款浏览器的历史、Cookie、连接记录、书签、下载和缓存，连 Tor 浏览器也算在内；</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每个下载文件上「来自哪个网址」的印记；</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Win+R 运行框里，被假「人机验证」页面骗着粘进去的命令；</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">杀毒软件被关掉过的记录、被加进白名单的目录；</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">PowerShell 日志、开机启动项、DNS 缓存、跑过的程序痕迹。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">全程不要管理员权限，也不用装任何额外的包。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig2-devices.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四类设备各查什么（来源：项目 README「What it checks」；本号制图）</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三个我没料到的设计</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，扫描真的不联网。README 说，Python 的网络调用被拦掉、重定向被拒绝；唯一联网的一步是「更新指标库」，跑不跑你说了算。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二，只读。不改系统设置，不动你的文件，报告存哪儿由你定。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，它主动揭自己的短。每份报告结尾都有一栏「什么没查到」，开头就写：查干净不等于安全。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我见过太多「一键检测」的说法，卖点全是「你现在安全了」。这个反过来。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我自己那一轮</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今天早上八点零三，Windows 10，标准检查，8 分 37 秒跑完。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">翻了 21,731 条浏览器记录（110 个浏览器数据库），又给 6,067 个文件做了指纹比对，读了 8.4 GB。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结果：一条公开指标都没对上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但它同时列了 51 项「没能查」：Chrome 开着，Cookies 库锁住了；Prefetch 和 Amcache 要管理员权限；Windows 默认不记 DNS 历史，那一段是空的。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺手还翻出一件事：10 月 22 号，Defender 拦下并隔离过 3 个东西，名字和动作都在报告里。它不替你判断好坏，只把事摆出来。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig4-myrun.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实跑的数据（v0.1.13，标准检查；数据：本机 report.txt，本号制图）</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么这周突然有人看</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五天，14 个版本，383 个 fork。作者是匿名的，署名 ArchiveGenocide。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">时间点也对得上：10 月 15 日，Citizen Lab 公布了一份研究，讲定向广告怎么被做成零点击木马的投放通道。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也就是说，「广告为什么这么准」这件事，有时候答案比推荐算法复杂。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个工具带的，正是那批研究者公开的指标。作者把 Citizen Lab 那批规则单独收进一个文件夹，每一条都标了出处。</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">说点不好听的</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它只找「已经公开」的指标。专门为你一个人定制的木马，它看不见。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">痕迹会过期。这类记录常常几周就没了，早被清理过的，查不出来。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">安卓要先用另一款工具连 USB 采集一份；iPhone 只能查电脑上的本地备份。都不算完整取证。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">指标库要联网更新才有全量。我数了仓库自带的两个指标文件，一共 428 条；README 说更新后约 12,400 条、来自 29 个来源。这轮我没更新，所以只用了 428 条，这点得说清楚。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不给签名的 exe。作者匿名，拿不到代码签名证书，于是换了个办法自证：公布单文件的 SHA-256 和签名指纹，从源码重建应该得到同一个文件。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条最要紧：报告里有你的用户名、路径、浏览记录、短信片段。别往群里发。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig5-release.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">每个版本都附校验值和签名指纹（来源：GitHub 发布页 v0.1.13 截图，2026-10-30）</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig3-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四个数字看它（数据：GitHub API 2026-10-30 08:02、项目 README、iocs/ 目录清点；本号制图）</p>
+
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我的判断</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">什么人值得跑一遍：做记者、律师、社会组织的人；被精准诈骗过的人；工作里碰敏感资料的人；还有单纯想知道自己电脑干不干净的人。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">当体检，可以。当护身符，不行。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">真担心自己被盯上，先找专业帮助比先跑工具更对：Access Now 的数字安全热线免费、7×24 小时，国际特赦组织安全实验室也收求助。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">普通人的防线其实很朴素：少装来路不明的 App，别关系统更新，权限该拒就拒。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">工具能给的，是在「疑心」和「动手」之间，多一条你自己能走的路。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 怎么开始：先装 Python 3.8 以上（安装时勾上「Add python.exe to PATH」），下载仓库 ZIP 解压，双击 scan 文件夹里的 run-scan.cmd。<br>② 最值得先试：先跑「更新指标库」再跑标准检查，不然只有自带的 428 条；跑完先只看「什么没查到」那一栏。<br>③ 一个提醒：跑之前关掉浏览器和聊天软件；报告别放同步盘；查手机的话，完事记得把 USB 调试关掉。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/interplains/Zero-Breach-Toolkit（Apache-2.0 协议，作者 ArchiveGenocide；0.1.13 版单文件与校验值见仓库 Release）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-10-30 08:02：3,597 星、383 fork、14 个发布版本，仓库创建于 2026-10-25）、项目 README 与 iocs/ 指标文件清点、本机实跑报告（2026-10-30 08:03，Windows 10，v0.1.13）、Citizen Lab 2026-10-15 研究报告；配图：仓库页与发布页真实截图 2 张、本号自制卡 3 张（其中 1 张为本机实测数据）。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你电脑里有没有过说不清来历的东西？评论区聊聊。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 31 期：每期挑一个 GitHub 项目或一组外网动态，用大白话讲给你听。）</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
