@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>手机发烫、聊完就推广告，是巧合吗？5 天 3,500 多星的免费工具：离线查一遍间谍软件痕迹【附上手小抄】 · 预览页</title>
+<title>手机发烫、聊完就推广告，是巧合吗？4 天多涨到 3,600 多星的免费工具，8 分钟帮你查一遍【附上手小抄】 · 预览页</title>
 <style>
   /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
   body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
@@ -43,11 +43,13 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在有个免费的：开源，跑在自己电脑上，扫描时一次都不联网。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 Zero Breach Toolkit。10 月 25 号建仓，今天早上八点，<strong style="font-weight:500;">3,597 星</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说清楚：发烫、耗电这些它查不出来。它能查的，是设备里有没有已知间谍软件的痕迹。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 Zero Breach Toolkit。10 月 25 号建仓，四天多，<strong style="font-weight:500;">3,600 多星</strong>。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig1-repo.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页：Apache-2.0 协议，55 次提交，14 个版本，4 天里涨到 3,597 星（来源：GitHub 仓库页，2026-10-30 08:07 截图）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页：Apache-2.0 协议，55 次提交，14 个版本，4 天多涨到 3,600 星（来源：GitHub 仓库页，2026-10-30 08:07 截图）</p>
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不查「你有没有被黑」</p>
 
@@ -61,7 +63,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我在自己的 Windows 电脑上跑了一轮，看它一项项报进度：</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二十多款浏览器的历史、Cookie、连接记录、书签、下载和缓存，连 Tor 浏览器也算在内；</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">十几款浏览器的历史、Cookie、连接记录、书签、下载和缓存，连 Tor 浏览器也算在内；</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每个下载文件上「来自哪个网址」的印记；</p>
 
@@ -71,7 +73,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">PowerShell 日志、开机启动项、DNS 缓存、跑过的程序痕迹。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">全程不要管理员权限，也不用装任何额外的包。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">跑起来不需要管理员权限，也不用装额外的包；但 Prefetch、Amcache 这类项要管理员再跑一遍才查得到，查不到的部分会进「没能查」清单。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261030-zero-breach/fig2-devices.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
@@ -79,7 +81,7 @@
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三个我没料到的设计</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，扫描真的不联网。README 说，Python 的网络调用被拦掉、重定向被拒绝；唯一联网的一步是「更新指标库」，跑不跑你说了算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，扫描本身不联网。README 说，Python 的网络调用被拦掉、重定向被拒绝。会联网的只有两处：更新指标库，和给手机做采集时下载官方采集器，都需要你自己确认。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二，只读。不改系统设置，不动你的文件，报告存哪儿由你定。</p>
 
@@ -105,11 +107,11 @@
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么这周突然有人看</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五天，14 个版本，383 个 fork。作者是匿名的，署名 ArchiveGenocide。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">四天多，14 个版本，383 个 fork。作者是匿名的，署名 ArchiveGenocide。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">时间点也对得上：10 月 15 日，Citizen Lab 公布了一份研究，讲定向广告怎么被做成零点击木马的投放通道。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也就是说，「广告为什么这么准」这件事，有时候答案比推荐算法复杂。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说清楚：这讲的是广告位被拿去投毒，不等于你手机在偷听你聊天。那是另一回事，本文也解释不了。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个工具带的，正是那批研究者公开的指标。作者把 Citizen Lab 那批规则单独收进一个文件夹，每一条都标了出处。</p>
 
@@ -119,7 +121,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">痕迹会过期。这类记录常常几周就没了，早被清理过的，查不出来。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">安卓要先用另一款工具连 USB 采集一份；iPhone 只能查电脑上的本地备份。都不算完整取证。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">安卓要先用另一款工具连 USB 采集一份；iPhone 只能查电脑上的本地备份，加密备份还得先装一个小依赖，README 里有现成命令。都不算完整取证。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">指标库要联网更新才有全量。我数了仓库自带的两个指标文件，一共 428 条；README 说更新后约 12,400 条、来自 29 个来源。这轮我没更新，所以只用了 428 条，这点得说清楚。</p>
 
@@ -151,7 +153,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/interplains/Zero-Breach-Toolkit（Apache-2.0 协议，作者 ArchiveGenocide；0.1.13 版单文件与校验值见仓库 Release）</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-10-30 08:02：3,597 星、383 fork、14 个发布版本，仓库创建于 2026-10-25）、项目 README 与 iocs/ 指标文件清点、本机实跑报告（2026-10-30 08:03，Windows 10，v0.1.13）、Citizen Lab 2026-10-15 研究报告；配图：仓库页与发布页真实截图 2 张、本号自制卡 3 张（其中 1 张为本机实测数据）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-10-30 08:35：3,602 星、383 fork、14 个发布版本、55 次提交，仓库创建于 2026-10-25）、项目 README 与 iocs/ 指标文件清点、本机实跑报告（2026-10-30 08:03，Windows 10，v0.1.13）、Citizen Lab 2026-10-15 研究报告；配图：仓库页与发布页真实截图 2 张、本号自制卡 3 张（其中 1 张为本机实测数据）。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你电脑里有没有过说不清来历的东西？评论区聊聊。</p>
 
