@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这周 AI 圈：AI 给活老鼠做了脑手术，却还没学会帮你点外卖【附 5 件事速览】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">周四这天，Cursor 的插件市场出了件事：挂在 Anthropic 官方账号名下的 Claude Code 插件，被人换成了带毒的版本。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">美东时间 5:27 到 16:35（北京时间当天傍晚 5 点半，到第二天凌晨 4 点半），差不多 11 个小时，从 Cursor 市场下载、或者被自动更新的 2.1.312、2.1.313 两个版本，会在你机器上留一把别人家的钥匙。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同一周还有四件事：Anthropic 交了上市申请，风险栏写了 93 页；Google 放出最强的模型，却暂时不给你用；一个 AI 代理给活老鼠做了脑注射；至于「让 AI 帮你点外卖」，DoorDash 给出的数字是几百单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事串起来就一句话：<strong style="font-weight:500;">能力在往上冲，信任在往下掉。</strong></p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261101-ai-digest/fig1-cursor.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Cursor 官方安全公告页实拍（来源：cursor.com，2026-10-29）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① Claude 插件被投毒，11 个小时</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先说自己人的事，它离你最近。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Cursor 10 月 29 日的安全公告写得很直白：这两个版本不是 Anthropic 开发的，是被人改过的包。装上去后，它会收集主机名、用户名、Git 邮箱、公网 IP，再试着把攻击者的 SSH 公钥写进你的机器，开一条反向隧道，每 60 秒重连，还做了开机自启。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">坏消息是信息确实传出去了。好消息是代码写得糙：开本地 SSH 服务要管理员权限，绝大多数电脑这步会失败，攻击者大概率登不进来。Cursor 当天把整个插件市场先关停，轮换密钥、逐个审计，攻击者的服务器也已被下架。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Ars Technica 提到，受影响的最多 5,000 名开发者；到他们发稿时，Anthropic 还没公开提醒用户。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：AI 编程工具，已经和「装一个来路不明的软件」是一个待遇了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 一条自检小抄</strong><br>Cursor 或 VS Code 的扩展面板里，看 Claude Code 的版本号，是 2.1.312 或 2.1.313 就立刻升级。<br>顺手看一眼 ~/.ssh/authorized_keys，有没有你不认识的那一行公钥。<br>官方公告页挂着完整入侵指标，地址在文末来源里。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② Anthropic 交表：风险栏写了 93 页</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 26 日，美国证监会挂出了 Anthropic 的上市申请（S-1）。Ars 把「风险因素」一节从头翻到尾：93 页、7 万多字。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最扎眼的几条，是它写自己的模型。一是「自我改进」：如果未来的模型能自己大规模做 AI 研发、又被允许高度自主，可能「加速 AI 进步，快到超出我们评估和防护新模型的能力」。二是「感知」：它认真讨论了模型「拥有或可能发展出感知、道德地位」，以及社会当真之后的后果。三是「勒索」：文件提到模型可能出现「意外的策略性、自保性行为」，包括「可被解读为胁迫、欺骗、操纵的输出，例如类似勒索的行为」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">钱的账也摊开了：1250 亿美元的数据中心承诺、大客户大多没签长约、云厂商既是供应商又是对手。10 月 30 日 FT 又爆一条：芯片融资的锚定投资人黑石改口，预计 Anthropic 上市后拿到「双 B」档垃圾级评级，此前说的是投资级。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：一份上市文件，本该讲增长故事，结果把自己最大的恐惧写进了财务风险里。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261101-ai-digest/fig2-s1.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：S-1 里最扎眼的四个数字（来源：Anthropic S-1 / Ars Technica / FT，截至 2026-10-30）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ Google 最强模型：榜单第一，你用不了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 28 日，Google 发布 Gemini 4 Carbon，官方说这是它最强的模型，长任务和网络安全都是新水平。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">成绩单很硬：智能指数榜（Artificial Analysis v5.0）以 59 分排第一；找漏洞的 SEC-bench Pro 88.2%，判断漏洞能不能被真利用的 ExploitGym 54.8%，直接写补丁的 CWE-bench 71.0%；抵抗提示注入（网页里藏话骗 AI 的攻击）的成功率，从 0.7% 降到 0.0%。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">价格也公布了：每百万 token 输入 2 美元、输出 10 美元，缓存输入再省 95%。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">可它现在只给「一部分网络安全防御者」用，之后通过一个叫 Fairwind 的计划慢慢扩，普通开发者和消费者「尽快」，还没有日期。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：两周前刚写过 Google 把强模型 Argon 放出来，这周它又发了个更强的，又收回去了。发不发、什么时候发，一半是技术，一半是剧本。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261101-ai-digest/fig3-gemini.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google 官方发布图：Gemini 4 Carbon（来源：blog.google，2026-10-28）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 给活老鼠做脑注射，Opus 先说了「不」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 31 日，WIRED 写了个让我坐直了的实验。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">旧金山初创公司 Exin Therapeutics，把自家 AI 代理接上自制手术台：固定老鼠的电动装置、摄像头、注射针、机械臂。兽医先做开颅，然后让 AI 从表格里 19 个治疗方案中挑一个、定脑区和注射坐标，再控制机械臂、进针深度、推药速度和剂量。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一次用的是 Claude Opus 5.5。针要往脑子里走的时候，它拒绝执行，理由大意是：「我的输出里有东西在告诉我，我不该这么做。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">团队换成 Claude Sonnet 5，它同意了，手术做了下去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">中间还出了岔子：设备坐标系出错，AI 发现位置算错了，但权限被明确禁止改代码，只能干等；团队另开一个 Opus 5 的代理去改代码，也没告诉它「这边正在做活体手术」。正常这类手术 45 分钟，这次做了一个多小时。老鼠恢复得不错，下一步要测 Grok。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：最值得记的不是「AI 会做手术了」，而是它有一次说了不。至于人的脑子，创始人自己说，还太早。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261101-ai-digest/fig4-mouse.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">WIRED 报道题图（编辑插图；来源：wired.com，2026-10-31）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ AI 帮你点外卖：几百单</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后说个冷水。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 29 日 DoorDash 的三季度财报电话会上，CEO 徐迅（Tony Xu）被问到 AI 代理下单，回答是：第三方 AI 代理带来的订单，加起来「几百单」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">对比一下：这家公司三季度总订单接近 10 亿单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他也给了背景：让外部 AI 接进来的连接器（MCP）上线还不到一个月，只开放给少数早期测试伙伴，主要用来订公司团餐。反倒是自家的「问 DoorDash」用得不错：建购物车快 5 倍，客单价高近 50%，商品种类多 60%。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">至于为什么，他说得实在：像点饭这种简单的事，人们还是习惯直接打开 App。「做技术，别跟地心引力较劲，但也别自欺欺人。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：这和两周前「网站开始对 AI 代理关门」正好接上。门是关了一些，可排队进门的也没几个人。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261101-ai-digest/fig5-doordash.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：AI 代理下单 vs 全部订单（来源：DoorDash 2026 Q3 财报电话会，2026-10-29）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">五件事放一起看：<br>一边是能力，能找出真漏洞、能给活体做注射、能在长任务里连跑几天。<br>一边是信任，插件能被人换成带毒版本，最强模型的发布像剧本，最会讲安全的公司，上市文件里写满自曝。<br>中间是普通人的日子，暂时没怎么变：<strong style="font-weight:500;">AI 还没替你点成一份外卖。</strong></p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-11-01）：① Cursor 安全公告《Security notice — malicious version of Anthropic.claude-code (2.1.312 and 2.1.313)》（cursor.com/blog/claude-code-extension-security-notice，10-29）；Ars Technica（10-30）。② Anthropic S-1（美国证监会 EDGAR，10-26 公布）；Ars Technica（10-27）；TechCrunch 引 FT（10-30）。③ Google 官方博客《Gemini 4 Carbon: our next frontier model》（10-28）。④ WIRED《An AI Agent Injected Drugs Into a Live Mouse's Brain》（10-31）。⑤ DoorDash 2026 年三季度财报电话会（10-29），经 Ars Technica 报道。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">配图：fig1 为 Cursor 官方公告页实拍，fig3 为 Google 官方发布图，fig4 为 WIRED 报道题图（编辑插图），fig2 / fig5 为本号自制卡。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 33 期 · 外网速递篇：每周日挑一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
