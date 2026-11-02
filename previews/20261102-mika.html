@@ -43,23 +43,23 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那块屏，不是我的屏。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一块手机，现在有两块屏：一块在我手里，一块在后台替我干活。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一台手机，现在有两块屏：一块在我手里，一块在后台替我干活。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个 App 叫 <strong style="font-weight:500;">Mika</strong>，GitHub 仓库 10 月 29 日晚上才建，到今早 3,800 多星、700 多个 fork。作者是国内的独立开发者 wangzan101，Kotlin 写的安卓原生应用，Apache-2.0，代码全公开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个 App 叫 <strong style="font-weight:500;">Mika</strong>，GitHub 仓库 10 月 29 日晚上才建，到今早 3,800 多星，还被 fork 了 700 多次（fork 就是把代码复制一份到自己账号下，相当于「抄回去改」）。作者是 wangzan101，Kotlin 写的安卓原生应用，Apache-2.0 开源协议（允许商用和修改），代码全公开。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261102-mika/fig1-wechat.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示动图：一句话发消息，右边是它在后台屏上的每一步（4 倍速，聊天列表已打码）</p>
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它干活，屏幕还是你的</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">原理说起来不复杂：它借安卓自带的「无线调试」启动一个内置小助手，再打开无障碍服务，在一块单独的后台屏上开 App、点按钮、打字、翻页。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">原理说起来不复杂：它借安卓自带的「无线调试」启动一个内置小助手，再打开无障碍服务（这两项是安卓给「自动操作屏幕」准备的官方开关），在一块单独的后台屏上开 App、点按钮、打字、翻页。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以你在主屏上该干嘛干嘛。想盯着看，对话页里有个小画面实时直播它在点什么；不想看就关掉，只留右下角一颗小胶囊，需要你出手时它会变橙色。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">要求也写得很实在：装它安卓 11 就够；要它操作 App 得安卓 12 以上，作者推荐安卓 14 以上，因为后台屏有自己的焦点，不会抢走你打字的输入框。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261102-mika/fig2-two-screens.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">示意图：一块手机，两块屏（按项目 README「不占你的屏幕」一节整理）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">示意图：一台手机，两块屏（按项目 README「不占你的屏幕」一节整理）</p>
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不接接口，它像人一样看屏幕</p>
 
@@ -80,9 +80,9 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261102-mika/fig3-boss.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目 README 里的实拍：一句话，三个岗位都打过招呼，三条消息都显示「送达」</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那张截图我看了很久：一句「帮我在 BOSS直聘网页上找岗位打招呼，AI 产品经理，先三个试试」，它自己登录、搜岗位、筛出三个、发出打招呼，最后汇报「消息列表里三条都显示「送达」」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那张截图我看了很久：一句「帮我在 BOSS直聘网页上找岗位打招呼，AI 产品经理，先三个试试」，你先登录一次，它自己搜岗位、筛出三个、发出打招呼，最后汇报「消息列表里三条都显示「送达」」。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">外卖那张更有意思：让它凑满减，它一项一项算，减掉哪串、换哪张券，算到 64.78，然后停在「立即支付」前面等你。花钱那一步，它不替你做主。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">外卖那张更有意思：让它凑满减，它一项一项算，减掉哪串、换哪张券，算到 64.78 元（README 实拍），然后停在「立即支付」前面等你。花钱那一步，它不替你做主。</p>
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数据不进它的服务器</p>
 
@@ -94,7 +94,7 @@
 
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三天 351 次提交，快得有点吓人</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我扒了一下它的账：35 个版本、351 次提交、二十多位贡献者、16,219 次下载，最新版 0.1.33 是今天凌晨 2 点 54 分（北京时间）发的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我扒了一下它的账：35 个发布版本、351 次提交（一次提交＝一次代码改动）、25 位贡献者、16,219 次下载，最新版 0.1.33 是今天凌晨 2 点 54 分（北京时间）发的。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261102-mika/fig4-data.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">数据截至 2026-11-02 08:00（北京时间），来源：GitHub API 与 Releases 列表</p>
