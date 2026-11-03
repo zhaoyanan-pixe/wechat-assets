@@ -20,11 +20,11 @@
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261103-dsh-superagent/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一个 AI 拿到了仓库权限，三天过去，一行代码都没提交。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">想象一下：把仓库权限交给一个 AI，三天过去，它一行代码都没提交。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不是坏了。是它故意的。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 31 日，DeepSeek 在 GitHub 上放出一个叫 dsh-superagent 的东西，README 第一行就写明白了：研究原型，不是官方产品。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">10 月 31 日，DeepSeek 在 GitHub 上放出一个叫 dsh-superagent 的东西，README 开头就写着：研究原型，不是官方产品。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">到今天早上 8 点，13,067 星，1,356 个 fork。满打满算，三天。</p>
 
@@ -41,6 +41,10 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">下一段更像记账：一条消息、一个通知、一个问题、一个设置项、面板上的一个格子、文档里的一句话，每一样都在花别人的注意力，那就都得值这个价，不值就删。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">大多数工具的心气是「再加一个功能」，它的心气是「再砍一个打扰」。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261103-dsh-superagent/fig4-docs.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档 000-philosophy 原页面：核心原则和五条准则就写在这一页</p>
 
   <p style="margin:34px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一条消息，怎么变成一张工单</p>
 
@@ -64,7 +68,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有人提了个需求，它判断这活自己能干，然后记一笔「本来会接」，一行都不改。等你翻了几十条这样的记录，觉得它判断得对，再手动切到 auto。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有人明确点名找它，三个档位都照常接。边界也分得很细：名单上的人、名单外的人、点了它名字的、没点名的，一张准入表一格一格写清楚，默认一律往严里收。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">名单上的人点名找它，三个档位都照常接。边界也分得很细：名单上的人、名单外的人、点了它名字的、没点名的，一张准入表一格一格写清楚，默认大多从紧，拿不准就不接。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261103-dsh-superagent/fig3-modes.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
@@ -76,7 +80,7 @@
 
   <p style="margin:34px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它把「不要什么」也写成了文档</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">文档里我最喜欢的一节不叫功能，叫「被否掉的概念」，十一条，每条都写了为什么不要。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">文档里我最喜欢的一节不叫功能，叫「被否掉的概念」，十二条，每条都写了为什么不要。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不给人单独建一个实体，人只是消息上的一个署名；不给工单加「等待中」，等待是来源该管的事；规则一变，不取消正在跑的工单，那会留下半截活。</p>
 
@@ -99,10 +103,6 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，它不是给个人玩家准备的。整套授权、工单、派工，是给「一个团队 + 一个仓库」设计的。你一个人写小项目，用不上。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但它值得看。哪怕不装，光是「注意力记账」这个算法，也够你回头审一遍自己那些天天响的机器人通知。</p>
-
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261103-dsh-superagent/fig4-docs.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档 000-philosophy 原页面：核心原则和五条准则就写在这一页</p>
 
   <p style="margin:34px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">那它适合谁</p>
 
