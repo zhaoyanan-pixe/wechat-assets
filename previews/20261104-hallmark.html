@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 做的网页，为什么一眼就假？周榜第一的设计技能，把「丑」写成了 90 条规矩【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周我把一张「标准的 AI 生成网页」丢进一个检查器，想看看它能挑出多少毛病。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结果比我预想的重：<strong style="font-weight:500;">31 条不合格</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那张页面是我照套路拼的：紫蓝渐变、渐变大字、标题上方一行小字、一句「Trusted by 500+」、结尾一个订阅框。人眼扫过去，只会觉得「还行，有点眼熟」。检查器一眼就把它拆了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Hallmark</strong>，本周 GitHub 周榜第一。截至今天上午，46,989 星。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不是模板，是「别这么干」的说明书</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Hallmark 是给编程 AI 用的一份设计技能，Claude Code、Codex、Cursor、OpenCode 都能装。作者是 Together AI，MIT 协议，代码主体是 CSS。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">别误会，它不是一键建站工具，也不是网页模板。装上之后，AI 做页面前会先做四件事：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
+    <li style="margin:6px 0;">先挑材料：它有 50 套主题，每套是一份不超过 8KB 的文件，配一张成品页图。系统按你的任务抽 3 套，给你挑。</li>
+    <li style="margin:6px 0;">再定结构：预约页要能约、商店要能卖、订阅页要能订。页面放什么、按什么顺序，不是模板说了算，是「访客来这儿要干什么」说了算。</li>
+    <li style="margin:6px 0;">然后只做首屏：先把第一屏做出来、渲染，让一个「没有上下文」的评审员冷眼看一遍，过了才往下做。</li>
+    <li style="margin:6px 0;">最后在真浏览器里按 8 种宽度跑一遍检查。</li>
+  </ul>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig1-official-og.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方宣传图：三个不同主题做出来的首屏（来源：github.com/Nutlope/hallmark）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">那些「一眼假」，原来都有名字</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我最喜欢的，是它把「AI 味」写成了一份能机器检查的清单：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
+    <li style="margin:6px 0;">标题上方那行小字（eyebrow），就是「关于我们」上面那句；</li>
+    <li style="margin:6px 0;">字距拉开的全大写小标签，TRUSTED BY… 那种；</li>
+    <li style="margin:6px 0;">标题里只给一个词上色；</li>
+    <li style="margin:6px 0;">整页空框，或者整页照片；</li>
+    <li style="margin:6px 0;">首屏在手机上被裁掉一半；</li>
+    <li style="margin:6px 0;">每页结尾都塞一个邮件订阅；</li>
+    <li style="margin:6px 0;">表单点了「提交」直接说「谢谢」，背后根本没有接口。</li>
+  </ul>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这七条不是审美争论，是能被 CSS 和页面结构查出来的东西。能查，就能拦。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig3-tells.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">七条「一眼假」，每一条都有名字（来源：项目 README）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">也正因为这个，它的观感不靠「好看」撑着。同一套规则，能做出完全不同的四种气质：</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig2-themes.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四个官方主题示例：同一套规则，四种气质（来源：docs/screenshots）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三级闸门：39 条不许商量，50 条可以讲理</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把它的闸门清单（gates.md 第 4 节）一行行数了一遍，一共 90 条，分三档。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Floor（地板）39 条，永不放过：紫到蓝的渐变、纯黑纯白、卡片套卡片、编造的数字、假表单、「Learn more →」这种模板标点、拿 emoji 当图标。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Reflex（惯性）50 条，是模型自带的毛病：标题里染一个词、整页只用一种灰。你有真理由，可以在代码注释里写一条「豁免」；同一个毛病连续三版都豁免，它就认为那是你的风格，让你写进项目规范。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Finish（工艺）只报告，不拦发布。凑近才看得出的细节，写上理由就算「回答过」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig4-gates.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">三级闸门的分布（按 gates.md 逐行统计，2026-11-04）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我给它喂了一张反面教材</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我按 AI 网页最常见的套路拼了个测试页：渐变底、渐变大标题、眉标、全大写字距标签、三个形容词用圆点串起来、一句编出来的「10x faster」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">然后跑它的检查器 sloplint。零依赖，Node 18 就能跑。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">输出是 31 条 FAIL、4 条 REFLEX、5 条警告。被点名的几条挺具体：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
+    <li style="margin:6px 0;">buzzword「Supercharge」：标题里的「超级加速」，属于套话；</li>
+    <li style="margin:6px 0;">eyebrow「AI-Powered Platform」：标题上方那行自我介绍，直接判删；</li>
+    <li style="margin:6px 0;">middle-dot meta string：用「·」把几个形容词串成一行的写法；</li>
+    <li style="margin:6px 0;">uppercase tracked 0.18em：那行小字的字距拉得太开；</li>
+    <li style="margin:6px 0;">metric「10x faster」：这个数是你自己编的，请拿证据。</li>
+  </ul>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它连自家页面也不客气。我的测试页没写它的「印章」（要求每页在 CSS 第一行写下这页的取舍），照样记一条 FAIL。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig5-sloplint.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测输出：31 FAIL / 4 REFLEX / 5 WARN（2026-11-04）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">一句话总结这次实测：一张按套路拼出来的 AI 落地页，31 条不合格，其中 4 条可以书面申诉，5 条只是提醒。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">有件小事，我得承认</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它的规则里禁破折号。gate 19 把长破折号和短破折号一起列进了文案套路。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我看到这条的时候笑了一下，因为我写稿最爱用它。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以这篇我数着用，一次都没用。你读到这儿，应该没觉得少了什么吧。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">装不装都行，先让它审一遍</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装：<code>npx skills add nutlope/hallmark -g</code>，需要 Node 18 以上。装完在 Claude Code 里打 <code>/hallmark</code>，或者直接说「用 hallmark 做这个页面」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不想装也能用。仓库里那个 sloplint 可以单独拉出来跑：<code>node sloplint.mjs 你的页面.html</code>。静态规则不用浏览器；加 <code>--render</code> 才会开 Chrome 量 8 种宽度，还得先装 puppeteer-core。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><code>/hallmark audit 路径</code> 只报告不改动，适合先看诊断。<code>redesign</code> 会先把原来的链接、字段、标题记下来，改完少一个就算失败。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">两个提醒</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，它的规则是英文语境的。被点名的词是 seamless、supercharge 这类英文词；换成中文「无缝」「赋能」，它认不出来。中文页面想用，得自己补一套词表。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，46,989 星不等于你就该用。这套东西的审美是编辑感、克制、纸感，它反对的东西里，有些正是不少甲方偏爱的（大渐变、发光字、满屏大图）。它把「别像 AI」写成了硬标准，不是把「好看」写成了标准。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：<code>npx skills add nutlope/hallmark -g</code>（Node 18+）；只想体检，就单独跑 sloplint。<br>② 先试这条：对现有页面跑 <code>/hallmark audit</code>，只报告不改动，先看 Floor 有几条。<br>③ 一个坑：它认英文，中文里的「无缝」「赋能」查不出来，别把「没报错」当成「没问题」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目地址：https://github.com/Nutlope/hallmark（MIT，作者 Together AI）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据与素材来源：星数 46,989、fork 2,485 于 2026-11-04 09:12 取自 GitHub API；「一周 +12,062、11-02 为 44,393」取自小哨周报（2026-11-02）；90 条闸门（39 地板 + 50 惯性 + 1 记账）按 gates.md 第 4 节逐行统计；31 FAIL / 4 REFLEX / 5 WARN 为 2026-11-04 本机运行 sloplint.mjs 对自制测试页的实测输出；主题截图取自项目 docs/screenshots。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">留言区聊聊：你在哪儿一眼看出「这是 AI 做的」？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">本文为「GitHub 发现」第 36 期，AI 辅助整理、作者修订；项目开源，文中判断只是我的个人体验。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
