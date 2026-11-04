@@ -37,15 +37,16 @@
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周我把一张「标准的 AI 生成网页」丢进一个检查器，想看看它能挑出多少毛病。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今天上午，我把一张「标准的 AI 生成网页」丢进一个检查器，想看它能挑出多少毛病。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结果比我预想的重：<strong style="font-weight:500;">31 条不合格</strong>。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那张页面是我照套路拼的：紫蓝渐变、渐变大字、标题上方一行小字、一句「Trusted by 500+」、结尾一个订阅框。人眼扫过去，只会觉得「还行，有点眼熟」。检查器一眼就把它拆了。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Hallmark</strong>，本周 GitHub 周榜第一。截至今天上午，46,989 星。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Hallmark</strong>，本周 GitHub 周榜第一。截至今天上午九点，4.7 万星。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不是模板，是「别这么干」的说明书</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Hallmark 是给编程 AI 用的一份设计技能，Claude Code、Codex、Cursor、OpenCode 都能装。作者是 Together AI，MIT 协议，代码主体是 CSS。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">别误会，它不是一键建站工具，也不是网页模板。装上之后，AI 做页面前会先做四件事：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Hallmark 是给编程 AI 用的一份设计技能，Claude Code、Codex、Cursor、OpenCode 都能装。作者是 Together AI，MIT 协议（可自由使用、修改、商用），代码主体是 CSS。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">别误会，它不是一键建站工具，也不是网页模板。装上之后，AI 做页面前会先做五件事：</p>
   <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
-    <li style="margin:6px 0;">先挑材料：它有 50 套主题，每套是一份不超过 8KB 的文件，配一张成品页图。系统按你的任务抽 3 套，给你挑。</li>
+    <li style="margin:6px 0;">先问素材：真实照片、真实截图、真实数字。问一次，没有就留空，不许编。</li>
+    <li style="margin:6px 0;">再挑材料：它有 50 套主题，每套是一份不超过 8KB 的文件，配一张成品页图。系统按你的任务抽 3 套，给你挑。</li>
     <li style="margin:6px 0;">再定结构：预约页要能约、商店要能卖、订阅页要能订。页面放什么、按什么顺序，不是模板说了算，是「访客来这儿要干什么」说了算。</li>
     <li style="margin:6px 0;">然后只做首屏：先把第一屏做出来、渲染，让一个「没有上下文」的评审员冷眼看一遍，过了才往下做。</li>
     <li style="margin:6px 0;">最后在真浏览器里按 8 种宽度跑一遍检查。</li>
@@ -70,12 +71,12 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig2-themes.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">四个官方主题示例：同一套规则，四种气质（来源：docs/screenshots）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三级闸门：39 条不许商量，50 条可以讲理</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把它的闸门清单（gates.md 第 4 节）一行行数了一遍，一共 90 条，分三档。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把它的闸门清单（gates.md 第 4 节）一行行数了一遍，一共 90 条：两档，外加一条只记账的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Floor（地板）39 条，永不放过：紫到蓝的渐变、纯黑纯白、卡片套卡片、编造的数字、假表单、「Learn more →」这种模板标点、拿 emoji 当图标。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Reflex（惯性）50 条，是模型自带的毛病：标题里染一个词、整页只用一种灰。你有真理由，可以在代码注释里写一条「豁免」；同一个毛病连续三版都豁免，它就认为那是你的风格，让你写进项目规范。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Finish（工艺）只报告，不拦发布。凑近才看得出的细节，写上理由就算「回答过」。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig4-gates.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">三级闸门的分布（按 gates.md 逐行统计，2026-11-04）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三档 Finish（工艺）不在这 90 条里，是第 5 节另列的 26 条细节，只报告、不拦发布。凑近才看得出的东西，写上理由就算「回答过」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig4-gates-v2.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">两档闸门 + 一条记账；Finish 另计（按 gates.md 第 4、5 节统计，2026-11-04）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我给它喂了一张反面教材</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我按 AI 网页最常见的套路拼了个测试页：渐变底、渐变大标题、眉标、全大写字距标签、三个形容词用圆点串起来、一句编出来的「10x faster」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">然后跑它的检查器 sloplint。零依赖，Node 18 就能跑。</p>
@@ -87,7 +88,7 @@
     <li style="margin:6px 0;">uppercase tracked 0.18em：那行小字的字距拉得太开；</li>
     <li style="margin:6px 0;">metric「10x faster」：这个数是你自己编的，请拿证据。</li>
   </ul>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它连自家页面也不客气。我的测试页没写它的「印章」（要求每页在 CSS 第一行写下这页的取舍），照样记一条 FAIL。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它对自己的规矩也不手软。我的测试页没在 CSS 第一行写它的「印章」（一段自评：六个维度打分、点名最弱项，再交代这页的几个决定），照样记一条 FAIL（gate 20）。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig5-sloplint.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测输出：31 FAIL / 4 REFLEX / 5 WARN（2026-11-04）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">一句话总结这次实测：一张按套路拼出来的 AI 落地页，31 条不合格，其中 4 条可以书面申诉，5 条只是提醒。</p>
@@ -97,15 +98,15 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以这篇我数着用，一次都没用。你读到这儿，应该没觉得少了什么吧。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">装不装都行，先让它审一遍</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装：<code>npx skills add nutlope/hallmark -g</code>，需要 Node 18 以上。装完在 Claude Code 里打 <code>/hallmark</code>，或者直接说「用 hallmark 做这个页面」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不想装也能用。仓库里那个 sloplint 可以单独拉出来跑：<code>node sloplint.mjs 你的页面.html</code>。静态规则不用浏览器；加 <code>--render</code> 才会开 Chrome 量 8 种宽度，还得先装 puppeteer-core。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不想装也能用。仓库里那个 sloplint 可以单独拉出来跑：<code>node skills/hallmark/scripts/sloplint.mjs 你的页面.html</code>。静态规则不用浏览器；加 <code>--render</code> 才会开 Chrome 量 8 种宽度，还得先装 puppeteer-core。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><code>/hallmark audit 路径</code> 只报告不改动，适合先看诊断。<code>redesign</code> 会先把原来的链接、字段、标题记下来，改完少一个就算失败。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">两个提醒</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，它的规则是英文语境的。被点名的词是 seamless、supercharge 这类英文词；换成中文「无缝」「赋能」，它认不出来。中文页面想用，得自己补一套词表。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，46,989 星不等于你就该用。这套东西的审美是编辑感、克制、纸感，它反对的东西里，有些正是不少甲方偏爱的（大渐变、发光字、满屏大图）。它把「别像 AI」写成了硬标准，不是把「好看」写成了标准。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：<code>npx skills add nutlope/hallmark -g</code>（Node 18+）；只想体检，就单独跑 sloplint。<br>② 先试这条：对现有页面跑 <code>/hallmark audit</code>，只报告不改动，先看 Floor 有几条。<br>③ 一个坑：它认英文，中文里的「无缝」「赋能」查不出来，别把「没报错」当成「没问题」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目地址：https://github.com/Nutlope/hallmark（MIT，作者 Together AI）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据与素材来源：星数 46,989、fork 2,485 于 2026-11-04 09:12 取自 GitHub API；「一周 +12,062、11-02 为 44,393」取自小哨周报（2026-11-02）；90 条闸门（39 地板 + 50 惯性 + 1 记账）按 gates.md 第 4 节逐行统计；31 FAIL / 4 REFLEX / 5 WARN 为 2026-11-04 本机运行 sloplint.mjs 对自制测试页的实测输出；主题截图取自项目 docs/screenshots。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">留言区聊聊：你在哪儿一眼看出「这是 AI 做的」？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据与素材来源：星数 47,010、fork 2,487 于 2026-11-04 09:30 取自 GitHub API（09:12 首采为 46,989 / 2,485）；「一周 +12,062、11-02 为 44,393」取自小哨周报（2026-11-02）；90 条闸门（39 地板 + 50 惯性 + 1 记账）按 gates.md 第 4 节逐行统计，Finish 26 条见第 5 节；31 FAIL / 4 REFLEX / 5 WARN 为 2026-11-04 本机运行 sloplint.mjs 对自制测试页的实测输出；主题截图取自项目 docs/screenshots。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">评论区聊聊：你在哪儿一眼看出「这是 AI 做的」？</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">本文为「GitHub 发现」第 36 期，AI 辅助整理、作者修订；项目开源，文中判断只是我的个人体验。</p>
   <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
   <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
