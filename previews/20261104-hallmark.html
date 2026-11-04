@@ -52,7 +52,7 @@
     <li style="margin:6px 0;">最后在真浏览器里按 8 种宽度跑一遍检查。</li>
   </ul>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261104-hallmark/fig1-official-og.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方宣传图：三个不同主题做出来的首屏（来源：github.com/Nutlope/hallmark）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方宣传图，三个不同主题做出来的首屏（来源：github.com/Nutlope/hallmark）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">那些「一眼假」，原来都有名字</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我最喜欢的，是它把「AI 味」写成了一份能机器检查的清单：</p>
   <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
@@ -102,7 +102,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><code>/hallmark audit 路径</code> 只报告不改动，适合先看诊断。<code>redesign</code> 会先把原来的链接、字段、标题记下来，改完少一个就算失败。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">两个提醒</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，它的规则是英文语境的。被点名的词是 seamless、supercharge 这类英文词；换成中文「无缝」「赋能」，它认不出来。中文页面想用，得自己补一套词表。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，46,989 星不等于你就该用。这套东西的审美是编辑感、克制、纸感，它反对的东西里，有些正是不少甲方偏爱的（大渐变、发光字、满屏大图）。它把「别像 AI」写成了硬标准，不是把「好看」写成了标准。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，4.7 万星不等于你就该用。这套东西的审美是编辑感、克制、纸感，它反对的东西里，有些正是不少甲方偏爱的（大渐变、发光字、满屏大图）。它把「别像 AI」写成了硬标准，不是把「好看」写成了标准。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：<code>npx skills add nutlope/hallmark -g</code>（Node 18+）；只想体检，就单独跑 sloplint。<br>② 先试这条：对现有页面跑 <code>/hallmark audit</code>，只报告不改动，先看 Floor 有几条。<br>③ 一个坑：它认英文，中文里的「无缝」「赋能」查不出来，别把「没报错」当成「没问题」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目地址：https://github.com/Nutlope/hallmark（MIT，作者 Together AI）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据与素材来源：星数 47,010、fork 2,487 于 2026-11-04 09:30 取自 GitHub API（09:12 首采为 46,989 / 2,485）；「一周 +12,062、11-02 为 44,393」取自小哨周报（2026-11-02）；90 条闸门（39 地板 + 50 惯性 + 1 记账）按 gates.md 第 4 节逐行统计，Finish 26 条见第 5 节；31 FAIL / 4 REFLEX / 5 WARN 为 2026-11-04 本机运行 sloplint.mjs 对自制测试页的实测输出；主题截图取自项目 docs/screenshots。</p>
