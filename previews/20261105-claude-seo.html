@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 搜索一次都没提过你：2.6 万星的开源体检，10 分钟把原因找出来【附上手小抄】 · 预览页</title>
+<style>
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 自己的搜索文档里写过一句大实话：为 AI 搜索做优化，本质上还是 SEO。这话听着扫兴，但很实在。那些在 ChatGPT、Perplexity 回答里被反复引用的页面，赢的不是玄学，是能被抓到、能被读懂、能被信任。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">道理谁都懂。真到要动手，第一个问题就把人卡住了：从哪查？</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我特别烦现在那种体检。四五十条红色警告甩过来，每条都在暗示你不行，看完更不知道该先动哪一条。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先看它凭什么冲上周榜前十</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周 GitHub 周榜第 9 名，claude-seo，一个跑在 Claude Code 里的 SEO 体检插件。给它一个网址，10 到 15 分钟，整站查一遍，最后交一张按重要性排好序的行动清单。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不是一个脚本，是一支队伍：<strong style="font-weight:500;">26 个子技能，19 个专职 agent</strong>，最多 17 个同时开工。结论落在 Markdown 文件里，要正式点还能出 PDF 和 JSON，文件都留在你自己电脑上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">星数涨得有点吓人。11 月 1 日它 25,292 星，11 月 5 日早上我再看，26,651 星。4 天多了 1,300 多。而这仓库今年 2 月才建。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig1-audit.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示：一次 /seo audit，多个专员同时上场，最后汇总成一张排好序的清单（来源：仓库 screenshots/seo-audit-demo.gif）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它查的东西，比一般体检表狠</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">常规项一个不落：能不能被爬、有没有被收录、站点地图对不对、robots 有没有挡错、跳转链、打开速度。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">真正不一样的是两块。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一块叫「AI 会不会引用你」。它会打分，判断 Google 的 AI 概览、AI 模式，还有 ChatGPT、Perplexity、Gemini 有多大概率拿你的页面当答案来源；顺手看一眼你的品牌在维基百科、Reddit、YouTube、领英上有没有影子。做 AI 搜索的人都清楚，这几个地方才是大模型的信息食堂。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另一块更少人想到：AI 代理能不能用你的站。检查项包括 llms.txt、给机器读的 Markdown 版本、WebMCP。听着新，但这是接下来一两年会变成标配的东西。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结构化数据那一块它做得最细。官方贴了一份真报告：某个页面查出 3 段结构化数据、2 个严重问题、5 个警告、18 项通过，评级 B+。严重的那条是，创始人字段只写了 Daniel，联合创始人 Benjamin 明明在页面上，却没进结构化数据。这种错，人眼扫十遍也扫不出来。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig2-hero.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方宣传图：从被压在 #48，到被五家 AI 引用（来源：仓库 assets/readme/v3/hero.svg）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">报告的差别，其实在「顺序」</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我最在意的是它排的序。查出来的问题会打分排序，每一条都写清三件事：依据是什么、依赖什么前提、改完怎么知道它真的生效了。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话看着朴素，其实是分水岭。大部分工具告诉你「这里有 47 个问题」，它告诉你「先改这三条，剩下的等这三条生效再说」。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者还在 README 里放了张成本对照表，我抄一下：手工做一次 4 到 8 小时，找外包 2,000 到 15,000 美元，买商业软件 99 到 999 美元一个月。它免费，但要花你的 Claude 额度。表格下面他自己标了一行「价格仅作示意」。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">关键数字：仓库 README 与 GitHub API 口径（2026-11-05 08:03 采集）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">代价我也说清楚</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不是装个 App 就能点开的。要 Claude Code 1.0.33 以上，Python 3.11 到 3.14，装完还得先跑 /seo setup，备好独立环境和一个无头浏览器。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">钱的部分别忽略：一次全套 audit，5 个 agent 跑 Opus，其余跑 Sonnet。Opus 贵，全站查一遍会明显吃掉订阅额度。想先摸摸底，就单页查。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">没接 Google 的接口时，速度分是实验室估的，收录情况是从页面推断的，都不是后台真数据。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条容易漏：它跑在 Claude Code 里，页面内容会送去 Anthropic 的模型，不是纯本地。报告文件确实在你电脑上，但别拿它去查不能外传的内网系统。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它自己也不装大神。README 明说：Screaming Frog 这类爬虫爬得更快更深，它干的活是解释、排序，以及陪你把问题追问到底。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig4-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页实拍（2026-11-05 08:04）：26,651 星，MIT 协议，最新版 v2.5.0（10 月 22 日发布）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">谁该用，谁先别急</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">接私活做站的人，拿它出第一版体检最划算，十分钟就有一份能拿去谈的东西。做 AI 搜索、GEO 这行的，它那套检查项可以直接抄成自己的清单，比自己拍脑袋列全。自己有个小站、落地页、作品集的，跑一遍就知道先改哪。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">反过来，如果你只是想要一个分数发朋友圈，或者连 Claude Code 都还没装，先别折腾。它给的是清单，清单得有人去改。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig5-report.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">一份真报告的骨架：严重、警告、通过分开计数，最后给评级（来源：仓库 README 示例）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Claude Code 里依次敲 /plugin marketplace add AgriciDaniel/claude-seo、/plugin install claude-seo@agricidaniel-claude-seo、/seo setup。Windows 也能 git clone 后跑 install.ps1。<br>② 先省钱：/seo page &lt;一个页面&gt; 做单页深查，再 /seo geo &lt;网址&gt; 单看 AI 引用概率，别一上来就全套。<br>③ 一个坑：全套 audit 有 5 个 agent 走 Opus，额度掉得快；没接 Google 接口时，速度和收录只是估算。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：https://github.com/AgriciDaniel/claude-seo（MIT 协议 · Python）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：星标 26,651、fork 3,467（GitHub API 2026-11-05 08:03 采集）；26 个子技能、19 个 agent、30 条命令、10~15 分钟、成本对照与限制条款均取自仓库 README；最新发行版 v2.5.0（2026-10-22）；配图取自仓库截图与 README 官方素材，自制卡已标注。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你更想让 AI 先修好哪一项：打开速度、结构化数据，还是「AI 愿不愿意引用你」？评论区聊聊。</p>
+
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">本文为「GitHub 发现」第 37 期。AI 辅助整理、作者修订，数字以采集时刻为准。</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
