@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 搜索一次都没提过你：2.6 万星的开源体检，10 分钟把原因找出来【附上手小抄】 · 预览页</title>
+<title>AI 搜索里翻不到你？2.6 万星的开源体检，十几分钟把原因找出来【附上手小抄】 · 预览页</title>
 <style>
   body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
 </style>
@@ -18,19 +18,19 @@
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 自己的搜索文档里写过一句大实话：为 AI 搜索做优化，本质上还是 SEO。这话听着扫兴，但很实在。那些在 ChatGPT、Perplexity 回答里被反复引用的页面，赢的不是玄学，是能被抓到、能被读懂、能被信任。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 官方讲 AI 功能的那份文档里有一句话：给 AI 搜索做优化，本质上还是 SEO。这话听着扫兴，但实在。至于是 ChatGPT、Perplexity 那些答案里被反复引用的页面，我看下来赢的也不是玄学，是能被抓到、能被读懂、能被信任。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">道理谁都懂。真到要动手，第一个问题就把人卡住了：从哪查？</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我特别烦现在那种体检。四五十条红色警告甩过来，每条都在暗示你不行，看完更不知道该先动哪一条。</p>
 
-  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先看它凭什么冲上周榜前十</p>
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先看它凭什么涨得这么凶</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周 GitHub 周榜第 9 名，claude-seo，一个跑在 Claude Code 里的 SEO 体检插件。给它一个网址，10 到 15 分钟，整站查一遍，最后交一张按重要性排好序的行动清单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">claude-seo，这几天一直挂在 GitHub 趋势榜上。它是跑在 Claude Code 里的 SEO 体检插件，给它一个网址，10 到 15 分钟，整站查一遍，最后交一张按重要性排好序的行动清单。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不是一个脚本，是一支队伍：<strong style="font-weight:500;">26 个子技能，19 个专职 agent</strong>，最多 17 个同时开工。结论落在 Markdown 文件里，要正式点还能出 PDF 和 JSON，文件都留在你自己电脑上。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">星数涨得有点吓人。11 月 1 日它 25,292 星，11 月 5 日早上我再看，26,651 星。4 天多了 1,300 多。而这仓库今年 2 月才建。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">星数涨得有点吓人。11 月 1 日我按 GitHub 接口扫到 25,292 星，11 月 5 日早上再看，26,651 星。四天涨了一千三百多颗。而这仓库今年 2 月才建。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig1-audit.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
@@ -50,7 +50,7 @@
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig2-hero.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方宣传图：从被压在 #48，到被五家 AI 引用（来源：仓库 assets/readme/v3/hero.svg）</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方示意图：从第 48 名爬到第 1 名，被 Google 和四家 AI 引用（示意图，非实测；来源：仓库 assets/readme/v3/hero.svg）</p>
 
   <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">报告的差别，其实在「顺序」</p>
 
@@ -58,7 +58,7 @@
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话看着朴素，其实是分水岭。大部分工具告诉你「这里有 47 个问题」，它告诉你「先改这三条，剩下的等这三条生效再说」。</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者还在 README 里放了张成本对照表，我抄一下：手工做一次 4 到 8 小时，找外包 2,000 到 15,000 美元，买商业软件 99 到 999 美元一个月。它免费，但要花你的 Claude 额度。表格下面他自己标了一行「价格仅作示意」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者还在 README 里放了张成本对照表，我抄一下：手工做一次 4 到 8 小时，找外包 2 千到 1.5 万美元起，买商业软件 99 到 999 美元一个月。它免费，但要花你的 Claude 额度。表格下面他自己标了一行「价格仅作示意」。</p>
 
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261105-claude-seo/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
 
@@ -82,7 +82,9 @@
 
   <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">谁该用，谁先别急</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">接私活做站的人，拿它出第一版体检最划算，十分钟就有一份能拿去谈的东西。做 AI 搜索、GEO 这行的，它那套检查项可以直接抄成自己的清单，比自己拍脑袋列全。自己有个小站、落地页、作品集的，跑一遍就知道先改哪。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">接私活做站的人，拿它出第一版体检最划算，十分钟就有一份能拿去谈的东西。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">做 AI 搜索、GEO 这行的，它那套检查项可以直接抄成自己的清单，比自己拍脑袋列全。自己有个小站、落地页、作品集的，跑一遍就知道先改哪。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">反过来，如果你只是想要一个分数发朋友圈，或者连 Claude Code 都还没装，先别折腾。它给的是清单，清单得有人去改。</p>
 
@@ -90,11 +92,11 @@
 
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">一份真报告的骨架：严重、警告、通过分开计数，最后给评级（来源：仓库 README 示例）</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Claude Code 里依次敲 /plugin marketplace add AgriciDaniel/claude-seo、/plugin install claude-seo@agricidaniel-claude-seo、/seo setup。Windows 也能 git clone 后跑 install.ps1。<br>② 先省钱：/seo page &lt;一个页面&gt; 做单页深查，再 /seo geo &lt;网址&gt; 单看 AI 引用概率，别一上来就全套。<br>③ 一个坑：全套 audit 有 5 个 agent 走 Opus，额度掉得快；没接 Google 接口时，速度和收录只是估算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Claude Code 里依次敲 /plugin marketplace add AgriciDaniel/claude-seo、/plugin install claude-seo@agricidaniel-claude-seo、/seo setup。Windows 也能 git clone 后跑 powershell -ExecutionPolicy Bypass -File claude-seo\install.ps1。<br>② 先省钱：/seo page &lt;一个页面&gt; 做单页深查，再 /seo geo &lt;网址&gt; 单看 AI 引用概率，别一上来就全套。<br>③ 一个坑：全套 audit 有 5 个 agent 走 Opus，额度掉得快；没接 Google 接口时，速度和收录只是估算。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：https://github.com/AgriciDaniel/claude-seo（MIT 协议 · Python）</p>
 
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：星标 26,651、fork 3,467（GitHub API 2026-11-05 08:03 采集）；26 个子技能、19 个 agent、30 条命令、10~15 分钟、成本对照与限制条款均取自仓库 README；最新发行版 v2.5.0（2026-10-22）；配图取自仓库截图与 README 官方素材，自制卡已标注。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：星标 26,651、fork 3,467（GitHub API 2026-11-05 08:03 采集；11-01 值为 25,292）；26 个子技能、19 个 agent、30 条命令、10~15 分钟、成本对照与限制条款均取自仓库 README；最新发行版 v2.5.0（2026-10-22）；配图取自仓库截图与 README 官方素材，自制卡已标注。</p>
 
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你更想让 AI 先修好哪一项：打开速度、结构化数据，还是「AI 愿不愿意引用你」？评论区聊聊。</p>
 
