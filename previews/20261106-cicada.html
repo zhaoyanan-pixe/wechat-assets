@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开会听英文像听天书？5 天 1,489 星的免费工具，替你听、替你说、替你记【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周一个线上会，对方语速快到我全程只剩点头的份儿。散了会我翻录音翻了三刻钟，才从里面扒出三个待办。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周我换了个办法。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一个 5 天前才建仓的开源小工具，叫「知了」。装好以后它就待在菜单栏（Windows 上是托盘）里，会一开，中文字幕自己往外冒，旁边那块小窗一条条写着议题、结论、待办。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/fig1-demo.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">知了实时字幕与实时纪要的官方演示动图：左边是英文直播，右边同步生成中文纪要，底部是双语字幕（来源：项目 README 演示图）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它最让我舒服的一点：不往会议室里塞机器人。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前用过的会议助手，要么得邀请一个“AI 小助手”进会（对方名单里突然多个人，很尴尬），要么得装浏览器插件、改会议设置。知了是直接听电脑正在放出来的声音，会议软件里一个字都不用改，对方完全不知道你在用它。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Mac 上连屏幕共享都拍不到它的纪要窗，要录演示时你手动打开“让对方看到”，不想露就一直藏着。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">线下开会也能用。面板上有个“听哪里”，切到“会议室”就用麦克风听桌边的人说话；选“电脑和会议室”，线上的人从电脑声音听、桌边的人从麦克风听，两边各认各的语言，记在同一份记录里，每句还标着是“现场”还是“线上”。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">字幕、记录、纪要，三件事一起干</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一层是字幕。对方开口几秒，它自己认语言，然后翻成你的系统语言。界面有中英日韩四种，跟随系统。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二层是文字记录。逐句双语，标着是谁说的。认错了人，在实时纪要窗口里改名、合并，或者把某段话改给别人，都行。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三层才是它真正花力气的地方：纪要不是把话复读一遍，而是边听边归纳议题、要点、结论、待办、人名术语表，还给画了张鱼骨图。点一下某条结论，能跳回原话那一句。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/fig3-records.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">会议记录窗口：按说话人分好名字，逐句英中双语对照（来源：项目 README 官方截图）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有个细节我很喜欢：它会统一人名和术语的写法，还记下听错的变体。按 ⌘F 搜的时候，连错版一起搜出来。“王总”被听成“汪总”这种，搜一次全给你捞出来。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">要开口的时候，按住右边那个键</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">真正解决问题的是这块。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">开会你总要说话。按住键盘右边的 ⌥（Windows 上是右 Ctrl），说中文，对方在会议软件里听到的是翻好的英文：声音经过一个虚拟麦克风进会议（Mac 装 BlackHole 2ch，Windows 装 VB-Cable），对面不用装任何东西。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">填了 key 之后还能克隆你自己的声音，或者挑一个自然人声。不填也能用系统自带语音，机械一点，但能听懂。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/fig4-interpreting.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">同声传译设置页：按住右 Option 说话、目标语言、声音试听（来源：项目 README 官方截图）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">会后：东西都在你自己电脑里</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每场会的双语记录、纪要、原始录音，都存在本机，导出 Markdown、Word、SRT 都行。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">错过一场会也不怕：把录音或视频拖进去，它转成一场双语记录，点时间轴就从那一句开始放。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/fig2-site.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首页实拍：左边是会议窗口和说话人卡片，右边是实时纪要悬浮面板，下面列着 Zoom、Teams、飞书、腾讯会议、Google Meet、X Spaces 等场景（2026-11-06 09:08 实拍，来源：cicada.indaloop.app）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">但它不是免费的午餐</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">得泼点冷水。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">只有 Apple 芯片的 Mac 是真·本机干活：声音不出电脑，不填 key 也能出字幕、翻译、记录。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Windows、Linux、Android 版是云端识别。也就是说，你的会议声音要分段发给 AI 服务。默认是蚂蚁的 Ling，也能换 OpenRouter、ZenMux 或者任何兼容 OpenAI 接口的服务。这几个平台必须填 key，不填就直接不能用。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">钱的事：开一小时会大约 0.15 到 1 块钱。Ling 每月送 10 元额度，够 10 到 50 小时，日常开会基本等于不花钱。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261106-cicada/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">一张卡看清：5 天 1,489 星、4 个平台、5 个版本、开一小时会 0.15～1 元（数据采集于 2026-11-06 09:09）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有两个坑，装之前先知道：</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Mac 版没做苹果公证，Windows 安装包也没代码签名。第一次打开会被系统拦下来：Mac 去“隐私与安全性”里点仍要打开，Windows 点“更多信息 → 仍要运行”。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">安卓版录不了微信通话里的声音（系统不让），要听就开外放，选“面对面”。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">谁该装</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">要开英文会、看外语直播、听 X Spaces，或者每周都得整理会议纪要的——装，这东西省下来的时间比装它的时间多。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">只是偶尔开个中文小会，手机自带的录音转文字够用——先别折腾，你也不需要再多一个要配 key 的软件。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目建仓 5 天，1,489 星，已经发了 5 个版本，最新 1.3.0。作者 11 月 5 日一天里连发四个版本，看得出在赶进度；iPad 版和应用商店版都还挂在路线图上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 打开 cicada.indaloop.app/download，按平台下安装包（Windows 大多数电脑选 x64，骁龙笔记本选 ARM64）<br>② 第一次打开先注册 Ling（chat.ant-ling.com），把 sk- 开头的 key 粘进设置 · AI 服务，然后放一段声音，看字幕出不出来<br>③ 提醒：首次启动会被系统安全提示拦住，Mac 在“隐私与安全性”点仍要打开、Windows 点“更多信息 → 仍要运行”</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：https://github.com/wquguru/cicada（Apache-2.0 · Swift / C# / Kotlin）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：1,489 星、269 fork（GitHub API 2026-11-06 09:09 采集）；共 5 个发布版本，最新 v1.3.0（11-05，11 个安装文件）；平台支持与识别方式、费用口径（0.15～1 元/小时，Ling 每月赠 10 元约够 10~50 小时）均取自仓库 README 与官网下载页（版本实读 1.3.0）；配图：演示动图与截图来自仓库 docs/ 官方素材，官网首页为 2026-11-06 09:08 实拍，数据卡自制。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你开会最想让它先解决哪件：字幕、同传，还是会后纪要？评论区聊聊。</p>
+
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">本文为「GitHub 发现」第 38 期。AI 辅助整理、作者修订，数字以采集时刻为准。</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
