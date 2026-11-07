@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不想露脸也能做口播：一张照片，AI 替你出镜，12 天 1,800 多星【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">有件事我拖了半年：口播视频。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">设备不难，补光灯、麦克风都能买。难的是坐在镜头前，同一段话说第三遍还不皱眉，说第五遍连自己都不信了。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">前几天刷到一个 12 天前才建仓的项目。演示片 27 秒，竖屏直播间，女主播举着手喊「真的假的」，价格从 ¥999 掉到 ¥99，底部字幕一行行追着说话。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">没有真人。脸、嗓音、演播室、字幕、价格动画，全是 AI 做的。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">输入只有一句话：「用这个数字人，给 WorkBuddy 课程做一条 30 秒直播带货广告，10 节课 99 元，原价 999。」</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者把账也贴出来了：482 个积分。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/fig1-demo.gif" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方演示片的价格段（原片 27 秒，这里截了 18.6~23.8 秒），数字从 ¥999 掉到 ¥99，人物嗓音和字幕都是 AI（来源：仓库 Releases 演示片，已压缩体积）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先是一张照片，然后才是一个人</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它跟「一键生成」那些网站不一样：不给你现成模特往里灌稿子，给你一份人设文件。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">`persona.json` 里写着这个人的脸、衣服、声音描述、提示词模板。所以第二条、第三条片子出来，还是同一个人，不会今天双眼皮明天单眼皮。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">做一张新脸按作者的顺序：挑一张正面照（正脸、光匀、头发别挡脸），先生成正、左、右、背四个视角保证侧面不塌；再拿同一张图让两个模型各拍 8 秒，选像的那个。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">然后才是「进场景」：直播间、门店、京都街头。先合成一张带人物的开场画面，再拿这张图当参考去生成说话片段。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/fig2-scene.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方示意：左边是一张参考照，右边是合成后的直播间画面，标注写着中景、头顶留白、两侧留背景（给景深字用）（来源：仓库 docs/images）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">花钱之前，它先跟你报个价</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是我最喜欢的一处设计。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不闷头开干。每次动手前，agent 先报四个数：几段、多少秒、预计多少积分、你余额还剩多少，等你明确说「行」才开工。也不一次拍完，先出第 1 段给你听音色，点头了再批量。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">27 秒那条的账，正好算得平：1 张场景图 23 积分，5 段 720p 片段，27 秒 × 17 积分/秒 = 459 积分，加起来 482。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">长片就贵了。4 分 36 秒的教程用了 32 段，约 3,250 积分；5 分 54 秒那条约 3,409。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">省钱的开关在清晰度：画中画讲解的段用 480p（10 积分/秒），全屏出镜的用 720p。作者也踩过这个坑，有片子把 480p 的主播裁成半身再放大，糊得重拍 4 段，多花 680 积分。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">（积分怎么换成人民币，README 没写，我不替它换算；要花多少，自己去 Renoise 看余额。）</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/fig3-cost.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制数据卡：482 积分一条 27 秒片，另外两支片子分别约 3,250 与 3,409 积分，口径取自仓库 README 的「Cost reference（real runs）」</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">最能打的地方，其实不是数字人</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">是剪辑。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它把 25 条头部创作者的视频逐帧量了一遍：MrBeast、MKBHD、影视飓风、何同学、Johnny Harris、Vox、Kurzgesagt、回形针、半佛仙人、差评。量镜头切在哪、开头三秒给什么、字幕怎么弹、什么时候停一拍。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">量完拆成 48 个能直接调用的包装组件：预告冷开场、数字钉子、证据卡、地图路线、逐字高亮、弹幕、投票、复盘板、进度条，还有那个「文字在人身后」的景深字。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">风格给了 5 种：小林式解说（16:9，3~20 分钟）、网红花字口播（9:16，30~120 秒，花字分克制、标准、热闹三档）、发布解读（16:9，30~90 秒）、保姆级教程、多主播多语言。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不是选完就套模板：它先看内容，推荐 2 个风格并给预览图，再一次问完比例、时长、花字强度和主播。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/fig4-breakdown.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方示意：27 秒广告的 5 段拆解，每段用了什么包装都标了出来（数字钉子＋弹幕、关键词三连、课程实录、景深价格、手绘箭头指小黄车）（来源：仓库 docs/images）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它做的最土一件事：逐段回听</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数字人翻车，翻在嘴上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Grok 生成的口播偶尔会把字幕烧进画面，提示词写了也挡不住。所以每段生成完，脚本抽 4 帧看，中招的那段重拍。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">念错字也不放过。先把每段转成文字跟稿子对，可作者踩过一个坑：拿原文当提示去转写，模型会把念错的字「纠正」回来，你根本查不出来。他改成按停顿切句、不带原文地转。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">查出来错的那句，用克隆音只换这一句，长度拉到和原句一样，切在停顿上，0 积分，口型还对得上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节我很服：几十段拼起来，声音会一点点落后于口型。他们量过，44 段拼到 4 分 43 秒，声音晚了 0.38 秒。解法很笨但有效，每段音频补齐到和画面一样长，拼完再核对两条轨的时长。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">音色也得统一：频谱匹配、去齿音、共用一间「小房间」的混响、响度归一。几十段独立片段拼下来，齿音差从 13.2 dB 收到 5.9 dB。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，Windows 上有个功能用不了。「文字在人身后」靠的是苹果的 Vision 抠像，只有 macOS 能跑，其余全平台。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，它不是一个软件，是一堆脚本。ffmpeg、Python、Node 18+、Playwright、whisper.cpp 加模型，一个都不能少。作者写了自检脚本，装了什么跳过什么，但第一次配环境还是得折腾半小时往上。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">三，钱和规矩。生成全靠 Renoise 的积分，开源不等于白用；渲染用的 Remotion 对个人和 3 人以下小公司免费，更大的公司要买授权；只能用自己的脸和声音，成片默认带「内容由 AI 数字人演绎」标注。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺便交底：这条我没跑通全程，没有 Renoise 账号也没买积分。上面的数字都来自作者的 README、SKILL.md 和演示片，是它的账，不是我的实测。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261107-koubo/fig5-repo.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库页实拍：星标 1.9k、fork 423、7 次提交，README 首屏写着「One photo + one sentence」（2026-11-07 09:08 实拍，来源：github.com/andyhuo520/digital-human-koubo）</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">谁适合用</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每周要出三条以上口播、又不想露脸的，值得花半天装起来。把写稿、生成、质检、剪辑、封面串成一条流水线，这样的项目不多。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">只想做一两条试水的，先用手机拍，别折腾。环境配好了，积分也是钱。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一类人我劝你别碰：想拿别人的脸做号的。作者在 README 里写死了，只用自己的脸和声音，这条不是建议，是底线。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：clone 仓库，把 `skills/` 里两个文件夹丢进 Claude Code / Codex / WorkBuddy 的 skills 目录，再去 renoise.ai 注册、把 MCP 接上<br>② 先试：让它做一条 30 秒口播，人设先用自带的，整条链跑通再换自己的脸，别一上来就拍 5 分钟<br>③ 提醒：「文字在人身后」只有 Mac 能用，Windows 直接跳过；生成前一定等它报价再点头</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：https://github.com/andyhuo520/digital-human-koubo（MIT · TypeScript）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：1,851 星 / 423 fork（GitHub API 2026-11-07 09:00 采集；建仓 2026-10-26，约 12 天）；成本、5 种风格、48 个包装组件、25 条视频拆解、多语言（英日韩法西阿 6 种）与已知坑均取自仓库 README 与 skills/digital-human-koubo/SKILL.md（2026-11-07 09:01 实取）；配图：演示动图截自官方演示片 workbuddy-live-ad.mp4 的 18.6~23.8 秒并压到 1.6MB，场景合成图与分段拆解图来自仓库 docs/images 官方素材，仓库页为 2026-11-07 09:08 实拍，数据卡自制。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你最想让它替你说哪段话：产品介绍、课程口播，还是周报视频？评论区聊聊。</p>
+
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">本文为「GitHub 发现」第 39 期。AI 辅助整理、作者修订，数字以采集时刻为准。</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
