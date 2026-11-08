@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这周 AI 圈：它替你看账单、替你上网，还顺手把你邮箱发了出去【附 5 件事速览】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周刷到一个帖子，标题很直白：Claude Code 把你的邮箱发给了网站。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">发帖的人说，自己让 AI 上网查资料，几天之后开始每天收到几十封诈骗邮件。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺着查下去，原因有点荒诞：它每打开一个网页，都会带上那行「我用的是什么浏览器」，而这一行里，被写进了机主的邮箱地址。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同一周还有四件事：腾讯放出了能自己开电脑的模型；Claude 能直接看你的银行流水了；ChatGPT 里开始出现广告；OpenAI 出图快了五成，还学会了做动图。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一句话：<strong style="font-weight:500;">AI 开始替你办事，便利和账单一起到账。</strong></p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
+    <li style="margin:6px 0;">① 一个 issue：邮箱被写进请求头</li>
+    <li style="margin:6px 0;">② 腾讯 Hy4：第一次能自己开电脑</li>
+    <li style="margin:6px 0;">③ Claude 连上银行卡，只读两年流水</li>
+    <li style="margin:6px 0;">④ 聊天框里开始卖广告</li>
+    <li style="margin:6px 0;">⑤ 出图快一半，还能做表情包</li>
+  </ul>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① 先说自己人的事：邮箱被写进了请求头</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 5 日，GitHub 上 anthropics/claude-code 仓库的 issue #107757，标题是「User-Agent 请求头里的隐私泄露」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先解释一下这行东西。它正常写的是「我用什么系统、什么浏览器」；但有些网站（比如维基百科）要求脚本程序在这行里留个联系邮箱。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Claude Code 替你上网查资料时，把这张名片上的联系邮箱，填成了你的账号邮箱，然后发给了它访问的每一个网站。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Anthropic 的人在 issue 下面解释：这不是他们设计的功能，是模型自己为了满足那些网站的规矩，把用户邮箱写了进去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">次日这事在 Hacker News 上拿了 1,590 分；到这会儿 issue 还开着，104 条评论。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方的解法已经发了：从 v2.1.317 起内置一个叫 cc-plugin-privacy 的隐私模块，默认开启，确定性地拦住这个行为，可以在 /plugins 里关掉，源码也公开了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但还留了个尾巴：有用户回帖说，自己跑的 2.1.318 在 /plugins 里没看到它；官方也没交代这事持续了多久、影响了多少人。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点评：这不是模型说错话，是它在替你跑腿的时候，把你的联系方式贴在了门口。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/fig3-issue.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：issue #107757 里的五条事实（截至 2026-11-08 08:05）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② 腾讯 Hy4：7700 亿参数，第一次能自己开电脑</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 4 日，腾讯混元发布新一代模型 Hy4：总参数 7700 亿（770B），混合专家架构，可以理解成一支很大的团队，每次只叫上一小部分干活，所以又大又不贵。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两个「第一次」值得记：第一次能看懂图（细看图、复杂图表、图形数学题）；第一次能自己操作电脑，命令行和图形界面都行，还专门在 Blender、CAD 这类专业软件上练过。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方数字：办公产品 WorkBuddy 上平均 83.18 分、任务通过率 96.15%，12 个场景里 9 个国内第一。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">金融盲测请了 213 位专家、579 项真实任务，它拿 3.04 分；同场 DeepSeek-V4.1-Flash 2.97 分，Kimi K3.1 Pro 和 GLM-5.3 各 2.68 分。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">幻觉率从 12.95% 降到 7.2%，价格没涨：输入 6 元、输出 18 元（每百万 tokens 计）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">实测里最直观的一条：一句「给 9 岁孩子做个太阳系网页」，它交付了一个能点、能拖、能调公转速度的页面，自己补了行星档案和进度条，还用 Chrome 做了 15 项交互检查。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/fig1-solaris.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">腾讯科技实测截图：一句话生成的太阳系互动页（来源：news.qq.com，2026-11-04）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两句要说清的：一是「跻身最强开源」是腾讯自己的评测口径，官方自己也承认跟顶尖闭源模型还有较大差距；二是权重是「近期开源」，截至今天还没放出来。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ Claude 连上你的银行卡：只读，能看两年流水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 5 日，Anthropic 给 Claude 加了「个人财务」。通过银行连接服务 Plaid 绑定银行卡，然后用大白话问「这个月钱花哪了」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给的例子很具体：一个月支出 4,309.37 美元，一半多花在房租水电；问「发薪日前还剩多少」，它算出 1,393.22 美元。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还会挑毛病：同一笔钱扣了两次、莫名其妙的费用、一年里慢慢涨上去的账单；你问 APR（年化利率）是什么、这一年付了多少利息，它也给你算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">关键在权限：只读。不能转账、不能管理、不能投资，也不给投资建议。登录是在 Plaid 那一步自己完成的，Claude 看不到你的银行密码。它能看到的范围写得很具体，我做了张卡。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/fig2-claude-fields.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：Claude 个人财务能看到的信息范围（来源：Anthropic 官方公告，2026-11-05）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两条冷水：一是只有美区的 Pro、Max、Ultra 能用，目前还是 beta；二是「最多两年流水全交出去」这件事本身就是代价，这些数据也会留在对话记录里，直到你删掉那次对话。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 聊天框里开始卖广告了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 5 日，WIRED 盘了一遍「聊天机器人怎么赚钱」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">OpenAI 从今年 2 月起在 ChatGPT 里放广告，到现在广告主超过 10 万家。Google 上周把 AI Mode 的广告又扩到 10 个国家。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Anthropic 则守住「Claude 不做广告」，也不推销自家的信用卡和贷款，最近交的上市文件里连这个可能性都没提。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一家在 200 多个 AI 应用里卖广告的公司 Koah，给了几个数：聊天机器人的广告点击率大约 3%，跟成熟期的 Google 广告差不多；AI 参与写的广告，点击率是纯人写的两倍。定向也更细，通常能拿到你这一整段对话来决定推什么。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/fig4-ads.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：本周与广告有关的三个数字（来源：WIRED 2026-11-05、OpenAI 广告扩围公告）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以「免费 AI 靠什么活」这个问题，答案已经摆在桌面上了：广告，而且已经在收钱。你在聊天框里说的私事，比搜索框里的几个词长得多，也私密得多。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ 出图快一半，还能做会动的表情包</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 4 日，OpenAI 把图像模型升到 Images 2.6，ChatGPT、Codex、API 一起更新。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最直接的提升是快：官方说生成速度提升 50%，API 的低质量档最快 6 秒出一张。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">新东西是 GIF：给吉祥物做动作、把产品图做成循环动图、做表情包和反应图，也能先出动态分镜，再拿去转视频。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">规模数字也挺有分量：全球每周通过 ChatGPT、Codex 和 API 生成 40 亿张图，平均每天 5 亿张以上。AI 画图早就不是新鲜事，是基础设施了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节：官方示例的提示词写得像分镜脚本，要 6 帧、3 列 2 行、人物表情逐帧变化。会不会写提示词，真成了一门手艺。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261108-ai-digest/fig5-openai.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">OpenAI 官方发布图：Images 2.6（来源：openai.com，2026-11-04）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事放一起看：能力在往前跑，能自己开电脑、能看两年的账单、出图快一半；代价也在往前走，邮箱能被当成名片发出去，聊天框里开始卖广告。<strong style="font-weight:500;">两边都是真的，只是账单来得比你想的早。</strong></p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">真要我挑一件记住的，是第①件。不是因为它最严重，而是因为它最容易看不见：你根本不知道，自己的邮箱是从哪一天开始，跟着每一行请求出门的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 用 Claude Code 的：终端敲 claude --version，低于 2.1.317 先升级，升级后在 /plugins 里确认 cc-plugin-privacy 在且是开的。<br>② 想白试国产大模型的：WorkBuddy / CodeBuddy 免费额度到 11 月 15 日。<br>③ 提醒：Claude 个人财务只读、只在美国，但能看到两年流水，绑之前想清楚。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我展开写成单篇。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">来源（截至 2026-11-08 08:05）：① GitHub issue #107757（github.com/anthropics/claude-code/issues/107757，11-05）、Hacker News 讨论（11-06，1,590 分）。② 腾讯混元官方英文稿与腾讯科技实测（均 11-04）。③ Anthropic 个人财务公告（claude.com，11-05）；TechCrunch、The Verge 同日报道。④ WIRED（11-05）、OpenAI 广告扩围公告。⑤ OpenAI Images 2.6 公告（11-04）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">配图：fig1 为腾讯科技实测截图，fig5 为 OpenAI 官方发布图，fig2 / fig3 / fig4 为本号自制卡。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 40 期 · 这周 AI 圈（外网速递篇）：每周日挑一组外网动态，用大白话讲给你听。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf> */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
