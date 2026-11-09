@@ -19,16 +19,16 @@
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261109-t3code/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我最近老想起一个画面：人在地铁上，AI 在家里的电脑上改代码。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周这个画面有了现成的工具。一个叫 T3 Code 的项目冲到 GitHub 周榜第一，一周涨了 1.7 万星，总共 5.2 万。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">就在这几天，这个画面有了现成的工具：一个叫 T3 Code 的项目冲到 GitHub 周榜第一，一周涨了 1.7 万星，总共 5.2 万。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它干的事一句话能说清：把你电脑上已经装好的 AI，接到手机、网页、另一台电脑上。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">仓库挂在 Theo 的公司 Ping.gg 名下。他不是无名之辈，官网首页挂着一条留言：「我最喜欢的界面，是一个 YouTuber 和一个叫 Julius 的瑞典人做的」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据也对得上：提交最多的是 juliusmarminge，3,980 次；作者 t3dotgg 自己 1,072 次。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261109-t3code/fig1-site.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍（t3.codes，2026-11-09）：右上角写着 52k+ GitHub stars</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不生产 AI，它给 AI 装了个驾驶舱</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">T3 Code 自己的说法是「智能体控制台」。翻成人话：它不聪明，也不卖模型，你电脑上得先有一个能干活的 AI。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">T3 Code 自己的说法是「驾驭智能体的控制面」（agent harness control surface）。翻成人话：它不聪明，也不卖模型，你电脑上得先有一个能干活的 AI。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">README 里列了七家：Claude Code、Codex、Cursor、Grok Build、OpenCode、Antigravity、fx。装好、登录，T3 Code 就把它们接进同一个界面：左边会话列表，中间对话，底下是文件改动。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">文档里还藏了两个实验性的：Pi 和 Muse Code。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">FAQ 的清单里还多列了 Pi 和 Muse Code 两个（安装文档里暂时没写）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方 FAQ 里有个比喻很贴切：AI 是厨师，harness（驾驭 AI 的那层外壳）是厨房，T3 Code 是那家「允许你自带厨房」的餐厅。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它靠什么赚钱？不赚。官网原话是「Nothing. There's no way to pay us.」，没有让我们收你钱的办法。MIT 协议，代码全给。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">节奏也猛：稳定版到现在才 0.1.7，但几乎每六小时就推一个 nightly 构建，11 月 8 日一天推了三个。</p>
@@ -37,17 +37,17 @@
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">手机怎么找到家里那台电脑</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是我觉得最实用的一段：不用公网 IP，不用动路由器。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">电脑端打开「设置 → 共享与访问」，登录、开启 T3 Connect；手机 App 登同一个账号，那台机器就出现在列表里，点进去接着聊。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">免费账号能连 3 台机器，手机和浏览器不算名额。同一局域网直连、Tailscale 也支持。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">免费账号能连 3 台机器，手机和浏览器不算名额。同一局域网直连、Tailscale 也支持，不过手机推送要靠 T3 Connect，只走局域网或 Tailscale 是收不到的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">当然有前提：电脑得开着，也得联网。它不是魔法，只是把「你必须在电脑前」这条约束去掉了。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261109-t3code/fig2-phone.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google Play 官方应用截图：左边是电脑列表，右边是直接在手机上审改动（来源：Google Play，2026-11-09）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">真正值钱的是「拍板」</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">T3 Code 有四档权限，从紧到松：</p>
   <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
-    <li style="margin:6px 0;">逐条批准：改文件、跑命令都要你点一下；</li>
-    <li style="margin:6px 0;">自动改文件：改代码不用问，跑命令还得问；</li>
-    <li style="margin:6px 0;">自动：交给服务商自己审，拿不准再问你；</li>
-    <li style="margin:6px 0;">全放开：什么都不问。</li>
+    <li style="margin:6px 0;">逐条批准（Supervised）：改文件、跑命令都要你点一下；</li>
+    <li style="margin:6px 0;">自动改文件（Auto-accept edits）：改代码不用问，跑命令还得问；</li>
+    <li style="margin:6px 0;">自动（Auto）：交给服务商自己审，拿不准再问你；</li>
+    <li style="margin:6px 0;">全放开（Full access）：什么都不问。</li>
   </ul>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">注意最后一档：新会话的默认值就是「全放开」。第一次用，我建议先切到「逐条批准」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">会干活只是及格线。会用手机通知把你叫回来拍板，才是它省事的地方：AI 干完了、失败了、卡在等批准，手机上都会弹一条，点开就是那个会话。</p>
@@ -55,12 +55,12 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261109-t3code/fig4-perms.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制卡：四档权限，新会话默认是最后一档（来源：官方 permission-modes 文档）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">不好听的部分也得说</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它非常早期。作者在 README 里写得很直白：「我们在非常非常早期，做好遇到 bug 的准备」，还补了一句「暂时基本不接受外部贡献，小修可以考虑，大功能不行」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据也印证了：截至今天早上，仓库里有 1,987 个没关闭的 issue、3,969 个待合并的 PR。这个量级说明，想帮忙的人比维护的人多得多。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它非常早期。作者在 README 里写得很直白，原文大意是「我们在非常非常早期，做好遇到 bug 的准备」，还补了一句「暂时基本不接受外部贡献，小修可以考虑，大功能不行」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数据也印证了：截至今天早上，仓库里有 1,987 个没关闭的 issue、3,969 个待合并的 PR。提交速度远超合并速度，官方也明说基本不收外部贡献。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有三件得知道：</p>
   <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
     <li style="margin:6px 0;">默认权限「全放开」，等于把电脑交出去一部分；</li>
-    <li style="margin:6px 0;">官方 FAQ 自己承认：走 Anthropic 的 Agent SDK，会更快耗掉 Claude 的 5 小时额度。作者说这是 Anthropic 那边的问题，已经报过去了；</li>
+    <li style="margin:6px 0;">官方 FAQ 自己承认：走 Anthropic 的 Agent SDK，会更快耗掉 Claude 的 5 小时额度（官方强调只影响 5 小时额度，不影响每周额度，说这是 Anthropic 那边的问题，已经报过去了）；</li>
     <li style="margin:6px 0;">Windows 上还做不了后台常驻，得留一个终端窗口开着。</li>
   </ul>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官网首页倒是挂了句自嘲，我挺喜欢：「Tolerated by over 500,000 devs」，被 50 万开发者「容忍」。</p>
@@ -71,7 +71,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么不直接用 Cursor，或者 Claude、Codex 自己的桌面版？官方 FAQ 的回答很直接：订阅还是你自己的，远程和手机是它最强的两块，而且 100% 开源，哪天走偏了，你可以 fork 一份带走。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">适合的人：已经在付 Claude 或 Codex 订阅、又经常不在电脑前的人。钱不变，只是换了个地方指挥。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不适合的人：还没开始用这些 AI 的。它自己不产生能力，装上去也是空的。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① Windows：先在终端装好并登录一个 CLI（比如 Claude Code），再在 PowerShell 里跑 irm https://t3.codes/install.ps1 | iex，或者 winget install T3Tools.T3Code；敲 t3 启动。<br>② 想在外面用：桌面端「设置 → 共享与访问」登录并开启 T3 Connect，手机装 T3 Code 登同一个账号，就能看到那台电脑。<br>③ 提醒：默认权限是「完全放开」，第一次先切到「逐条批准」；项目很早期，别拿它碰重要仓库。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① Windows：先在终端装好并登录一个 CLI（比如 Claude Code），再在 PowerShell 里跑 irm https://t3.codes/install.ps1 | iex，或者 winget install T3Tools.T3Code；敲 t3 启动。<br>② 想在外面用：桌面端「设置 → 共享与访问」登录并开启 T3 Connect，手机装 T3 Code 登同一个账号，就能看到那台电脑。<br>③ 提醒：默认权限是「全放开」，第一次先切到「逐条批准」；项目很早期，别拿它碰重要仓库。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你电脑上的 AI，现在最想让它替你干什么？评论区聊聊。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目地址：<strong style="font-weight:500;">github.com/pingdotgg/t3code</strong>（MIT 协议）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">来源（截至 2026-11-09 08:10）：GitHub 周榜镜像 week.json（一周 +17,100 星，全站第一）；GitHub API（总星 52,467、fork 10,011，08:02 复核；建仓 2026-02-08）；Search API（未关闭 issue 1,987、待合并 PR 3,969，08:05）；官方站点 t3.codes；仓库 README 与 docs/user 的 remote-access、permission-modes、faq、mobile-notifications。</p>
