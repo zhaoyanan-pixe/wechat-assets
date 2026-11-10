@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 天涨 2.4 万星：把别人的软件丢给 AI，它能看懂，再给你造一个【附上手小抄】 · 预览页</title>
+<style>
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我这几天盯上一个项目，越看越精神。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它自带的演示里，一个计算器被拆开：点进百分号键那个函数，屏幕上出来五行伪代码，其中一行的注释写着 // the whole trick ——按一下 %，就是把屏幕上的数除以 100。整件事，就这一行。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我先笑了，随后有点发凉。这种「一眼看穿别人怎么写的」活儿，以前是几个工程师围着屏幕抠半天。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目叫 Craft Anything，ArtCraft 团队做的，10 月 31 日开源。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">到今天上午我查了一下：2.4 万星，155 个没关的 issue、125 个待合并的 PR，五个版本累计下载 49.4 万次。十天，五个版本。这个速度，一年也碰不上几回。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它干的事一句话能说清：指着一个网站、App 或游戏，让它看明白是怎么做的，再让你电脑上的 AI 照着造一个自己的版本。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/fig1-make.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：选类型（网站 / 应用 / 游戏 / 从零开始），填地址，说一句想要什么，按 Start。右上角那个开关就是净室模式。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它干活的顺序，像个较真的学徒</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">四步，看、造、比、交。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">看：网页按三种屏幕宽度各扫一遍，颜色、字号、间距、点开菜单后的样子全记下来；程序则把函数、字符串、调用关系一条条扒出来。这一步不用 AI，靠的是它自带的 320 个工具。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">造，才轮到 AI 上场：叫上你本机的 Claude Code，按你指定的语言和框架起一个新项目。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">比重头戏在后头：把你的成品和原件摆在一起量，一页一页给相似度，差哪儿了列成清单。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/fig2-likeness.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：复刻 example.com 的结果。首页 96%、内页 91%、整体 93%，右边还挂着一条没答的问题：「原站的 Logo 和文字能不能复用？」</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">最讲究的地方，是它「看不看源码」</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">默认的净室模式（clean room）里，它不读原件的源码、文件、页面源，只用访客能看见的东西：截图、可见文字、量出来的布局和颜色。想往里看的工具会被它拒掉，还提示「要看得切到深度模式」。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">深度模式才是全套：读网页 JS、反编译程序，装了 Ghidra 也能接上，用途写得明白——给你自己研究。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我挺喜欢这个开关。它先划了一条「你能看哪一层」的线，再让你自己决定站哪边。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;">AI 一键生成网站的演示我见太多了，多数是花架子。这个不一样：它把「像不像」变成了数字，每个数字后面挂着证据台账——我说这页 93% 像，依据是这三条，不是我感觉像。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水，先泼为敬</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆，它还是早期 alpha。作者在 README 里把「能跑的」「写了没实测的」「下一步的」分成三栏摆着，一百多个 issue 也在那儿。别当成熟软件用。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆，它自己不会写代码。你本机得先装好 Claude Code 并登录，走你自己的订阅。Codex 那条线，作者原话是「还没在真实安装上验证过」。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆，净室是「它不肯看什么」的规矩，不是系统沙箱。你的 agent 有什么权限，它就能干什么；装依赖那一步，npm 的安装脚本是真会在你电脑上跑的。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条得说清：它写明了不绕过 DRM、登录和反作弊；复刻页面里的 Logo、照片、文案默认不照搬，要你自己确认有权使用。线是作者划的，守不守在你。</p>
+
+  <p style="margin:24px 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我为什么觉得这事值得看一眼</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我们对软件的感觉一直停在「会用」：知道往哪儿点，不知道里头怎么转。这类工具把「里头怎么转」变成了能问出来的东西。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你不用懂汇编，也不用会写 Rust，会问一句「这个功能它怎么实现的」就行，答案后面还带着证据。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">造的那半也一样。以前想给自己小店做个预约页，要么学前端，要么花钱找人；现在可以先让它照着你喜欢的那页做一个，再一点点改成自己的。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">当然，做出来能不能上线、好不好用是另一回事。工具只负责把你从「想」推到「有个能跑的东西」，审美和判断，它替不了你。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/fig3-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制卡：关键数字，全部对得上源（数据截至 2026-11-10 10:23）</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/fig4-workbench.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：高级工作台，左边函数列表，中间伪代码，右边证据台账；底下 AI 的回答署名「Answered by Claude」。</p>
+
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261110-craft-anything/fig5-snake.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：一句「A snake game」，四步走完，右边就是 Play the game。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：去 Releases 页下安装包，Windows 有 .msi 和免安装 zip，macOS 是 dmg；装完直接双击打开，不用碰命令行。<br>② 先试这条：选「A website」，填一个你自己做过的页面，用净室模式复刻一次，看右侧相似度怎么往上爬。<br>③ 一个提醒：想让它「造」，本机得先有编码 agent（首推 Claude Code）并登录；拿别人的站点练手前，先确认你有权看它；项目很早期，别拿正经项目开刀。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你会想让 AI 复刻哪个软件？评论区聊聊。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/storytold/craft-anything（MIT / Apache-2.0 双协议，纯 Rust 写的）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-11-10 10:23）：GitHub API 与仓库页（24,646 星、4,963 fork、155 个未关闭 issue、125 个待合并 PR、建仓 2026-10-31）；Releases API（最新 v0.6.0 发布于 2026-11-09，近五个版本资产下载合计 493,720 次）；仓库 README 中英文版（320 个工具、净室 / 深度两种模式、三种屏幕宽度、Rust 1.97+）；官方演示图见 docs/images。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">配图：图 1、2、4、5 为官方 README 演示截图，图 3 为本号自制卡。</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 42 期：每期挑一个 GitHub 或外网值得看的项目，用大白话讲给你。）</p>
+
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
+
+</body>
+</html>
