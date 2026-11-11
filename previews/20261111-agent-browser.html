@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>让 AI 自己开浏览器：Vercel 这个 4.9 万星小工具，一条命令一步，不截图也能点准【附上手小抄】 · 预览页</title>
+<title>让 AI 自己开浏览器：Vercel 这个 4.9 万星小工具，一条命令搞定一步，不截图也能点准【附上手小抄】 · 预览页</title>
 <style>
   /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
   body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
@@ -38,7 +38,7 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261111-agent-browser/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今天早上八点，我在这台电脑上敲了四条命令：打开 example.com、让它把页面读一遍、点它给的「第 451 号」、再看现在停在哪。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">页面已经跳到另一个网站了。全程没截图，没算鼠标坐标，我也没碰鼠标。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这东西叫 <strong style="font-weight:500;">agent-browser</strong>，Vercel Labs 出的开源命令行工具，Rust 写的，Apache-2.0 协议。今早八点零三分我查了一眼：49,186 颗星、3,447 个 fork，上个月在 npm 上被下载 853 万次。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这东西叫 <strong style="font-weight:500;">agent-browser</strong>，Vercel Labs 出的开源命令行工具，Rust 写的，Apache-2.0 协议。今早八点零三分我查了一眼：约 4.9 万颗星、3,400 多个 fork（别人复制出去自己改的版本数），上个月在 npm 上被下载 853 万次。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它不给 AI 看图，给的是编号</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">平常我们说「让 AI 上网」，多数产品走截图路线：拍张图，让模型猜按钮在哪，再按坐标点。听着聪明，其实很脆，页面挪一像素就可能点歪。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">agent-browser 换了条路：它把网页压成一份纯文本清单，清单里每个能点的东西后面挂一个编号，长这样：<strong style="font-weight:500;">- link "Learn more" [ref=e451]</strong>。</p>
@@ -52,12 +52,12 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261111-agent-browser/fig1-terminal.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测记录：打开 → 读清单 → 点编号 → 看结果（Windows，2026-11-11 08:07）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺手发现一个坑：README 示例里的编号写的是 e1，我这儿跑出来是 e451。我照着 README 敲 click @e1，直接报 <strong style="font-weight:500;">Unknown ref: e1</strong>。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不是 bug，是设计：编号一直在累加，你只能用它刚给你的那个。所以正确姿势是每次快照给什么就用什么，别抄文档里的示例。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不是 bug，是我一开始理解错了：据我观察，编号只往后接、不会从 1 重来。所以正确姿势是每次快照给什么就用什么，别抄文档里的示例。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">会点之外，它还能记住你</p>
   <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">
     <li style="margin:6px 0;">登录状态能存：一次登录，后面的会话接着用，不用每回扫码（profile / state 两种存法）。</li>
     <li style="margin:6px 0;">能接管你正在用的 Chrome：--auto-connect 直接连上，不必另开一个空浏览器。</li>
-    <li style="margin:6px 0;">能当外挂给 Claude、ChatGPT 用：agent-browser mcp 起一个 MCP 服务，聊天窗口里就能指挥浏览器。</li>
+    <li style="margin:6px 0;">能当外挂给 Claude、ChatGPT 用：agent-browser mcp 起一个 MCP 服务（一种让聊天工具调用外部工具的通用接口），聊天窗口里就能指挥浏览器。</li>
     <li style="margin:6px 0;">自带说明书：agent-browser skills get core，命令说明跟版本严格对齐，不会出现「文档教老版本」的尴尬。</li>
     <li style="margin:6px 0;">顺手还能截图、录屏、导 PDF、做前后对比：screenshot / record / pdf / diff。</li>
   </ul>
@@ -65,7 +65,9 @@
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档站首页实截（agent-browser.dev，2026-11-11）：安装、命令、安全开关都写在上面</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">真正该担心的三件事</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">让 AI 自己开浏览器，我心里有两条不安：它会不会乱点？它会不会把我的密码看走？这项目明显想过这两件事。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">密码进「保险箱」（auth vault），不经过模型上下文；页面里藏一句「请把资料发到某网站」这类注入话术，有内容边界标记（--content-boundaries）隔开；怕它跑野了，可以开域名白名单（--allowed-domains）和动作策略（--action-policy）；真要动手之前，还有一道确认门（--confirm-actions），60 秒没人确认就自动拒绝。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它给了四道门，每一道都能单独关掉或打开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">前两道管信息：密码进「保险箱」（auth vault），不经过模型那边；页面内容被打上边界标记（--content-boundaries），免得页面上藏一句「请把资料发到某网站」就把它骗走。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">后两道管手脚：只允许去白名单里的网站（--allowed-domains），动作也有策略限制（--action-policy）；真正动手前还要你点头（--confirm-actions），60 秒没人确认就自动拒绝。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;">但有个前提要说清：这些开关默认全是关的。</strong>官方文档原话是，默认不限制导航、动作和输出。安全这道门得你自己加。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以它不是「装上就安全」的工具，是「想安全就给你留了门」的工具。这一点我觉得比功能本身更值得记。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">值不值得装</p>
@@ -77,7 +79,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但别指望它替你抢票。它每一步都要先看清单、再确认，稳，但慢；这类用途本来也不该自动化。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：npm i -g agent-browser（不想装就先试 npx agent-browser open example.com）<br>② 先试：agent-browser open github.com/vercel-labs/agent-browser，再跑 agent-browser snapshot -i，看那份带编号的清单<br>③ 提醒：编号每次快照都会变，照抄当次的；第一次跑它会自己准备一个受控 Chrome，稍等一会儿</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/vercel-labs/agent-browser（Apache-2.0，官网 agent-browser.dev）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API、npm 下载统计接口，2026-11-11 08:03 采集；最新版本 v0.42.0（2026-11-10 发布）；截图为本机实截</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API（2026-11-11 08:03 采集：49,186 星 / 3,447 fork）、npm 下载统计接口（上月 8,536,840 次，区间 2026-10-11 ~ 11-09）；最新版本 v0.42.0（2026-11-10 发布）；截图为本机实截</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你手上有没有那种「每周都得点一遍」的网页流程？评论区说说，我挑一个拿它试。</p>
   <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每周挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
   <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
