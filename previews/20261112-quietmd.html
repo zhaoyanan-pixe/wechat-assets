@@ -39,7 +39,7 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我的笔记现在散在四个地方：飞书云文档、桌面上几个 txt、G 盘一个 md 文件夹，还有微信收藏。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上个月想找一句三个月前记的话，四个地方翻了一遍，没找到。最后重新搜了一遍资料，等于白记。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这种事干过两次以后，我开始认真看「笔记到底存在哪」这个问题。然后就撞见一个只有 11 天大的项目。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Quiet.md</strong>，11 月 1 日建的仓库，到今天早上 1,600 多星。Rust 写的，MIT 协议，Mac、Windows、Linux 三个平台都有安装包。作者自己给它的定位是「一个又快又安静的本地笔记应用」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Quiet.md</strong>，11 月 1 日建的仓库，到今天早上 1,600 多星。Rust 写的，MIT 协议，Mac、Windows、Linux 三个平台都有安装包，Linux 目前还是实验版。作者自己给它的定位是「一个又快又安静的本地笔记应用」。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">整个笔记库，就是一个普通文件夹</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不搞账号，也不搞云同步。笔记库默认放在「文稿」里一个独立文件夹，每篇笔记对应一个 XML 文件，你粘进去的图和附件单独放一个 assets 文件夹。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig1-files.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
@@ -49,14 +49,14 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有两个细节挺对胃口：Windows 上卸载软件不会删你的笔记；安装包 12.9MB，装完没有常驻后台服务。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它说的是飞书的方言</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是我完全没想到的设计。作者把笔记的存储格式，直接做成了飞书云文档的 DocxXML。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">意思是：从飞书复制一段带表格、待办、分栏的内容粘进来，结构还在；反过来把本地写的贴回飞书，也不会散架。导入支持 Markdown 和飞书文档，导出支持 Markdown、PDF，还能直接打印。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">意思是：从飞书复制一段带表格、待办、分栏的内容粘进来，结构还在。格式本来就是同一套，理论上反着贴回飞书也能认，但这条我没实测。导入支持 Markdown 和飞书文档，导出支持 Markdown、PDF，还能直接打印。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我为什么在意这个：这几年我换过三次笔记工具，每次最痛的不是学新界面，是把旧文档搬出来。表格变图片、待办变项目符号、分栏直接消失。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它内置了四套配色：Craft、飞书、Notion、Obsidian。看得出来，作者盯的就是「不想搬，但想换」的那批人。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它内置了四套主题：Craft、飞书、Notion、Obsidian，每套都有深色版。看得出来，作者盯的就是「不想搬，但想换」的那批人。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig2-app.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方界面截图：左侧文档树，右侧所有笔记平铺（来源：仓库 docs/images/home.png）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">首发体验也做了：第一次打开，它会往空库里放一份「开始指南」，十分钟带你过一遍主要功能，不会覆盖你已经有的笔记。界面中英双语，中文是原生的。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">快，是那种不用等的快</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这软件不是网页套壳（那种一个记事本能吃几百兆内存的做法）。界面由 Rust 和 GPUI 直接在显卡上画出来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这软件不是网页套壳（那种一个记事本动辄上百兆内存的做法）。界面由 Rust 和 GPUI 直接在显卡上画出来。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了一组数：在一篇 100 万字、549 章的文档里连续操作 100 次，打字每帧的处理耗时 P95 是 5.78 毫秒，退格 5.55 毫秒，滚动 4.14 毫秒。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">（P95 是什么：把 100 次操作按耗时排队，第 95 名那个的耗时。它比平均值诚实，因为把「偶尔卡一下」也算进去了。）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">120Hz 屏幕给每一帧的预算是 8.3 毫秒。也就是说在百万字文档里，它还有余量。</p>
@@ -79,7 +79,7 @@
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍：三个平台的安装包都在第一屏（2026-11-12 08:02 本机实截）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：官网 quiet.md 下 Windows 安装包（12.9MB）；Mac 分 Apple 芯片和 Intel 两版；Win10 需 2004 以上，macOS 需 13 以上<br>② 先试：打开先跟一遍自带的「开始指南」，再从飞书复制一篇带表格的文档粘进去，看结构还在不在<br>③ 提醒：Beta 阶段重要笔记先备份；它能直接编辑本机 .md，但改动是立即写盘的</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/s1dashu/quiet-md（MIT，官网 quiet.md）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据和素材来源：GitHub API 与 Releases API 于 2026-11-12 08:05 采集。1,619 星 / 145 fork，仓库建于 2026-11-01；共 11 个发行版，最新 v0.1.10（11-10 发布），27 个安装包资产累计下载 1,283 次。性能数字与目录结构引自仓库 README 与 docs/FORMAT.md。图 1 为官方截图，图 2、图 5 为本机实截（2026-11-12 08:02）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据和素材来源：GitHub API 与 Releases API 于 2026-11-12 08:05 采集。1,619 星 / 145 fork，仓库建于 2026-11-01；共 11 个发行版，最新 v0.1.10（11-10 发布），27 个安装包资产累计下载 1,283 次。性能数字与目录结构引自仓库 README 与 docs/FORMAT.md。图注：App 界面截图来自官方仓库 docs/images/home.png；发布页与官网首屏为 2026-11-12 08:02 本机实拍；目录结构图据 docs/FORMAT.md 自制、数字卡据 GitHub API 自制。Windows 安装包 12.9MB 为 v0.1.10 实际体积（README 写的是约 14MB）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你的笔记现在存在哪：云端还是硬盘？评论区聊聊，我攒了几个搬家的坑。</p>
   <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每周挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
   <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
