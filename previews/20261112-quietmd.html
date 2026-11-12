@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>笔记不该锁死在别人 App 里：11 天 1,600 多星的本地笔记，一篇就是一个文件【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我的笔记现在散在四个地方：飞书云文档、桌面上几个 txt、G 盘一个 md 文件夹，还有微信收藏。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上个月想找一句三个月前记的话，四个地方翻了一遍，没找到。最后重新搜了一遍资料，等于白记。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这种事干过两次以后，我开始认真看「笔记到底存在哪」这个问题。然后就撞见一个只有 11 天大的项目。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它叫 <strong style="font-weight:500;">Quiet.md</strong>，11 月 1 日建的仓库，到今天早上 1,600 多星。Rust 写的，MIT 协议，Mac、Windows、Linux 三个平台都有安装包。作者自己给它的定位是「一个又快又安静的本地笔记应用」。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">整个笔记库，就是一个普通文件夹</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它不搞账号，也不搞云同步。笔记库默认放在「文稿」里一个独立文件夹，每篇笔记对应一个 XML 文件，你粘进去的图和附件单独放一个 assets 文件夹。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig3-files.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">笔记库的真实目录结构（照官方文档 docs/FORMAT.md 抄的，文件名已缩短）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话的分量在于：这份文件不认 Quiet.md。哪天这软件不更新了、你换电脑了，文件夹整个拷走，随便一个文本编辑器也能打开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它用的不是私有二进制格式，是飞书文档那套 DocxXML。这一点下面单独说。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有两个细节挺对胃口：Windows 上卸载软件不会删你的笔记；安装包 12.9MB，装完不塞后台服务、不开机自启。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它说的是飞书的方言</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是我完全没想到的设计。作者把笔记的存储格式，直接做成了飞书云文档的 DocxXML。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">意思是：从飞书复制一段带表格、待办、分栏的内容粘进来，结构还在；反过来把本地写的贴回飞书，也不会散架。导入支持 Markdown 和飞书文档，导出支持 Markdown、PDF，还能直接打印。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我为什么在意这个：这几年我换过三次笔记工具，每次最痛的不是学新界面，是把旧文档搬出来。表格变图片、待办变项目符号、分栏直接消失。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它内置了四套配色：Craft、飞书、Notion、Obsidian。看得出来，作者盯的就是「不想搬，但想换」的那批人。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig1-app.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方界面截图：左侧文档树，右侧所有笔记平铺（来源：仓库 docs/images/home.png）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">首发体验也做了：第一次打开，它会往空库里放一份「开始指南」，十分钟带你过一遍主要功能，不会覆盖你已经有的笔记。界面中英双语，中文是原生的。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">快，是那种不用等的快</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这软件不是网页套壳（那种一个记事本能吃几百兆内存的做法）。界面由 Rust 和 GPUI 直接在显卡上画出来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了一组数：在一篇 100 万字、549 章的文档里连续操作 100 次，打字每帧的处理耗时 P95 是 5.78 毫秒，退格 5.55 毫秒，滚动 4.14 毫秒。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">（P95 是什么：把 100 次操作按耗时排队，第 95 名那个的耗时。它比平均值诚实，因为把「偶尔卡一下」也算进去了。）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">120Hz 屏幕给每一帧的预算是 8.3 毫秒。也就是说在百万字文档里，它还有余量。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这类数字我一向打折看，毕竟测试机是 M5 Pro。但只要它别在一篇长文里卡成幻灯片，对我这种天天写几千字的人就够用了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">再说清楚它现在的问题</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它挂着一个 Beta 标签，11 天发了 11 个版本，平均一天一版。开发快是好事，反过来也说明现在还不是「闭眼存进去」的时候，仓库里 73 个 issue 还开着。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig5-releases.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库发布页实拍：11 天 11 个版本，最新 v0.1.10（2026-11-12 08:02 本机实截）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Windows 第一次运行可能弹 SmartScreen 拦截，得点「更多信息 → 仍要运行」。这不是病毒提示，是没买微软签名证书的小团队常态。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#FFFFFF;background-color:#2E6DA6;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;">重要笔记先备份。</strong>它卸载不删笔记，但回收站里的「一键清空」是真的删掉；Beta 阶段，别把唯一一份资料放进去当实验。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">另外两个小地方值得知道：它自带的 67 个图标是 Nucleo 商业授权，不能单独抠出来再分发；「Quiet.md」这个名字和图标也不在 MIT 协议范围内。你拿它改个自己的版本可以，这两样得先换掉。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig4-stats.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">项目关键数字（GitHub API / Releases API，2026-11-12 08:05 采集）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">谁适合，谁先别装</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">适合的人：笔记量大、在意文件归属、同时又在用飞书办公。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个隐藏用处：从 0.1.8 版起，它能原地编辑本机的 .md 文件，也能把整个文件夹导进来但不改后缀。我那个 G 盘的 md 知识库，理论上可以直接挂进去看。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先别装的：要多人协作、要手机端随时改、要把笔记发成链接给别人的。它没有账号体系，也没有手机版。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我的判断是拿一篇废稿试两天，别急着搬全部笔记。先让它证明不丢字、不卡顿，再谈换不换。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261112-quietmd/fig2-site.jpg" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍：三个平台的安装包都在第一屏（2026-11-12 08:02 本机实截）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：官网 quiet.md 下 Windows 安装包（12.9MB）；Mac 分 Apple 芯片和 Intel 两版；Win10 需 2004 以上，macOS 需 13 以上<br>② 先试：打开先跟一遍自带的「开始指南」，再从飞书复制一篇带表格的文档粘进去，看结构还在不在<br>③ 提醒：Beta 阶段重要笔记先备份；它能直接编辑本机 .md，但改动是立即写盘的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/s1dashu/quiet-md（MIT，官网 quiet.md）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据和素材来源：GitHub API 与 Releases API 于 2026-11-12 08:05 采集。1,619 星 / 145 fork，仓库建于 2026-11-01；共 11 个发行版，最新 v0.1.10（11-10 发布），27 个安装包资产累计下载 1,283 次。性能数字与目录结构引自仓库 README 与 docs/FORMAT.md。图 1 为官方截图，图 2、图 5 为本机实截（2026-11-12 08:02）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你的笔记现在存在哪：云端还是硬盘？评论区聊聊，我攒了几个搬家的坑。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每周挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
