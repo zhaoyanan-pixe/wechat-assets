@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网页总在「验证一下」那步停住？10 万星的开源工具，一条命令把整页存成文档【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">昨晚想给一篇行业报告找原始出处。网页在浏览器里摆得清清楚楚，换成程序去抓，回来只有一行字：<strong style="font-weight:500;">请验证您是人类</strong>。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这一行字，大概是所有抓过网页的人共同的敌人。看得见，抓不到；换个网站，选择器得重写一遍；网站一改版，昨天还能跑的脚本今天全是空的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周 GitHub 上被重新抬起来的，是个两年前的项目：<strong style="font-weight:500;">Scrapling</strong>。今早八点我查了一眼，10.2 万颗星、1 万多个 fork（别人复制出去改的版本数），BSD-3 协议，Python 写的。11 月 9 日那周的 GitHub 趋势榜上它排第 3，一周涨了 8,712 星。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">2024 年 10 月建的项目，怎么现在才火？</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">AI 缺的不是脑子，是手</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今年涨得最猛的开源项目，越来越多是「手脚」这一类：会开浏览器的、会管代码分支的、会审代码的。AI 早就学会写字了，可它还不会登你的账号、不会替你翻完几百页网页、不会等那个转圈圈的验证。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Scrapling 正好长在这条缝里。它自带 MCP 服务器和 Agent Skill，说白了就是让 Claude、Cursor 这类工具直接把它当工具调，抓页面这件事不用你另写一堆粘合代码。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261113-scrapling/fig1-official-cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方仓库头图（来源：Scrapling 仓库 docs/assets/cover_dark.svg）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">仓库里那句定位写得很直白：从一次请求到整站爬取，一个库全包。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">四件事，塞进一个包</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261113-scrapling/fig5-four.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">按 README「What you can do with Scrapling」四类能力整理</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">抓</strong>：普通页面走 HTTP，要跑 JavaScript 的换真浏览器；带浏览器指纹伪装，官方说能过 Cloudflare 的 Turnstile 验证和过渡页。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">取</strong>：CSS、XPath、文字、正则都能选。这里有个我特别喜欢的细节，叫自适应元素追踪——网站改版、class 名换了，它能靠元素之间的相似关系把原来那段找回来。写过爬虫的人知道这有多救命。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">爬</strong>：并发、按域名限速、代理轮换、断了能接着跑。它会自己看对方的响应速度调整间隔，被限流就放慢，缓过来再提速。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">喂</strong>：一行 <strong style="font-weight:500;">page.markdown()</strong> 把整页转成干净 Markdown，直接能塞给 AI 读。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我今早真跑了一遍</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装它分两步：先 pip install &quot;scrapling[shell]&quot; 装包，再跑 scrapling install 把浏览器组件下下来。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261113-scrapling/fig3-test.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测记录：两条命令、真实返回码与输出字节数（Windows 10，2026-11-13 08:05）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一条把练习站的 10 条名言抓成 Markdown，3,190 字节；第二条加了 --css-selector，只留 python.org 首页那一段简介，87 字节。3.47 秒和 2.99 秒，其中一大半是启动开销，不全是抓取时间。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">得说清楚一件事：Cloudflare 那一关我没实测。我测的两个都是公开静态页。过验证这事，我现在只有官方的说法，没有自己的证据。所以这篇里凡是涉及它的，我都写「官方称」，不写成实测。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">快是真快，但别看错数字</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261113-scrapling/fig2-bench.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方解析基准：同一棵 5,000 个嵌套元素的页面树，单位毫秒，越短越快</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了组对比：同样这棵树，它 1.99 毫秒读完；最快的对照组 Parsel（Scrapy 用的解析器）2.06 毫秒；老牌 BeautifulSoup 配 html5lib 要 3,412 毫秒，差了 1,700 多倍。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但这组数字量的是「读已经下好的网页」，不是「把网页下下来」。抓取本身快不快，看的是对方服务器和你的网络，跟它没关系。这两件事在宣传里经常被混着说，我先点一下。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261113-scrapling/fig4-docs.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档站首屏实截（scrapling.readthedocs.io，2026-11-13 08:03）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三个坑，先替你踩了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，<strong style="font-weight:500;">pip install scrapling 只装了解析引擎</strong>。我第一次就栽在这：import 抓取模块直接报错找不到。要用抓取，必须装 scrapling[fetchers] 或 scrapling[shell]，还得另跑一次 scrapling install 下浏览器，几百兆。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，它有个「开发模式」：第一次跑把网页缓存到本地，之后调解析逻辑就不用反复请求人家服务器。改脚本的时候打开它，又快又体面。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">三，能过验证，不等于可以乱抓。项目自己带了遵守 robots.txt 的开关（robots_txt_obey），默认是关的。我建议你打开。抓公开数据、控制频率、别碰要登录的私人页面——这条对所有抓取工具都成立。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：pip install &quot;scrapling[shell]&quot; → scrapling install（这一步下浏览器，几百兆，等一会儿）<br>② 先试：scrapling extract get 网址 结果.md，不写一行代码就能把整页存成文档<br>③ 提醒：robots.txt 开关默认关着，抓之前想清楚；只有要跑 JavaScript 的页面才开浏览器模式，别一律上重的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/D4Vinci/Scrapling（BSD-3-Clause，文档 scrapling.readthedocs.io）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API 2026-11-13 08:01 采集（102,124 星 / 10,627 fork，仓库建于 2024-10-13）；PyPI 最新版 0.5.1（08:03 实取）；「一周涨 8,712 星、趋势榜第 3」为小哨 11-09 周榜口径。性能与功能描述引自仓库 README 及其 benchmarks.py。图注：fig1 为官方仓库头图、fig4 为官方文档站实截；fig2 数据卡据 README 性能表自制，fig5 功能卡据 README 整理；fig3 为本机终端实测记录，两条命令均于 08:05 真跑，输出字节数为当日实取。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你手上有没有那种「每周都得点一遍」的网页流程？评论区说说，我挑一个拿它试。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每天挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
