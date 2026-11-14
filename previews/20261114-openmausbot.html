@@ -48,7 +48,7 @@
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">权限档位：默认是全权，得自己改</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig2-approval.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：允许 / 拒绝的卡；这张卡出现在你把权限调到「询问」之后（来源：仓库 docs/screenshots/approval-card.png）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是整个项目里我最想夸、又最想提醒的一件事：权限。它把每个引擎自己的权限档位搬到了界面上，一共五档：询问、自动改文件、自动、全权、自定义。执行命令、改文件、拿不准的问题，会变成聊天里的一张卡，允许、拒绝，或者直接在框里回一句。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是整个项目里我最想夸、又最想提醒的一件事：权限。它把背后每个 AI 引擎（Claude、Codex 这些命令行）的权限档位搬到了界面上，一共五档：询问、自动改文件、自动、全权、自定义。执行命令、改文件、拿不准的问题，会变成聊天里的一张卡，允许、拒绝，或者直接在框里回一句。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但注意，这张卡不是默认就有的。仓库自己的威胁模型写得很直白：<strong style="font-weight:500;">默认档位是全权</strong>，OpenMausBot 不自带审批弹窗，审批由各个引擎原生的权限系统执行。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">换句话说，装完不动设置，它在你电脑上跑命令、改文件，不会先问你。这不是漏洞，是他们写明的产品决定：各个引擎跑在各自最宽松的模式下。所以我对这东西的第一条建议不是「装哪一版」，而是：<strong style="font-weight:500;">装完先去设置里，把档位调到「询问」</strong>。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">每个 AI 一台电脑，你可以看着它干</p>
