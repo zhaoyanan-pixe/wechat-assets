@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 同事上岗：2.2 万星的桌面应用，每个一台电脑，动手前先问你一句【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">左边一列联系人，跟微信几乎一样。点开，聊天框里不是人，是一个正在你电脑上跑命令的 AI。活干到一半它会停下来，把一张卡推到你面前：这条命令，允许吗？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是 <strong style="font-weight:500;">OpenMausBot</strong>。今早八点我在 GitHub 上查，2.2 万星（22,176 颗），三个月前才建的库，Apache-2.0 协议，Windows、Mac、Ubuntu 都有安装包。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">涨得也快。11 月 9 日我自己的统计里它是 1.77 万星，五天过去，2.2 万。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig1-hero.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：左边一列联系人，每一个都是真的 AI（来源：仓库 docs/screenshots/hero.png）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一个对话框，塞不下一整个班底</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我们现在用 AI，基本是一张嘴对一张脸：一个对话框，什么活都往里塞。聊久了，三个毛病一定冒出来。它记不清哪件事归哪个项目；它拿着你的全部权限，动什么都得你盯着；你一去开会，它就停在那儿等你回话。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">分角色就顺手得多。它的做法是：每个 bot 是一个联系人，可以单独选模型（背后是本机的 Claude、Codex、Grok 命令行，用你已有的订阅登录），单独写人设，单独分一台电脑，单独决定能碰哪些应用。左边那一列，就是你的班底名单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个细节挺讲究：工作、个人、每个项目各开一个频道，各记各的账、各有一套成员和规矩，不用为每个项目复制一份 bot。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它动手之前，会先递一张卡</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig2-approval.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：执行命令、改文件之前，先弹一张允许 / 拒绝的卡（来源：仓库 docs/screenshots/approval-card.png）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这是整个项目里我最服的一点。跑命令、改文件、拿不准的问题，全都变成聊天里的一张卡：允许、拒绝，或者直接在框里回一句。云端电脑和本机电脑走同一套闸门。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">为什么值得单拎出来说？因为「AI 替你动手」的风险，从来不在它会不会干，而在你清不清楚自己批准了什么。把每次动手变成一次点击，是慢一点，但你心里有数。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">每个 AI 一台电脑，你可以看着它干</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig3-computer.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：电脑面板，看实时画面、随时接管（来源：仓库 docs/screenshots/computer-panel.png）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">点开「电脑」面板，这个 bot 自己的桌面就在那儿跑：能看实时画面，能接管进去自己操作，也可以让它直接用你这台机器（Windows 支持，要你在设置里明确同意）。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig4-apps.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图：连接应用市场，Gmail、Slack、GitHub、Notion 都在里面（来源：仓库 docs/screenshots/marketplace.png）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">干活的手也不止一双。通过 Composio 授权一次，Gmail、Slack、GitHub、Notion 等 500 多个应用都能当工具用；还能挂触发器，比如跟它说「每个工作日早上九点，把收件箱总结一份发我」，它自己把卡片建好，随时能暂停、撤销。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它甚至能说话：接上 ElevenLabs、Fish Audio 或 xAI 的声音，按住通话键就能对话，一边干一边汇报，要你批准的时候直接念出来。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说到这儿，得泼三盆。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆，门槛在第一屏。它自己不产生模型，得你电脑上先装好 claude、codex 或 grok 的命令行并且登录。国内读者多半卡在这：订阅、支付、网络，三道关。所以这篇我写的是它怎么设计的，不是「你今晚就能用上」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆，云电脑和连接应用都是第三方服务。云电脑由 Boat 提供，试用之后要收费；Composio 也要自己的账号。软件本身免费开源，用起来不一定。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆，它跑得太快，快到不像个稳的东西。8 月建的库，到今天 112 个发布版本；11 月 9 日到 13 日，五天发了六个版本。今早查，713 个 issue 还开着，另有 331 个 PR 在排队。爱追新的人喜欢这个节奏，怕麻烦的人最好等它稳一稳。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261114-openmausbot/fig5-numbers.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">据 GitHub API 与 Releases 页面自制，数字均为 2026-11-14 上午实取</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个小的：Windows 安装包没做代码签名，安装时系统会弹「未知发布者」，要点「更多信息 → 仍要运行」才装得上。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么还值得看一眼</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者在 README 里写，2026 年有七周里接连出了四款同类产品（Grok Bot、Meta Muse、OpenAI dots、Cue 这些），共同点是模型、电脑、数据都留在厂商那边；他想做一个开源的版本，跑在你自己的机器上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这句话我听进去了。今年涨得快的项目，很多在回答同一个问题：AI 从「会聊天」变成「会干活」以后，怎么给它排座位、划权限、留证据。这个项目给的答案很土，也很实在：做成通讯录，一个一个点。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用不用得上另说，这套形状值得记一下。哪天你手上真有三个以上的 AI 在干活，你会需要一张名单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：先在电脑上装好 claude 或 codex 命令行并登录；再下 GitHub Releases 里的 OpenMausBot-setup.exe（约 270MB，没签名，装时点「更多信息 → 仍要运行」）<br>② 先试：只建一个 bot、只给它一件事，看它弹出的第一张审批卡长什么样<br>③ 提醒：云电脑要另开 Boat 账号、试用后收费；连接应用走 Composio，也要自己的账号</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/milind-soni/OpenMausBot（Apache-2.0，官网 mausbot.com）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：GitHub API 与 Releases 页面 2026-11-14 08:10–08:15 实取（22,176 星 / 3,076 fork，仓库建于 2026-08-11 UTC，最新版 v0.1.155）；「11-09 时 1.77 万星」为本号 11-09 周榜记录（自己扫 GitHub 全站统计，非 GitHub 官方榜单）；713 个 issue 与 331 个 PR 分属两次搜索接口实取。功能描述、「七周里四款同类产品」「Grok Bot 等产品的开源替代」均引自仓库 README 与作者博客，属作者说法。内文 5 张图：4 张为仓库官方截图（路径已逐张注明），1 张数字卡据上述接口数据自制。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你现在的 AI 是一个对话框，还是几个？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每天挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
