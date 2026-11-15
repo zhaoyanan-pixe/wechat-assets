@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这周 AI 圈：AI 开始替我打电话，航空公司却把它挡在售票口【附 5 件事速览】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261115-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周有两件事，几乎同时发生。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 11 日，美联航发了一纸声明：不许第三方 AI 助手替乘客订票、改签、动里程。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 12 日，Meta 开始卖一项服务：让 AI 替你去打电话，餐厅订位、催有线电视客服、问车管所。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一边在关闸，一边在开店。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">同一周还有三件事：AI 给的购物链接里，最多 15% 通向假网站；Google 把新模型塞进了搜索，什么都不用装；谷歌眼镜开卖，395 美元起，主打「不惹人烦」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一句话：AI 能替你办的事越来越多，但每个门口都开始有人查票。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">① 美联航把 AI 挡在售票口<br>② 一边封，一边卖：Meta 让 AI 替你打电话<br>③ AI 推荐的店，最多 15% 是假的<br>④ 打开搜索就有新模型，不用装东西<br>⑤ 395 美元的眼镜，先把隐私讲清楚了</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">① 美联航把 AI 挡在售票口</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">声明写得很直白，三条理由：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一，你把账号密码交给第三方 AI 助手，泄露的风险就算在你头上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">二，AI 可能替你买了不该买的票、改了不该改的行程、把里程花光。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">三，美国联邦规定，值机必须由本人确认「行李里没有违禁品」，这句确认 AI 替不了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">范围也不含糊：自家网站和 App 直接封，旅行社、聚合渠道一并更新政策。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这不是孤例。上个月，美国银行公开劝客户别把网银密码告诉 AI 助手。理由和航司几乎一样。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">过去平台封的是爬虫。现在封的是「冒充你的 AI」。屏幕那头坐的是人，还是替人办事的机器，这是今年的新麻烦。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261115-ai-digest/fig1-ledger.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制卡：美联航声明里的三条理由与封禁范围（来源：美联航官方声明 2026-11-11）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说白了：让 AI 替你订票这条路，短期走不通。省下的不是时间，是一笔说不清的纠纷。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">② 一边封，一边卖：Meta 让 AI 替你打电话</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Meta 的 AI 助手 Muse，官方上月说用户超过 1,000 万。这周起，美国付费用户可以让它代打电话。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">价格：20 美元一个月，每周 5 亿 token；重度用户 100 美元一个月，30 亿 token。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">能打给谁？官方的例子都很「生活」：有线电视公司、车管所、不接线上订位的餐厅。就是那种你不想打、又不得不打的电话。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">冷水：不少商家一听是 AI，直接挂断。所以它真正卖的不是「像人」，是「有无限耐心」。排队半小时，它不会烦。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两头对照挺有意思：同样是「替你办事」，Meta 把它做成了商品，美联航把它写进了禁止清单。分水岭不在技术，在谁担责。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">③ AI 推荐的店，最多 15% 是假的</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">IP 保护公司 Podqi 做了一个测试：拿 151 个品牌、用购物类提问去问三家聊天机器人，9 月分两轮，共收集 6,795 条回答。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">结果：Perplexity 有 15% 的回答出现风险站，ChatGPT 是 8%，Gemini 最低，4%。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">什么叫风险站？冒充官网的假站、被别人重新注册的旧域名、已经死掉但随时可能被抢注的站。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更值得记住的细节：ChatGPT 摆出风险站时，只有 24% 的场合顺带提醒了一句；问「某品牌的地区官网」最容易踩坑，模型甚至会替没有地区站的品牌编一个出来；大品牌的中招率大约只有小品牌的一半。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261115-ai-digest/fig2-fakesites.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制数据卡：三家聊天机器人回答里出现风险站的比例（来源：Podqi 研究，The Verge 2026-11-12 报道）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这项研究有短板：单一机构做的，提示词自己编，方法没公开。所以当参考，不当判决。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但有个动作现在就能做：AI 给的链接，点之前先看域名；要填卡号的地方，自己从官网走一遍。购物季前，这条也值得转给家里人。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">④ 打开搜索就有新模型，不用装东西</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 12 日，Google 发布 Gemini 4 Hydrogen，同一天全球上线搜索，所有用户都能用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">普通人能感知的变化是：一句话里塞两三件事、还带错别字，它也能听懂，拆成几个小问题同时查，答案里给表格、图片、对比。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方口径：默认档完成任务比上一代 3.8 Flash 快 2.5 倍；上下文 100 万 token；API 每百万输入 token 1.50 美元、输出 7.50 美元。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261115-ai-digest/fig3-gemini4.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google 官方发布图：Gemini 4 Hydrogen（来源：blog.google，2026-11-12）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">「快 2.5 倍」是它自己跟自己上一代的对比，别理解成全面碾压：官方同页列的另一些测试里，它只是小幅领先。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现成问法：带 6 岁孩子去日本 5 天、预算 8,000，住哪个区、行程怎么排。三件事一句话说完，看它拆不拆得开。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">⑤ 395 美元的眼镜，先把隐私讲清楚了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Google 联合 Warby Parker、Gentle Monster、三星推出第一批 Gemini 智能眼镜，11 月 12 日开预售，12 月 10 日发货。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Warby Parker 三款，395 美元起，只在美国卖；Gentle Monster 六款，449 美元起，美国和韩国。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">参数不花哨：约 41 克，续航最长 9 小时，配的充电盒能再充 7 次；1200 万像素超广角；喊一声「Hey Gemini」或者轻碰镜腿就能唤醒。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261115-ai-digest/fig4-eyewear.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">Google 官方预售页横幅：三款智能眼镜（来源：blog.google，2026-11-12）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最值得看的是隐私那一段，明显在回应上一代被骂得最狠的地方：</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">拍照录像有指示灯，灯被遮住或者关掉，录制直接停止；每副眼镜有物理断电开关，关掉就是一副普通眼镜；拍的照片视频不进 Gemini 历史、不拿去训练模型、不投广告；旁人的人脸会先打码，再给模型看。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现实是只有美国、韩国能买，中国暂时没有。所以它对我们更像一个信号：AI 往脸上戴这件事，厂商开始认真处理「旁边的人」的感受了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">顺带一提：Anthropic 11 月 10 日启动上市路演，计划 11 月 19 日在纳斯达克挂牌，代码 ANT，发行 8.25 亿股 A 类普通股，价格区间 70 到 78 美元。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事放一起，其实是同一件事的两面。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 越来越会替你办事：替你打电话、替你查价、替你看世界。可「替你」这两个字，正好踩在别人的规则上——账号是你的，责任也是你的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">美联航那句「值机要本人确认行李里没有违禁品」，说的是技术边界之外的东西：有些事，法律要的是你亲自点头。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">技术跑得快，责任还没跟上。这中间的空档，就是现在最容易吃亏的地方。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 银行、常旅客的账号密码，别直接交给 AI 助手，美联航和美国银行这一个月先后明说了风险。<br>② 用 AI 找购物链接，点之前看域名；要填卡号，自己从官网走一遍。<br>③ 想试新搜索：一句话里塞两三件事，看它拆不拆得开（例：带 6 岁孩子去日本 5 天、预算 8,000，住哪个区、怎么排）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源（截至 2026-11-15 10:00）：① 美联航官方声明（united.mediaroom.com，11-11）、TechCrunch 报道（11-12）、美国银行劝告（TC 10-27）。② TechCrunch 关于 Muse 代打电话的报道（11-12）。③ The Verge 独家报道 Podqi 研究（11-12），原始报告见 podqi.com/research。④ Google 官方博客与搜索升级公告（11-12）。⑤ Google 官方预售页与 Ars Technica 报道（11-12）。另：Anthropic 官方路演公告（11-10）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">配图：fig1 为本号自制卡；fig2 为本号自制数据卡；fig3 为 Google 官方发布图；fig4 为 Google 官方预售页横幅（来源：blog.google）；fig5 为本号自制速览卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这 5 件里，你最想细看哪一件？评论区聊聊，呼声最高的我下次展开写成单篇。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 47 期 · 这周 AI 圈（外网速递篇）：每周日挑一组外网动态，用大白话讲给你听。）</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
