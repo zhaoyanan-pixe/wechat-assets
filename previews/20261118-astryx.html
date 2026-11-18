@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta 把用了八年的设计系统开源了：一周 1.3 万星，人和 AI 看同一份说明书【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261118-astryx/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我在一个卖可颂的网站上逛了半天。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">限量款手表、防水帆布包、现烤可颂、松饼，加购物车、填地址、选配送，一整套都齐。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">直到我点开导航栏的「Themes」，换了个主题名：整家店从冷淡黑白，一下变成黄油色；再点，成了抹茶绿。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">那家店其实不卖任何东西。它是 Meta 设计系统 Astryx 的官方演示站，专门用来看「同一套组件，换七套主题，气质能差多远」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261118-astryx/fig1-docs.png" alt="官网首屏实拍" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官网首屏实拍（来源：astryx.atmeta.com，2026-11-18 截取）：标题下面就是那家用来演示主题的假商店</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">这东西在 Meta 内部长了八年</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Astryx 不是新做出来的玩具。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它在 Meta 内部用了八年，成了公司里最大、用得最多的设计系统，撑起 13,000 多个应用。工程师、设计师、产品经理，天天拿它拼界面。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今年 1 月 9 日，仓库放上 GitHub，MIT 协议，谁都能拿去商用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这周它突然冲上我们每周统计的那份热度榜第一：七天涨了 13,660 星，总数三万多。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">（这份榜单是我们自己扫 GitHub 全站排出来的，不是 GitHub 官方排名。）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261118-astryx/fig3-numbers.png" alt="本号自制卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制卡：六个数字（2026-11-18 取值，来源见文末）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它这波热度，和 11 月 14 日的一条公告对得上</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 14 日，Astryx 团队发了篇很短的公告：Astryx 进了 v0。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">v0 是 Vercel 的 AI 建站工具，你打一句话，它给你搭出能跑的网页。现在在 v0 里选 Astryx，这套设计系统的规矩、组件、示例、模板，会跟着进到 AI 的上下文里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方那句话说得挺直白：在 v0 里，一个设计系统就是一个 agent 技能。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">翻成白话：以后 AI 给你搭页面，不再凭它自己的喜好摆，而是照着 Meta 内部那套规矩来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">公告是 11 月 14 日发的，我们的周榜统计截到 11 月 15 日，时间挨得很近。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261118-astryx/fig5-skill.png" alt="本号自制卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制卡：在 v0 里，设计系统以「技能」的形式进到 AI 的上下文（依据：官方博客 11-14）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">为什么我觉得这比「又开源一个库」重要</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 现在最不缺的，就是「能画出个看着像样的界面」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Astryx 团队自己在博客里写了：AI 已经能生成看起来很像的界面，但看起来像，不等于好用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他们做的事，是把「什么叫好用」写成 AI 也读得懂的说明书：同一套接口、同一份文档、同一个命令行。人查的是这份，AI 查的也是这份。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">他们还有一句我很喜欢的话：每一项让 Astryx 对 AI 更友好的改动，也让人用起来更顺手。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">说白了，设计系统以前是给人看的规矩，现在得写成机器也认得的规矩。这一步，比多几个组件难得多。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它到底给了什么</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">组件 150 多个，从按钮、表格、日历、聊天输入框，到空状态、骨架屏，全带 TypeScript 类型（写代码时编辑器会提醒你参数对不对）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">页面模板分了十类：仪表盘、表格、表单、设置、登录、工具、内容、AI 聊天、画廊、外壳。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">主题七套，名字像奶茶菜单：neutral、stone、gothic、matcha、y2k、butter、chocolate。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">主题不是「改配置」。一套主题就是一组 CSS 变量（页面上所有颜色的集中设定），一条命令抄进你自己的项目里改：npx @astryxdesign/cli theme add neutral。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有个功能叫 swizzle。某个组件你想改内部结构，它不给你留个口子调参数，而是把那个组件的完整源码整个抽到你项目里，从此这份代码归你改。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">代价也明摆着：抽出来那天起，上游修 bug 跟你这份没关系了。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261118-astryx/fig2-themes.png" alt="主题页实拍" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">主题页实拍（来源：astryx.atmeta.com/themes，2026-11-18 截取）：在这里换主题名，预览区整家店跟着变</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，它还在 Beta。版本号 v0.7.16，光 11 月 10 日到 14 日这几天，就发了五个版本，接口随时会变。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二，它要 React 19。不写代码的人，只能在演示站里点点看，改不了任何东西；只做静态页面的，也用不上。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，社区热得有点吓人：仓库里六百多个 PR 排着队没合，三百多个 issue 开着。有人气是好事，另一面是维护团队接不过来，你提的需求未必轮得到。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">再说句实在话：它的长相是 Meta 那种实用派，干净、规矩、克制。想要「一眼惊艳」的模板站，它不是。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我最在意的，是它给出的信号</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">数字上它确实热：npm 上核心包上个月下载 219 万次（10 月 18 日到 11 月 16 日，npm 官方接口）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但我更在意的是另一件事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这两年我们看惯了「AI 能做出一个网页」。接下来要看的，是「AI 做的网页，能不能直接用」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">能不能直接用，靠的不是模型再聪明一点，是底下有没有一套说得清的规矩：间距多少、颜色几档、按钮什么状态、出错怎么提示。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Meta 磨了八年，现在把这套规矩交到 AI 手里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这件事，比多一个组件库有意思得多。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 先看：打开 astryx.atmeta.com，Themes 页点主题名切换，Sandbox 里一个个试组件，不用装任何东西。<br>② 要用：项目得是 React 19，装 npm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex 和 npm i -D @astryxdesign/cli；再用 npx @astryxdesign/cli theme add neutral 把主题拷进自己项目改。<br>③ 提醒：还在 Beta，版本号跳得快；它在 v0 里那套要先有 Vercel 账号，国内访问得先解决网络。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/meta/astryx（MIT 协议；官网 astryx.atmeta.com）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源（截至 2026-11-18 08:00）：星数 30,137、fork 2,354、建仓 2026-01-09（UTC），取自 GitHub 仓库 API；「一周 +13,660 星」为本号每周热度榜（11-15 期）口径，非 GitHub 官方榜单；npm 月下载 2,196,525 次取自 npm downloads 接口（2026-10-18 至 11-16）；发行版共 50 个、最新 v0.7.16（11-14 发布），取自 releases 接口；「内部八年」「13,000+ 应用」「150+ 组件」「七套主题」「十类模板」「swizzle」「CLI」出自 README 与官网；v0 合作与两处引文出自官方博客（11-14《Astryx is now available in v0》、11-03《Building for people and agents》）；六百多 PR、三百多 issue 取自 GitHub 搜索接口。内文 4 张图：fig1、fig2 为官网实拍，其余 2 张为本号自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你有没有遇到过「AI 做的页面一眼就假」？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每天挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
