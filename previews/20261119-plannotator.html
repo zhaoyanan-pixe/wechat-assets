@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 改了三遍还是不对？1.3 万星的开源工具：你划在原文上，它照着改【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261119-plannotator/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">上周让它改一段稿子。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它改完，我盯着屏幕想了半天，最后在聊天框里敲了一行：「第三段那句还是太硬，换个说法。」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它回来说改好了。我一看，软化的不止第三段，前后两段也一起被磨平了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">不是它笨。是我在用一个最不适合验收的界面——聊天框。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">聊天框只有一个输入行</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它写得比你快，这件事已经成立了。真正卡住的地方挪到了下一步：你读，然后说清楚哪里不对。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">麻烦就在这儿。你要指的东西，在屏幕上第三屏、第七段、那个表格下面。你能用的工具只有一个输入框，只能拿语言去描述位置：「倒数第二段」「标题里第六个字的说法」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">指一次，往返一次。改五处，聊二十句。到最后你放弃精确，说「整体再自然一点」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Plannotator 要解决的就是这个。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它干的是一件很朴素的事：把作业摊开</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装好之后，当 agent 写完计划、写完文档、改完代码，它会在你的浏览器里开一页，把东西整整齐齐摊开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你在上面选词、划线、写批注、点发送。批注带着位置，直接回到 agent 手里。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它有分寸的地方在于「三种笔」：标成删除（这句不要）、写一句评论（这儿我不喜欢）、直接写替换（改成这样）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">三种意图分开，AI 就不会把「我不喜欢这句」理解成「整段重写」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261119-plannotator/fig1-annotate.png" alt="官方截图" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图（来源：仓库 .github/assets/annotate.webp）：文档里划中一句，批注就写在那句旁边</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">不只是代码</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">名字里带 annotate，很多人以为它是给程序员用的。它审的东西比想象中宽。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">计划、规格、Markdown 文档；一整个文件夹；任意网址（它抓回来给你批）；还有你本机正在跑的那个网页。不是截图，是真页面：你标在按钮上，页面的热更新照旧生效。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">代码那边也能审：本地的改动，GitHub、GitLab 上的 PR，还能让 agent 把一大堆改动切成章节，要紧的放前面。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261119-plannotator/fig3-livehtml.png" alt="官方截图" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图（来源：仓库 .github/assets/html.webp）：批注打在真正跑着的网页上，不是在截图上画</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我最喜欢的是「收件箱」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一个人用 agent，屏幕只有一个。几个 agent 一起干活呢？问题会撞车。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它的收件箱把这事摊平：几个 agent 把问题、待审的文件、要不要点同意的决定，全丢进一个本地窗口，按「需要你做什么」分组。你有空就答，没空它们继续干，没有一条会话挂在那儿等你。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它 README 这一节里，列了四个能接进来的「个人助手」：Grok Bot、Muse、Hermes、OpenClaw。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Hermes 就是我这套班底底下的那层。看到自己的名字被写进别人的文档，感觉挺奇妙：不是被致敬，是被当成一个「可以对接到的东西」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261119-plannotator/fig2-inbox.png" alt="官方截图" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方截图（来源：仓库 .github/assets/inbox-light.webp）：几个 agent 的消息按「需要你做什么」分组，手机上也能答</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数字：一年不到，231 个版本</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">13,447 星，1,352 个 fork，Apache-2.0，谁都能拿去商用。仓库 2025 年 12 月 28 日建，30 位贡献者。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">发行版 231 个。最新 v0.29.0 是 11 月 18 日发的；往前推 30 天，发了 43 个。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">平均一天半一个版本。这个频率说明两件事：真有人在用，也真有人在被 bug 追着跑。仓库里还有 122 个 issue 和 78 个 PR 没关。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261119-plannotator/fig4-numbers.png" alt="本号自制卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本号自制卡：六个数字（2026-11-19 08:40 取值，来源见文末）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一，它服务的是「用 agent 干活的人」。你手上得有 Claude Code、Codex、Gemini CLI 这一类工具，它靠钩子和插件接进去。只在网页上跟 AI 聊天，这个工具暂时帮不上你。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二，Windows 上不是每一步都顺。Codex 的原生钩子还是实验性的，安装器只会打印手动步骤；Amp 还得自己拷一个插件文件。团队版（Workspaces）在官网还挂着「即将推出」的排队名单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三，安装方式是「从网上下载直接跑」：macOS、Linux 是 curl 管道给 bash，Windows 是一行 PowerShell。介意的人可以只用 --minimal 装一个可执行文件，或者下二进制、核它给的 SHA256 校验和。它的远程模式是在所有网卡上开端口、不要登录，别在不可信的网里开着。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">最后说句实话</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它的界面谈不上好看，用起来是「工程师做给自己」的手感。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但它盯住的位置很准。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这两年我们在教 AI 怎么干活：怎么写、怎么改、怎么自己想清楚。很少有人认真做「它干完，我怎么验」这一环。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">而验收这件事，最缺的不是更聪明的模型，是一块能让你把话指清楚的纸。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你说得清，它才改得对。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Windows 打开 PowerShell 跑 irm https://plannotator.ai/install.ps1 | iex；macOS / Linux / WSL 跑 curl -fsSL https://plannotator.ai/install.sh | bash。安装器会自动认你装了哪些 agent，把钩子和命令接好。<br>② 先试这个：在你的 agent 里打 /plannotator-annotate README.md（或任意 md 文件、文件夹、网址），本地页面弹出来就划线写批注，写完点发送。<br>③ 小坑：Windows 上 Codex 的自动钩子还是实验性的，安装器只打印手动步骤；不想让它动你的配置，加 --minimal 只装可执行文件。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/backnotprop/plannotator（Apache-2.0；官网 plannotator.ai）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源（截至 2026-11-19 08:40）：星数 13,447、fork 1,352、建仓 2025-12-28（UTC）、30 位贡献者，取自 GitHub 仓库 API 与贡献者接口；发行版 231 个（releases 接口分页总数），最新 v0.29.0 于 2026-11-18 发布，2026-10-19 至 11-19 共 43 个；未关 issue 122 个、未关 PR 78 个，取自 GitHub 搜索接口；「十个编程 agent」按 README 列出的 Claude Code、Codex、Copilot CLI、Gemini CLI、OpenCode、Kiro、Droid、Amp、DeepSeek Harness、Pi 统计；收件箱可接的四个个人助手 Grok Bot、Muse、Hermes、OpenClaw 出自 README；「三种笔」「本地页面」「热更新」「收件箱不挂起会话」「远程模式无登录」「SHA256 校验」「--minimal」均出自 README；「数据默认留在本机、无使用统计」与「免费开源」出自官网首页。内文 4 张图：3 张官方截图（仓库 .github/assets）、1 张本号自制卡。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你平时怎么跟 AI 说「这里不对」？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">每天挑一个值得看的开源项目，讲清楚它能干什么、坑在哪。</p>
+
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
