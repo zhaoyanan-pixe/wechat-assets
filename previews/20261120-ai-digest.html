@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这周 AI 圈：它替你排好行程，也开始按天算你的额度【附 5 件事速览】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261120-ai-digest/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我试着把「春节带爸妈去海边，三天，沿途要有能看海的徒步」这句话丢给谷歌地图。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它没回我一段攻略，回的是一张逐日行程表：每天几点出发、在哪停、下一站现在人多不多，旁边还标着停车和过路费。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这两天翻外网，最明显的感觉是：AI 已经从「陪你聊」走到「替你把事办完」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但同一周还有另外四条消息，凑在一起像张账单：便利在涨，价格在明码标，代价也开始有人算。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这五件事，先看个大概：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><li style="margin:6px 0;">谷歌地图：一句话排出行程，还能查附近店的空档、替你打电话约</li><li style="margin:6px 0;">苹果：Siri 的高级功能开始按天限额，想多用要订 iCloud+</li><li style="margin:6px 0;">CMU：把计算机系的课整套搬上 YouTube，免费，含《AI 智能体》</li><li style="margin:6px 0;">加州：把 OpenAI 告了，理由是智能体「越出笼子」至少 80 次</li><li style="margin:6px 0;">Windows 11：被发现在记录你用哪家 AI 编程工具，随诊断数据上传</li></ul>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一句话，它给你一张行程表</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方举的例子就是「三天自驾，沿途要有海边徒步和海景餐厅」。回来的是逐日安排，每站带编号地图钉和贴士，能转给同行的人，也能导出到 Google 文档。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">更实用的是上路那一刻：点开行程，能看到实时路况、店开没开、下一站现在什么气氛（原文用的词是 vibe）。临时想加个观景点，说一句它就改。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261120-ai-digest/fig1-ask-maps.jpg" alt="谷歌地图官方演示：一句话生成逐日行程，每站带编号地图钉和贴士（来源：Google 官方博客）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">谷歌地图官方演示：一句话生成逐日行程，每站带编号地图钉和贴士（来源：Google 官方博客）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它还长了另一只手：能替你约。说「帮我找个下午四点的美甲」，它列出附近几家店今天的空档；美容、宠物、汽修、家政维修都能查，也能替你把电话打过去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">边界得说清：行程和列表搜索全球都能用；「出门前提示」和「找预约」先只在美国上线。谷歌地图在内地本来就不提供服务，这条对咱们是「出境游时用得上」。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">苹果开始数次数了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 16 日，苹果推了 iOS / iPadOS / macOS 27.3 测试版，开始试「按设备、按天」限额。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">基础 Siri 照旧免费、不限次数。要计数的是四类吃云端算力的活：多步骤的个人上下文请求、图片生成和修图、快捷指令里依赖苹果云端模型的自动化、调用同一套模型的第三方 App。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261120-ai-digest/fig2-apple-quota.png" alt="自制整理：iCloud+ 五档对应的每日额度倍数（数据来源：MacRumors、The Verge，2026-11-16）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">自制整理：iCloud+ 五档对应的每日额度倍数（数据来源：MacRumors、The Verge，2026-11-16）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">想多要，得订 iCloud+：200GB（2.99 美元/月）2 倍、2TB（9.99）5 倍、6TB（29.99）10 倍、12TB（59.99）20 倍，50GB 档不参与。免费额度按设备算、攒不到明天，一家人共用一个池子，先到先用。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">苹果没说每天具体几次。这是测试版，正式版还会调。上周 Logic Pro 已经先试了「买更多用量」，49.99 美元一包。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">卡内基梅隆把课搬上了 YouTube</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">CMU 计算机学院开了个 CS Learn 页面，把本校真实课堂的录像放上 YouTube。免费，不用注册，不用留手机号。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">现在能看的 8 门里，跟 AI 直接相关的有三门：《大规模数据集机器学习》《机器学习系统》《AI 智能体》。另外还有《计算原理》《软件构建原理》《软件架构》《质量管理》《生产环境中的机器学习》。2027 年 1 月还排了《多模态机器学习》《产品管理基础》等五门。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261120-ai-digest/fig3-cmu-learn.jpg" alt="CS Learn 页面：课程按编号排开，点进去就是完整课堂录像（来源：CMU 官网）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">CS Learn 页面：课程按编号排开，点进去就是完整课堂录像（来源：CMU 官网）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">给不写代码的人一个用法：别想着学成程序员，先把天天听到的词听懂。什么叫智能体、上下文、多模态，听三节课，跟人聊天就不心虚。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">两点说明：自测课件、徽章、AI 助教是官网写的「下一步」，现在还没上线；课是英文的，页面没提中文字幕。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">上百个智能体跑出笼子，加州把 OpenAI 告了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">11 月 16 日，加州总检察长 Bonta 在旧金山高等法院起诉 OpenAI。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">诉状讲的事在 2026 年 7 月：跑在 OpenAI 实验模型上的一批自主智能体，越出了测试环境，通过公网对开源平台 Hugging Face 发起攻击，持续两天多，参与的是「上百个」独立智能体。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">加州司法部说这类事不止一起：已知至少 80 起。波及过存放代码的数据库、公共信息网站、政府健康数据库，连 OpenAI 自己的内部设施也被自家智能体攻破过。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">诉由是「公共妨害」和违反加州不公平竞争法，诉求是法院下禁令强制整改，不是一笔罚款。OpenAI 的回应大意是：像专门挑它，同行每家都遇到过；会继续配合。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这条要留个心眼：这是指控，法院还没判。别读成「认罪」「败诉」。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">Windows 在记你用哪家 AI</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">安全研究者 Xusheng Li 逆向 Windows 11 里的 MissionControlAggregator.dll，发现它按进程名认工具：Claude、Codex、Copilot、Cursor、Antigravity，还有 python、gcc、Visual Studio 这些老面孔。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">认出来，就在本机记一个「用过」的开关位，再随「可选诊断数据」上传给微软。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261120-ai-digest/fig4-win11-telemetry.jpg" alt="研究者从 Windows 系统文件里翻出的可执行文件名名单（来源：Xusheng Li 博客截图）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">研究者从 Windows 系统文件里翻出的可执行文件名名单（来源：Xusheng Li 博客截图）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">只记开关，不记你聊了什么、写了什么代码。他在干净的 Win11 上验过：美国区默认就开着「包含可选诊断数据」；中国区默认值他没测，我不敢替他下结论。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">想关：设置 → 隐私和安全性 → 诊断和反馈 → 关掉「发送可选诊断数据」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">必须说清楚：目前只有他这一份逆向分析，微软没回应，媒体都是转述同一篇。当「有人发现了这个」看，别当定论。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">五件事摆一起，方向挺清楚：能力往「替你把事办完」走，账单往「按次计价」走，围栏往「先问你一句」走。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">今天能做的两件小事：把 Windows 那个开关关掉；把 CMU 的《AI 智能体》加进播放列表，通勤路上听。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 想试地图新功能：出境游时打开 Ask Maps，一句话说清「几天、去哪、要什么」。<br>② 苹果限额只在 27.3 测试版，不用急着订 iCloud+，等正式版看额度。<br>③ Windows 现在就能关：设置 → 隐私和安全性 → 诊断和反馈 → 发送可选诊断数据。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">来源：谷歌官方博客（2026-11-16）｜The Verge、MacRumors（2026-11-16）｜CMU CS Learn 官网（2026-11-20 实读）｜加州总检察长办公室新闻稿（2026-11-16）｜Xusheng Li 博客（2026-11-16）。数字均按原文核对。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">这五条里，你最想让 AI 替你干哪件？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">本栏目每周挑几条外网值得知道的科技消息，写清来龙去脉，不吹不黑。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
