@@ -39,12 +39,12 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我电脑里装过的 AI 客户端，两只手数不过来。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每换一台机器，就要重新登录一遍，聊天记录还各在各家。用久了会冒出一个念头：这入口要是归我自己就好了。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以那天在 GitHub 上刷到 deepseek-ai/chat-demo，我停了一下。点进去确认了两遍：是 DeepSeek 官方账号，不是同名仿的。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">9 天，5,167 星，1,189 次 fork。它开源的既不是模型，也不是接口，而是你每天盯着看的那个聊天界面。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">9 天，5,167 星，1,189 次 fork（fork 就是把别人的仓库整份复制到自己账号下）。它开源的既不是模型，也不是接口，而是你每天盯着看的那个聊天界面。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先看清楚它是什么</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给它的定位很老实：一个「聊天示例」，demo。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我更喜欢叫它样板间——装修好了，水电都通，拎包能住，也能砸墙重改。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它最特别的地方是<strong style="font-weight:500;">没有后端</strong>。整个应用都是静态文件，浏览器拿着你的 key，直接去敲 DeepSeek 的接口。不用服务器，不用数据库，也不用运维。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了两条用法：打开在线演示页，设置里填上 API Key，直接聊；或者去 Releases 下载压缩包，解压后打开 index.html，不用安装、不用构建。README 里也补了一句：直接打开文件，需要浏览器允许本地文件的存储和跨域请求。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它最特别的地方是<strong style="font-weight:500;">没有后端</strong>。整个应用都是静态文件，浏览器拿着你的 key（调用 AI 接口的通行证），直接去敲 DeepSeek 的接口。不用服务器，不用数据库，也不用运维。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了两条用法：打开在线演示页，设置里填上 API Key，直接聊；或者去 Releases 下载压缩包，解压后打开 index.html，不用安装、不用构建。不过 README 补了一句：直接打开文件，浏览器和 API 服务都得允许 file:// 的存储与跨域请求。我拿 Chrome 试了，双击之后确实卡在「正在加载对话」，绕法见文末小抄③。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig1-demo.png" alt="官方在线演示页" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方在线演示页（截图：2026-11-21）：左边会话，中间一句「今天有什么可以帮到你？」，底下是深度思考、智能搜索两个开关</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把最新版 v0.1.3 的包下下来了：1.8MB，解压出 153 个文件，根目录一个 index.html、一个 static 文件夹、一张 MIT 许可证。整个仓库只有 7 次提交，代码不厚，想动手改的人翻得动。</p>
@@ -54,7 +54,7 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig2-features.png" alt="功能清单卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方 README 列出的功能（本号据 README 整理）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">流式输出、深度思考开关、智能搜索，搜索到的结果和读过的网页会带来源链接。附件能传、能拖、能粘贴；语音能输入，回答也能念出来。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">公式、代码高亮、流程图都认；中英文、明暗主题、手机布局；聊天记录能打包导出，换台电脑再导回去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">公式、代码高亮、流程图都认；中英文、明暗主题、手机布局；聊天记录能打包导出，换台电脑再导回去（导出含会话和图片原件，不含 API Key、设置和非图片附件）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这些东西单拎出来都不新鲜。可它们凑在一个 1.8MB 的压缩包里，还是官方自己写的，就有点意思了。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">真正值钱的，是那面「墙」</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我们评价一个 AI 产品，习惯看模型跑分。可你每天真正摸到的，是会话列表，是输入框，是那条「正在思考」的动画。</p>
@@ -62,10 +62,10 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">没有后端这件事，对小团队尤其友好。丢到 GitHub Pages 或任意静态托管上就能跑；给团队、给家里人做一个专属入口，成本几乎为零。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前做同样的事，要买服务器、配域名、写登录。现在一个文件夹，改个名字就能上线。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig3-repo.png" alt="仓库页" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库首页（截图：2026-11-21）：5.2k 星、1.2k fork，README 第一句就写「无需应用后端」</p>
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库首页（截图：2026-11-21）：5.2k 星、1.2k fork，README 开头就写明「无需应用后端」</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">再往深想一层：模型厂商卖的是调用量。把界面开源，等于把「怎么把模型用起来」这道题的标准答案发下去。用的人越多，API 调用越多。这笔账，DeepSeek 算得明白。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆：它不是 DeepSeek 的正式网页版。官方写的是 demo，没有记忆，没有工具编排，也没有账号体系。想拿它当「AI 员工」用，会失望。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆：它不是 DeepSeek 的正式网页版。官方写的是 demo：没有账号体系，没有跨会话的模型记忆，也没有插件式的工具编排（只有内置的智能搜索和链接阅读）。想拿它当「AI 员工」用，会失望。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆：界面免费，聊天不免费。API Key 要自己申请，按量计费。DeepSeek 的价格不算贵，但用量上去了，照样是钱。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆：隐私要自己看住。Key 和设置存在浏览器本地，对话和附件也存本地；但你发出去的每句话、传的每个文件，都会到 API 服务那边。公共电脑别填 key，部署到公网也别把 key 写进代码。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数字与节奏</p>
@@ -74,11 +74,11 @@
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">数据采集于 2026-11-21：星数/fork 16:16，下载量 16:15（四个版本合计）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">四个压缩包合计下载 7,835 次。节奏不算快，7 次提交、4 个版本，但每次都在修真实问题。这种「官方小项目」的气质，比很多个人项目稳。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">适合谁</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果你想要一个自己的 AI 入口，或者想学一个完整的前端项目怎么搭，这是很好的底座。会一点前端的话，换 logo、改默认模型、加一句欢迎语，半天能弄出个样子。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果你想要一个自己的 AI 入口，或者想学一个完整的前端项目怎么搭，这是很好的底座。会一点前端的话，换 logo、改默认模型、加一句欢迎语，半天能弄出个样子；README 里给了完整开发命令（Node.js 22.12+ 和 pnpm），照着跑就能改源码。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果你只是想找个 AI 聊天，装官方 App 更省事。这个项目解决的不是「有没有 AI 用」，而是「这个入口归谁」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它更像一块地基，不是精装房：住得舒不舒服，看你在上面加什么。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig5-mobile.png" alt="手机端界面" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">手机宽度下自动换成单栏（官方演示页实截，2026-11-21）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig5-mobile.png" alt="窄屏界面" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">窄屏（390px）下自动换成单栏（官方演示页实截，2026-11-21）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 打开 deepseek-ai.github.io/chat-demo，在设置里填 API Key；想本地跑就下 Releases 的 zip，解压后用任意静态服务器打开。<br>② 先试「智能搜索」问一个需要来源的问题，看引用怎么标；再把同一条提问改一版重答，试试分支切换。<br>③ 双击 index.html 在部分浏览器会卡在「正在加载对话」（我这边 Chrome 就是）；换在线版最省事，公共电脑别填 key。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/deepseek-ai/chat-demo（MIT 协议）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README、仓库页与 Releases 页；星数/fork 采集于 2026-11-21 16:16，下载量采集于 16:15</p>
