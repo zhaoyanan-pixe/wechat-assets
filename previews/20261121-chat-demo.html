@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek 官方开源了一个「聊天界面样板间」：1.8MB，填上自己的 key 就能用【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我电脑里装过的 AI 客户端，两只手数不过来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">每换一台机器，就要重新登录一遍，聊天记录还各在各家。用久了会冒出一个念头：这入口要是归我自己就好了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">所以那天在 GitHub 上刷到 deepseek-ai/chat-demo，我停了一下。点进去确认了两遍：是 DeepSeek 官方账号，不是同名仿的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">9 天，5,167 星，1,189 次 fork。它开源的既不是模型，也不是接口，而是你每天盯着看的那个聊天界面。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">先看清楚它是什么</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给它的定位很老实：一个「聊天示例」，demo。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我更喜欢叫它样板间——装修好了，水电都通，拎包能住，也能砸墙重改。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它最特别的地方是<strong style="font-weight:500;">没有后端</strong>。整个应用都是静态文件，浏览器拿着你的 key，直接去敲 DeepSeek 的接口。不用服务器，不用数据库，也不用运维。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方给了两条用法：打开在线演示页，设置里填上 API Key，直接聊；或者去 Releases 下载压缩包，解压后打开 index.html，不用安装、不用构建。README 里也补了一句：直接打开文件，需要浏览器允许本地文件的存储和跨域请求。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig1-demo.png" alt="官方在线演示页" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方在线演示页（截图：2026-11-21）：左边会话，中间一句「今天有什么可以帮到你？」，底下是深度思考、智能搜索两个开关</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我把最新版 v0.1.3 的包下下来了：1.8MB，解压出 153 个文件，根目录一个 index.html、一个 static 文件夹、一张 MIT 许可证。整个仓库只有 7 次提交，代码不厚，想动手改的人翻得动。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">仓库里还自带一条 GitHub Pages 的自动发布配置：推一次代码，它自己构建、自己上线。官方演示页就是这么挂上去的。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">界面不是空壳</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">多会话、自动起标题、改名删除；一条提问改一版重答；回答可以分叉，像树一样往回切。同一个问题想比较两种问法，不用重开对话：分叉出来的回答各自留着，随时切回去。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig2-features.png" alt="功能清单卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方 README 列出的功能（本号据 README 整理）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">流式输出、深度思考开关、智能搜索，搜索到的结果和读过的网页会带来源链接。附件能传、能拖、能粘贴；语音能输入，回答也能念出来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">公式、代码高亮、流程图都认；中英文、明暗主题、手机布局；聊天记录能打包导出，换台电脑再导回去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这些东西单拎出来都不新鲜。可它们凑在一个 1.8MB 的压缩包里，还是官方自己写的，就有点意思了。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">真正值钱的，是那面「墙」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我们评价一个 AI 产品，习惯看模型跑分。可你每天真正摸到的，是会话列表，是输入框，是那条「正在思考」的动画。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">模型是水电，界面是装修。DeepSeek 这次把装修图纸也给了：哪面墙能砸、插座在哪、灯怎么走线，全摊开。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">没有后端这件事，对小团队尤其友好。丢到 GitHub Pages 或任意静态托管上就能跑；给团队、给家里人做一个专属入口，成本几乎为零。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以前做同样的事，要买服务器、配域名、写登录。现在一个文件夹，改个名字就能上线。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig3-repo.png" alt="仓库页" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">仓库首页（截图：2026-11-21）：5.2k 星、1.2k fork，README 第一句就写「无需应用后端」</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">再往深想一层：模型厂商卖的是调用量。把界面开源，等于把「怎么把模型用起来」这道题的标准答案发下去。用的人越多，API 调用越多。这笔账，DeepSeek 算得明白。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆：它不是 DeepSeek 的正式网页版。官方写的是 demo，没有记忆，没有工具编排，也没有账号体系。想拿它当「AI 员工」用，会失望。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆：界面免费，聊天不免费。API Key 要自己申请，按量计费。DeepSeek 的价格不算贵，但用量上去了，照样是钱。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆：隐私要自己看住。Key 和设置存在浏览器本地，对话和附件也存本地；但你发出去的每句话、传的每个文件，都会到 API 服务那边。公共电脑别填 key，部署到公网也别把 key 写进代码。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数字与节奏</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">四个版本，最新 v0.1.3 是 11 月 20 日发的。修的是一个很具体的问题：超大图片会让聊天请求失败，现在长边超过 4096 像素的图，上传前会自动等比缩小。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig4-numbers.png" alt="数据卡" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">数据采集于 2026-11-21：星数/fork 16:16，下载量 16:15（四个版本合计）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">四个压缩包合计下载 7,835 次。节奏不算快，7 次提交、4 个版本，但每次都在修真实问题。这种「官方小项目」的气质，比很多个人项目稳。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">适合谁</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果你想要一个自己的 AI 入口，或者想学一个完整的前端项目怎么搭，这是很好的底座。会一点前端的话，换 logo、改默认模型、加一句欢迎语，半天能弄出个样子。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">如果你只是想找个 AI 聊天，装官方 App 更省事。这个项目解决的不是「有没有 AI 用」，而是「这个入口归谁」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它更像一块地基，不是精装房：住得舒不舒服，看你在上面加什么。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261121-chat-demo/fig5-mobile.png" alt="手机端界面" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">手机宽度下自动换成单栏（官方演示页实截，2026-11-21）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 打开 deepseek-ai.github.io/chat-demo，在设置里填 API Key；想本地跑就下 Releases 的 zip，解压后用任意静态服务器打开。<br>② 先试「智能搜索」问一个需要来源的问题，看引用怎么标；再把同一条提问改一版重答，试试分支切换。<br>③ 双击 index.html 在部分浏览器会卡在「正在加载对话」（我这边 Chrome 就是）；换在线版最省事，公共电脑别填 key。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/deepseek-ai/chat-demo（MIT 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README、仓库页与 Releases 页；星数/fork 采集于 2026-11-21 16:16，下载量采集于 16:15</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">互动问题：如果你有一台常年开着的电脑，会把它做成自己的 AI 入口吗？评论区聊聊。</p>
+  <p style="margin:0;font-size:17px;color:#2B77BF;line-height:31px;">栏目说明：这是「GitHub 发现」第 53 期：每期挑一个 GitHub 或外网值得看的项目，用大白话讲给你。</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
