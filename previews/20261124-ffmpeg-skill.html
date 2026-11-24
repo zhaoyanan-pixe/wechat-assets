@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 说「剪好了」，你敢信吗？1 万星的开源工具，剪完先交一张检查单【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我给了它一段 20 秒的视频，让它改成竖屏。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它没急着下剪刀，先报了一串数：原片 1280×720、30 帧、单声道。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">裁完，它又提醒我：这一刀只留下 32% 的画面。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最后交出一张 13 项的检查单：0 项失败，1 条提醒。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我说的「它」，不是某个剪辑软件，是给 AI 用的一个工具包，叫 ffmpeg-skill。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">会写代码的 AI，其实一直在猜</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">FFmpeg 是视频圈的老牌免费工具，转码、切片的底层几乎都靠它，但它的命令行很吓人。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目作者把病因写得很直白：一个「懂 FFmpeg」的 AI，其实还是靠猜。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">猜帧率，猜错编码，把本来复制一下就能完成的活儿重新压一遍，最后连文件都不打开，就说「完成」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">我自己也见过这种「好了」：听着像干完了，打开一看，尺寸不对，声音没了。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它做的是另一件事：把「剪视频」拆成一个个可以量出数字的动作。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/fig1-og-card.png" alt="官方首页那张图：一次剪辑的结果先被量成 59.98 秒、1080×1920、30fps、-14.0 LUFS，才写上 verified（来源：项目仓库 brand/og.png）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方首页那张图：一次剪辑的结果先被量成 59.98 秒、1080×1920、30fps、-14.0 LUFS，才写上 verified（来源：项目仓库 brand/og.png）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">42 把带刻度的工具</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">ffmpeg-skill 不是一个带按钮的软件。它是给 Claude Code、Cursor、Codex 这类编程助手用的一套技能：42 个工具，配一个 MCP 服务。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">MCP 你可以理解成一个通用插座，AI 客户端插上就能调用这些工具。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">能干的活不玄乎：切段、拼接、去静音、横屏改竖屏、烧字幕、卡拉 OK 式逐字高亮、响度统一、调色、绿幕，还有给 TikTok、Reels、Shorts 一键出片。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">关键在三个规矩。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">先量后剪：每个活开始前，先用 probe 把时长、帧率、分辨率、音轨量一遍，不看文件名猜。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">只给有名字的参数：比如「改成 9:16、裁切」，它自己去拼 FFmpeg 命令，不让 AI 随手写一串 shell。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">干完复检：输出文件要再量一遍；画面变过，还要抽帧拼成一张联系表，让 AI 自己看一眼。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">全程在本机跑。不上传素材，不要 API key，除了 FFmpeg 和 Python 标准库，没有别的依赖。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/fig2-showcase-talk.jpg" alt="官方示例：一场演讲和幻灯片并排、切片、加字幕，全由一条条指令完成（素材为 Google Veo 生成，官方标注）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方示例：一场演讲和幻灯片并排、切片、加字幕，全由一条条指令完成（素材为 Google Veo 生成，官方标注）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我拿一段 20 秒的测试片试了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">本机 Windows 10，ffmpeg 8.0.1。我用一段合成的 20 秒测试片跑了一遍：先 probe，再裁成 9:16，套 Reels 规格，烧三条中文字幕，最后 check。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">几个真实数字：</p>
+  <ul style="margin:0 0 24px;padding-left:22px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><li style="margin:6px 0;">原片 1280×720，裁完 406×720；工具当场提醒，这一刀只留下 32% 的画面，还给了「加黑边」和「模糊填充」两个替代。</li><li style="margin:6px 0;">成片 1080×1920、30 帧；响度从 -21.8 LUFS 自动拉到 -14.1 LUFS，真峰值 -4.7 dBTP。</li><li style="margin:6px 0;">交付检查 13 项，0 失败，1 条提醒：没有字幕轨。字幕烧进画面不算字幕轨，它照样提醒。</li><li style="margin:6px 0;">中文字幕能直接烧，字体自动选了微软雅黑；字号从 24 缩到 20，只为让两行放得下。</li></ul>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/fig5-local-checks.png" alt="本机实测的验收单：13 项检查、0 失败、1 条提醒（来源：本机运行 probe / fit / export / check 的实际输出，2026-11-24）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测的验收单：13 项检查、0 失败、1 条提醒（来源：本机运行 probe / fit / export / check 的实际输出，2026-11-24）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">最让我服气的是那张「没量到」的清单。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它会老实写：画面里是谁、裁切有没有切到人、字幕好不好看，这些我没量，你自己看。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这比一句「已完成」可信。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">不满意，写句人话就行</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">剪完会生成一个本地网页：左边是素材和每一步的检查，中间是竖屏成片加平台安全区，右边是时间线。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你按下某个镜头或某句字幕的编号，写上「这里再往左一点」「这句太长了」，它会把这句意见变成一条给 AI 的指令，复制回去就能改。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">页面有中文，素材不出本机。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/fig3-review-page.png" alt="官方评审页：素材、每一步的检查、竖屏成片和操作线都在一页上，按编号写意见会生成给 agent 的指令（来源：项目仓库 site/media/review_en.png，界面支持中文）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方评审页：素材、每一步的检查、竖屏成片和操作线都在一页上，按编号写意见会生成给 agent 的指令（来源：项目仓库 site/media/review_en.png，界面支持中文）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261124-ffmpeg-skill/fig4-local-compare.png" alt="本机实测：左边是裁好的竖屏，右边是烧上中文字幕之后；字幕自动抬到 Reels 的安全区（合成测试画面）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测：左边是裁好的竖屏，右边是烧上中文字幕之后；字幕自动抬到 Reels 的安全区（合成测试画面）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆，它是「手」，不是「脑」。它不替你决定剪哪段、不找爆点、不写字幕文案。你得先知道要什么，或者前面还有一个会判断的 AI。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆，Windows 还没被官方跑全。作者在 README 里自己写：完整的真实设备素材只在 Linux 和 macOS 跑过，Windows 还没跑完，issue #143 挂着。我这次能跑通，只能说明这条 20 秒的路通了，不等于你那些手机拍的素材都没坑。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆，版本密得吓人。仓库到今天一共 251 个发行版，11 月 22 日一天发了 8 个；42 个工具里，只有 12 个标了稳定，其余 30 个是 beta。还有一条实务提醒：一小时的长片整条重编码会撞上默认 30 分钟的超时，官方实测 1802 秒被杀，得手动放宽。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">作者还写了篇论文讲这套「每一步都验证」的方法，论文里给自己的项目打分：只算部分合格。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这种自己拆自己台的态度，我反而愿意信。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我的看法</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它今天 10,254 星，9 月 3 日建的仓，两个多月。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">比星数更值得记的是这个方向：AI 干活正在从「会生成」走到「敢验证」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">以后你判断一个 AI 靠不靠谱，可以少听它说「好了」，多问一句：数字呢？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：先有 Node 16+、Python 3.10+、FFmpeg，然后 npx ffmpeg-skill setup<br>② 先试：probe 一段视频 → fit --aspect 9:16 --fit crop --width 1080 → check --platform reels<br>③ 坑：16:9 裁 9:16 默认从中间切，会丢掉约七成宽度；先看 look 出的联系表，再定 --crop-x</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/kajisho5/ffmpeg-skill（MIT 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据与素材来源：项目 README、GitHub API 与发行版列表（星数、发行版数取 2026-11-24 北京时间）；本机实测在 Windows 10 + ffmpeg 8.0.1 上完成，素材为 20 秒合成测试片，非真实拍摄。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你用 AI 剪过视频吗？它交过什么离谱的「成品」？评论区聊聊。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 55 期：每期挑一个 GitHub 或外网值得看的项目，用大白话讲给你。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
