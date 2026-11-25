@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 写的网页总有股十年前的味儿：Chrome 拉上微软、火狐给它补课，通过率从 52% 到 91%【附上手小抄】 · 预览页</title>
+<style>
+  /* 仅本地预览用；复制进公众号的是 #article 的内联样式（已全部内联） */
+  body { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f6f8;">
+
+<div id="copybar" style="position:sticky;top:0;z-index:9;max-width:700px;margin:0 auto;padding:10px 18px;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius:0 0 10px 10px;">
+  <span style="font-size:13px;line-height:20px;">复制后 → 公众号后台「新建图文」→ 光标点进正文区 → Ctrl+V</span>
+  <button id="btnCopy" style="flex:none;background:#2563eb;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;">📋 一键复制全文</button>
+</div>
+
+<!-- ============================================================
+  样式基准 v3.1（2026-09-27）：v3 基础上新增 小抄块 与 固定结尾块（签名+三连）；
+  v3 = 2026-09-24 从已发第 01 期反推微信「一键排版」归一标准；
+  改版式先改此基准并同步 SKILL.md「样式基准」节，改完必须跑自检）：
+    正文   17px / 行高 31px / rgba(0,0,0,0.9) / 段间距 24px
+    小标题 20px / #2B77BF / font-weight:500 / 居中 / 下间距 12px
+    提示块 白字 #FFFFFF / 底 #6BA0D2 / 内边距 14px 18px
+    小抄块 深字 rgba(0,0,0,0.9) / 底 #E8F1FA / 内边距 14px 18px（v3.1 新增）
+    图注   14px / rgba(0,0,0,0.3) / 居中
+    图片   宽 100% / 圆角 6px / 上下间距 17px
+    尾部   来源/互动/栏目说明：17px / 蓝字 #2B77BF
+    签名+三连行 = 尾部行样式；固定块逐字保留（v3.1 新增）
+    重点   <strong style="font-weight:500;">（不换色）
+  硬性规则（过微信「内容结构检测」；改完必须跑 scripts/wechat_struct_check.py）：
+    1. 行高一律 px，且同元素必须有显式 font-size；2. 不写 font-family；
+    3. text-align 只用 left/center/right；4. 样式全内联；图宽 ≤1080、单张 ≤2MB；
+    5. 图地址用 jsdelivr：https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/...
+  ============================================================ -->
+<div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你让 AI 给你做个弹窗，它大概会回你一段 JS：一个 div、一层黑遮罩、监听点击、锁住页面滚动、再算按 Esc 关闭。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这不是哪一家 AI 笨。Chrome 团队在官方博客里写了诊断书：模型的训练数据里，堆满了十年前的代码。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">浏览器里现在有现成的写法，几行属性就够。问题在于，没人告诉 AI。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig1-docs-page.png" alt="官方文档首页：一句话说明它干的事，下面就是安装命令（来源：developer.chrome.com/docs/modern-web-guidance，2026-11-25 本机实截）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方文档首页：一句话说明它干的事，下面就是安装命令（来源：developer.chrome.com/docs/modern-web-guidance，2026-11-25 本机实截）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">一个给 AI 补课的包</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目叫 Modern Web Guidance，直译是「现代网页指南」。它不是软件，是塞进 AI 编程助手里的一套技能包。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装法一条命令：npx modern-web-guidance@latest install（要 Node 22 以上）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装上之后，你的 AI 写网页之前会多做一件事：拿关键词去本地资料库里搜一条指南，再照着写。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">搜索在本机跑，离线也能用，不调接口，不要 key。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目今年 1 月建仓，11 月 10 日发 1.0。发 1.0 那天还有件事：Firefox 和 Edge 的团队正式加入。原来是 Chrome 一家，现在是 Chrome、Edge、Firefox 三家浏览器的人一起维护，MDN 文档团队也在列。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">到今早 8 点，它 10,813 星。我自己每周统计的那份热度榜上，它这一周涨了 4,400 星，排第二（本号统计，不是 GitHub 官方榜单）。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我本机试了</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Windows 10，Node 22.22。我照 README 的例子搜了一句：「给弹窗和遮罩做动画」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">回来 10 条，全是具体做法，不是大道理：点窗外关闭、页面不跟着滚、进出场动画、按 Esc 关闭、不写 JS 也能开关。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">挑一条取全文，254 行。里面有一句我看笑了：Firefox 129 以后认这个属性，但实际不生效（官方 bug 编号 1882408）；还有一个属性 Safari 干脆不支持。所以它顺手给了降级写法，连「别把这条写进简写里，老浏览器会整条忽略」都标了红线。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这就是「补课」和「搜一下」的区别：它知道在哪个浏览器上会翻车。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig2-search-card.png" alt="本机实测：一条命令，回来 10 条指南，第 2 条正是讲弹窗进出场动画的那条（2026-11-25，Windows 10 + Node 22.22）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测：一条命令，回来 10 条指南，第 2 条正是讲弹窗进出场动画的那条（2026-11-25，Windows 10 + Node 22.22）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数字有多硬</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方拿 229 个任务、1,961 项检查跑了评测。同一个模型，装和不装，差多少？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方博客那张图：不装，通过率 52%；装了，91%（截至 11 月 9 日）。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">README 里还按模型分列（11 月 20 日那一轮）：Codex 49% 到 85%，Claude Code 54% 到 94%，Antigravity 56% 到 97%。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这些检查不是人打分。专家先把「做对了应该长什么样」写成规则，再用自动脚本去验。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig3-eval-card.png" alt="官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它到底在纠什么</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方还写了一篇《AI 在网页开发里最容易错的 10 件事》。挑三个你能直接感觉到的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">弹窗：AI 爱自己写遮罩、自己算点击外面、自己锁页面滚动。浏览器早就有 dialog 和 popover，几行属性的事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">滚动动效：AI 多在滚动事件里用 JS 算位置，越算越卡。现在 CSS 能直接驱动。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">深色模式：不少 AI 生成的页面，深色模式的用户打开会先闪一下白屏，因为少了一行 color-scheme。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条挺扎心：整套评测里，模型不主动加内容安全策略（CSP，可以理解成给网页装一道防盗门），除非你在话里明确要。就算明确要了，安全检查仍有一半以上过不去。</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆：它只管规矩，不管想法。你让它做的东西本身得说得通，它不会替你想清楚。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆：那个「扫旧代码」的功能（legacy-scan）只覆盖 38 份指南，约全部语料的 20%。我拿一段故意写旧的 HTML 去扫，回来是 0 处。别指望它一键翻新老项目。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第三盆：它会往 Google 发匿名数据。装了多少次、取过哪条指南、搜了什么词，都在里面；原始提示词不收。介意的话，设一个环境变量 DISABLE_TELEMETRY=1 就关掉。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一句实话：91% 是官方自己出的考题、自己监考。分模型看是 85 到 97 不等，别当成「稳过」。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig4-scan-terminal.png" alt="本机实测：拿一段旧写法去扫，回来 0 处；它自己注明只覆盖 38 份指南、约两成语料（2026-11-25）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测：拿一段旧写法去扫，回来 0 处；它自己注明只覆盖 38 份指南、约两成语料（2026-11-25）</p>
+  <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我的看法</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它一共覆盖 269 个现代特性：CSS 144 个、HTML 38 个、JS 87 个。官网文档目录的说法是「200 多份经专家审阅的指南」。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装进 AI 的只有两小段说明，一段约 205 个 token（token 可以理解成模型眼里的字数单位），另一段约 175 个，不占地方。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">支持面铺得挺开：Claude Code、Codex、Cursor、Copilot、WebStorm、Antigravity、Kimi Code、Grok Build 都有现成装法。</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig5-agents.png" alt="官方图：能直接装这套技能的编程助手（来源：Chrome 官方博客 2026-11-10）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方图：能直接装这套技能的编程助手（来源：Chrome 官方博客 2026-11-10）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用不用，判断很简单：你只是偶尔让 AI 做个页面，装不装差别不大；你要长期用 AI 做网页、又不想每次验收都挑毛病，这个包能省不少回头改的时间。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 会写网页，早就不稀奇。稀奇的是写得像 2026 年的人写的，而不是像 2016 年的教程抄的。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Node 22+，在项目目录里跑 npx modern-web-guidance@latest install<br>② 先试：用 search「你的需求」看回来哪几条，再 retrieve 取全文<br>③ 坑：legacy-scan 只覆盖约两成语料，扫出 0 处不代表你的旧代码没问题</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/GoogleChrome/modern-web-guidance-src（Apache-2.0 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据来源：项目 README、官方文档首页、Chrome 官方博客 2026-11-10《Modern Web Guidance 1.0》与 11-11《Top 10 things AI gets wrong in web development》；星数与周涨幅取 2026-11-25 08:03，周涨幅来自本号热度榜（非 GitHub 官方榜单）。本机实测在 Windows 10 + Node 22.22 上完成。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 写的网页坑过吗？最离谱的一次是什么？评论区聊聊。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 56 期：每期挑一个 GitHub 或外网值得看的项目，用大白话讲给你。）</p>
+  <p style="margin:24px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">我是青芽，每天帮你把 GitHub 和外网的好东西淘回来。我们下期见～</p>
+  <p style="margin:8px 0 0;font-size:17px;color:#2B77BF;line-height:31px;">觉得有用：点个赞、在看，转发给需要的朋友；想第一时间收到推送，可以加个星标⭐</p>
+
+</div>
+
+<script>
+/* ===== 净化复制机制（不要删改；改完必须重跑 wechat_struct_check.py） ===== */
+(function(){
+  var BLOCKS = ['p','div','section','h1','h2','h3','h4','h5','h6','li','td'];
+  var DROP_PROPS = ['font-family','box-sizing','orphans','widows','text-indent','word-spacing','-webkit-text-stroke','-webkit-text-size-adjust','white-space'];
+
+  function sanitizeStyle(styleText){
+    var keep = [];
+    styleText.split(';').forEach(function(part){
+      var i = part.indexOf(':');
+      if(i < 0) return;
+      var k = part.slice(0, i).trim().toLowerCase();
+      var v = part.slice(i + 1).trim();
+      if(!k || !v) return;
+      if(DROP_PROPS.indexOf(k) >= 0) return;
+      if(k === 'text-align' && /^(start|end)$/i.test(v)) v = 'left';
+      keep.push(k + ':' + v);
+    });
+    return keep.join(';');
+  }
+
+  window.__buildClean = function(){
+    var src = document.getElementById('article').cloneNode(true);
+
+    /* 1) 块级元素的直接文本子节点 → 包 <span leaf>（官方期望结构，绕开叠字误判分支） */
+    var all = [src].concat(Array.prototype.slice.call(src.querySelectorAll('*')));
+    all.forEach(function(el){
+      if(BLOCKS.indexOf(el.tagName.toLowerCase()) < 0) return;
+      var kids = Array.prototype.slice.call(el.childNodes);
+      kids.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim().length){
+          var sp = document.createElement('span');
+          sp.setAttribute('leaf', '');
+          n.parentNode.insertBefore(sp, n);
+          sp.appendChild(n);
+        }
+      });
+    });
+
+    /* 2) 净化：去 id/class/data-*，过滤敏感样式属性 */
+    all.forEach(function(el){
+      if(!el.removeAttribute) return;
+      el.removeAttribute('id');
+      el.removeAttribute('class');
+      Array.prototype.slice.call(el.attributes).forEach(function(a){
+        if(a.name.indexOf('data-') === 0 || a.name === 'draggable') el.removeAttribute(a.name);
+      });
+      var st = el.getAttribute('style');
+      if(st){
+        var s2 = sanitizeStyle(st);
+        if(s2) el.setAttribute('style', s2); else el.removeAttribute('style');
+      }
+    });
+
+    return src.innerHTML;
+  };
+
+  /* copy 事件接管：任何复制（Ctrl+A/C、按钮、右键）都输出净化版 HTML */
+  document.addEventListener('copy', function(e){
+    try{
+      var html = window.__buildClean();
+      if(e.clipboardData){
+        e.clipboardData.setData('text/html', html);
+        e.clipboardData.setData('text/plain', document.getElementById('article').innerText);
+        e.preventDefault();
+      }
+    }catch(err){ /* 出错则退回浏览器默认复制 */ }
+  });
+
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var art = document.getElementById('article');
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    try{ document.execCommand('copy'); }catch(e){}
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = '✅ 已复制！去后台粘贴吧';
+    setTimeout(function(){ btn.textContent = '📋 一键复制全文'; }, 4000);
+  });
+})();
+</script>
+</body>
+</html>
