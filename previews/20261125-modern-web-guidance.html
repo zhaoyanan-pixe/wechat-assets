@@ -56,18 +56,18 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig2-search-card.png" alt="本机实测：一条命令，回来 10 条指南，第 2 条正是讲弹窗进出场动画的那条（2026-11-25，Windows 10 + Node 22.22）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测：一条命令，回来 10 条指南，第 2 条正是讲弹窗进出场动画的那条（2026-11-25，Windows 10 + Node 22.22）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">数字有多硬</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方拿 229 个任务、1,961 项检查跑了评测。同一个模型，装和不装，差多少？</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方拿 229 个任务、近 2,000 项检查跑了评测。同一个模型，装和不装，差多少？</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方博客那张图：不装，通过率 52%；装了，91%（截至 11 月 9 日）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">README 里还按模型分列（11 月 20 日那一轮）：Codex 49% 到 85%，Claude Code 54% 到 94%，Antigravity 56% 到 97%。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这些检查不是人打分。专家先把「做对了应该长什么样」写成规则，再用自动脚本去验。</p>
-  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig3-eval-card.png" alt="官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
-  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表）</p>
+  <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig3-eval-card-v2.png" alt="官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表；文档首页另一处把同一指标写成约 51%，取数时点不同）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
+  <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方评测数据：左边整体口径，右边是 11 月 20 日分模型快照（来源：Chrome 官方博客与项目 README 评测表；文档首页另一处把同一指标写成约 51%，取数时点不同）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">它到底在纠什么</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">官方还写了一篇《AI 在网页开发里最容易错的 10 件事》。挑三个你能直接感觉到的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">弹窗：AI 爱自己写遮罩、自己算点击外面、自己锁页面滚动。浏览器早就有 dialog 和 popover，几行属性的事。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">滚动动效：AI 多在滚动事件里用 JS 算位置，越算越卡。现在 CSS 能直接驱动。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">深色模式：不少 AI 生成的页面，深色模式的用户打开会先闪一下白屏，因为少了一行 color-scheme。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条挺扎心：整套评测里，模型不主动加内容安全策略（CSP，可以理解成给网页装一道防盗门），除非你在话里明确要。就算明确要了，安全检查仍有一半以上过不去。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">还有一条挺扎心：整套评测里，模型不主动加内容安全策略（CSP，可以理解成给网页装一道防盗门），除非你在话里明确要。按官方原文的说法，就算明确要了，安全检查仍有一半以上过不去。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第一盆：它只管规矩，不管想法。你让它做的东西本身得说得通，它不会替你想清楚。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">第二盆：那个「扫旧代码」的功能（legacy-scan）只覆盖 38 份指南，约全部语料的 20%。我拿一段故意写旧的 HTML 去扫，回来是 0 处。别指望它一键翻新老项目。</p>
@@ -76,15 +76,15 @@
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig4-scan-terminal.png" alt="本机实测：拿一段旧写法去扫，回来 0 处；它自己注明只覆盖 38 份指南、约两成语料（2026-11-25）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">本机实测：拿一段旧写法去扫，回来 0 处；它自己注明只覆盖 38 份指南、约两成语料（2026-11-25）</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">我的看法</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它一共覆盖 269 个现代特性：CSS 144 个、HTML 38 个、JS 87 个。官网文档目录的说法是「200 多份经专家审阅的指南」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装进 AI 的只有两小段说明，一段约 205 个 token（token 可以理解成模型眼里的字数单位），另一段约 175 个，不占地方。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">支持面铺得挺开：Claude Code、Codex、Cursor、Copilot、WebStorm、Antigravity、Kimi Code、Grok Build 都有现成装法。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它一共覆盖 269 个现代特性：CSS 144 个、HTML 38 个、JS 87 个。官网文档目录的说法是「200 多份经专家审阅的指南」：特性是按能力条数算，指南是按文件算，两个数字不是一回事。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">装进 AI 的只有一段很短的说明，约 205 个 token（token 可以理解成模型眼里的字数单位）；包里还带一段 Chrome 扩展开发的说明，约 175 个，也不占地方。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">支持面铺得挺开：官方博客点名了 Claude Code、Codex、Cursor、Copilot、WebStorm、Antigravity、Kimi Code、Grok Build；README 里还给了 Vercel、GitHub CLI 和 Pi 的装法。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261125-modern-web-guidance/fig5-agents.png" alt="官方图：能直接装这套技能的编程助手（来源：Chrome 官方博客 2026-11-10）" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">官方图：能直接装这套技能的编程助手（来源：Chrome 官方博客 2026-11-10）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">用不用，判断很简单：你只是偶尔让 AI 做个页面，装不装差别不大；你要长期用 AI 做网页、又不想每次验收都挑毛病，这个包能省不少回头改的时间。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 会写网页，早就不稀奇。稀奇的是写得像 2026 年的人写的，而不是像 2016 年的教程抄的。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：Node 22+，在项目目录里跑 npx modern-web-guidance@latest install<br>② 先试：用 search「你的需求」看回来哪几条，再 retrieve 取全文<br>③ 坑：legacy-scan 只覆盖约两成语料，扫出 0 处不代表你的旧代码没问题</p>
-  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/GoogleChrome/modern-web-guidance-src（Apache-2.0 协议）</p>
+  <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">项目地址：github.com/GoogleChrome/modern-web-guidance-src（代码 Apache-2.0；指南文档 CC-BY 4.0）</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">数据来源：项目 README、官方文档首页、Chrome 官方博客 2026-11-10《Modern Web Guidance 1.0》与 11-11《Top 10 things AI gets wrong in web development》；星数与周涨幅取 2026-11-25 08:03，周涨幅来自本号热度榜（非 GitHub 官方榜单）。本机实测在 Windows 10 + Node 22.22 上完成。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">你被 AI 写的网页坑过吗？最离谱的一次是什么？评论区聊聊。</p>
   <p style="margin:0 0 24px;font-size:17px;color:#2B77BF;line-height:31px;">（这是「GitHub 发现」第 56 期：每期挑一个 GitHub 或外网值得看的项目，用大白话讲给你。）</p>
