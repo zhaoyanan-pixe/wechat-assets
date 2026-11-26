@@ -37,12 +37,12 @@
 <div id="article" style="max-width:700px;margin:0 auto;background:#ffffff;padding:36px 40px;">
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261126-rust-anything/cover.png" alt="" style="width:100%;border-radius:6px;display:block;margin:0 0 24px;">
 
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Prettier，前端用了十来年的格式化工具。有人把它整个翻成 Rust：同一批 2,360 个文件，从 128.6 秒变成 6.9 秒。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">19 倍。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但让我停下来的不是这个数字。是他怎么证明自己没改坏：动刀之前，先让原来的程序跑了 17,224 遍，把每一次的返回值和异常全录下来。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">Prettier，前端用了十来年的格式化工具。有人把它翻成了 Rust（一种以快、不容易出内存错误著称的编程语言），没搬到的部分自动退回给原来的 Prettier：同一批 2,360 个文件，从 128.6 秒变成 6.9 秒。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">快了将近 19 倍。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">但让我停下来的不是这个速度。是他怎么证明自己没改坏：动刀之前，先让原来的程序跑了 17,224 遍，把每一次的返回值和异常全录下来。</p>
   <img src="https://cdn.jsdelivr.net/gh/zhaoyanan-pixe/wechat-assets@main/articles/20261126-rust-anything/fig2-repo-page.png" alt="" style="width:100%;border-radius:6px;display:block;margin:17px 0 8px;">
   <p style="margin:0 0 24px;font-size:14px;color:rgba(0,0,0,0.3);line-height:25px;text-align:center;">图注：项目页面，11 月 16 日建仓，到 11 月 26 日晚上 9,864 星（截图：github.com/erkamyaman/rust-anything）</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个项目叫 rust-anything，作者是土耳其的开发者。十天，9,864 星。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这个项目叫 rust-anything，作者是土耳其开发者 Erkam Yaman（README 署名「Made in Türkiye」）。十天，9,864 星。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">改错不可怕，看起来没错才可怕</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">让 AI 重写一段代码，它有天然的优势：写得快、写得全、态度好。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">它也有天然的毛病：说「已完成」的时候，你只能跑几个例子试试。</p>
@@ -72,15 +72,15 @@
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">一个项目肯在首页写「这项我们不如原来」，可信度反而上来了。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">三盆冷水</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">第一盆：它不是一键翻译。</strong> Rust 还是要写，只是被切成小块，一块一块验收。那个「整个服务变成一个 5.3MB 二进制」的案例 json-server，用了九个单元、514 条 HTTP 用例、两个适配器才走到最后。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">第二盆：只抓录像覆盖到的。</strong> README 的原话是「通过的意思，只是和录过的每一个用例一致，仅此而已」。没人录过的输入、正则里那些刁钻字符、浮点数转文本的格式、哈希表的输出顺序，都可能是漏网的地方。它自己还建议拿真实数据多补几遍。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">第三盆：它会真跑你的代码。</strong> 而且每个用例跑两遍。会写文件、连数据库、发网络请求的，就写一遍、连一遍。官方警告写得很直白：在副本上跑，用测试库，环境里别放生产凭证。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">第二盆：只抓录像覆盖到的。</strong> 官方文档写得很干脆：「通过的意思，只是和录过的每一个用例一致，仅此而已」。没人录过的输入、正则里那些刁钻字符、浮点数转文本的格式、哈希表的输出顺序，都可能是漏网的地方。它自己还建议拿真实数据多补几遍。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;"><strong style="font-weight:500;">第三盆：它会真跑你的代码。</strong> 整个应用录制的时候，每个用例还会跑两遍。会写文件、连数据库、发网络请求的，就写一遍、连一遍。官方警告写得很直白：在副本上跑，用测试库，环境里别放生产凭证。</p>
   <p style="margin:0 0 12px;font-size:20px;font-weight:500;color:#2B77BF;line-height:36px;text-align:center;">你不用 Rust，也能借走这个办法</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">这期真正想说的其实不是 Rust，是这个顺序：<strong style="font-weight:500;">先定验收标准，再动手。</strong></p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">让 AI 改一个表格模板？先挑 20 行典型数据，把现在的计算结果存一份。改完逐行对。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">让它重排一个自动流程？先把最近一周的真实输入存下来，改完拿同样的输入再跑一遍。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">区别在哪儿？前者你只能看「像不像」，后者你能说「第 17 行差了一个数」。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">AI 改东西会越来越快。快到最后，值钱的不再是「改」，而是「怎么证明改对了」。</p>
-  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：cargo install rust-anything，再 rust-anything setup（会自己给 Claude Code、Codex、Cursor 这些工具注册好）；没装 Rust 就去 Releases 下现成的包，JS 项目也能 npm install -g rust-anything。<br>② 最值得先试：不是全量翻，是 rust-anything go --agent claude -- python3 app.py，只把最慢的那个函数搬到 Rust。<br>③ 一个坑：录像是真跑代码，先在副本上试，别把生产库和生产密钥留给它。</p>
+  <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);background-color:#E8F1FA;line-height:31px;padding:14px 18px;"><strong style="font-weight:500;color:#22619F;">🧰 上手小抄</strong><br>① 装：cargo install rust-anything，再 rust-anything setup（会自己给 Claude Code、Codex、Cursor 注册好）；没装 Rust 就去 Releases 下现成的包。<br>② 最值得先试：不是全量翻，是 rust-anything go --agent claude -- python3 app.py，只把最慢的那个函数搬到 Rust。<br>③ 一个坑：录像是真跑代码，先在副本上试，别把生产库和生产密钥留给它。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">项目地址：github.com/erkamyaman/rust-anything（许可证 MIT 或 Apache-2.0）</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">来源与数据：数字、演示与警告均取自项目 README、docs/real-world.md、docs/how-it-works.md；星数 9,864 为 2026-11-26 21:41 采集（截止该时刻）。</p>
   <p style="margin:0 0 24px;font-size:17px;color:rgba(0,0,0,0.9);line-height:31px;">你现在还在用哪些「跑了很多年、但没人敢动」的老工具？评论区聊聊。</p>
